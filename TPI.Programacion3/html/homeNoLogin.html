@@ -2,215 +2,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CarRentalEasy - Rental Service</title>
+  <title>CarRental - Servicio de Alquiler de Autos</title>
+  <link rel="stylesheet" href="../css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style id="app-style">
-    :root {
-      --primary-color: #3498db;
-      --secondary-color: #2ecc71;
-      --dark-color: #2c3e50;
-      --light-color: #ecf0f1;
-      --danger-color: #e74c3c;
-      --warning-color: #f39c12;
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-    }
-    
-    .navbar-brand {
-      font-weight: 700;
-      color: var(--primary-color);
-    }
-    
-    .hero-section {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://cdn.pixabay.com/photo/2016/11/22/23/44/buildings-1851246_1280.jpg');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 80px 0;
-      text-align: center;
-    }
-    
-    .hero-section h1 {
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-    
-    .contact-info {
-      background-color: white;
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
-    }
-    
-    .map-container {
-      height: 300px;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 30px;
-    }
-    
-    .vehicle-card {
-      border: none;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      margin-bottom: 30px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    
-    .vehicle-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-    
-    .vehicle-img {
-      height: 200px;
-      object-fit: cover;
-    }
-    
-    .rent-btn {
-      background-color: var(--primary-color);
-      border: none;
-      padding: 8px 20px;
-      border-radius: 5px;
-      color: white;
-      font-weight: 500;
-      transition: background-color 0.3s ease;
-    }
-    
-    .rent-btn:hover {
-      background-color: #2980b9;
-    }
-    
-    .auth-container {
-      max-width: 500px;
-      margin: 50px auto;
-      padding: 30px;
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-    
-    .auth-container h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: var(--dark-color);
-    }
-    
-    .form-control {
-      border-radius: 5px;
-      padding: 12px;
-      margin-bottom: 15px;
-    }
-    
-    .auth-btn {
-      background-color: var(--primary-color);
-      border: none;
-      padding: 12px;
-      border-radius: 5px;
-      color: white;
-      font-weight: 500;
-      width: 100%;
-      margin-top: 10px;
-    }
-    
-    .auth-btn:hover {
-      background-color: #2980b9;
-    }
-    
-    .forgot-password {
-      text-align: right;
-      display: block;
-      margin-top: 10px;
-      color: var(--primary-color);
-      text-decoration: none;
-    }
-    
-    .modal-content {
-      border-radius: 10px;
-      border: none;
-    }
-    
-    .modal-header {
-      background-color: var(--primary-color);
-      color: white;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-    }
-    
-    .modal-footer {
-      border-top: none;
-    }
-    
-    .payment-method {
-      margin: 20px 0;
-    }
-    
-    .payment-method .form-check {
-      margin-bottom: 10px;
-    }
-    
-    .success-container {
-      text-align: center;
-      padding: 30px;
-    }
-    
-    .success-icon {
-      font-size: 80px;
-      color: var(--secondary-color);
-      margin-bottom: 20px;
-    }
-    
-    .reservation-summary {
-      background-color: #f8f9fa;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 20px 0;
-      text-align: left;
-    }
-    
-    .hide {
-      display: none;
-    }
-    
-    .user-welcome {
-      font-weight: 500;
-      margin-right: 10px;
-    }
-    
-    footer {
-      background-color: var(--dark-color);
-      color: white;
-      padding: 30px 0;
-      margin-top: 50px;
-    }
-    
-    @media (max-width: 768px) {
-      .hero-section {
-        padding: 50px 0;
-      }
-      
-      .contact-info {
-        margin-bottom: 20px;
-      }
-      
-      .vehicle-card {
-        margin-bottom: 20px;
-      }
-    }
-  </style>
+  
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
     <div class="container">
-      <a class="navbar-brand" href="javascript:void(0)">CarRentalEasy</a>
+      <a class="navbar-brand" href="javascript:void(0)">CarRental</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -220,19 +22,19 @@
             <a class="nav-link active" href="javascript:void(0)" id="home-link">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)" id="fleet-link">Fleet</a>
+            <a class="nav-link" href="javascript:void(0)" id="fleet-link">Coches</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)" id="login-link">Login</a>
+            <a class="nav-link" href="javascript:void(0)" id="login-link">Iniciar Sesion</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)" id="register-link">Register</a>
+            <a class="nav-link" href="javascript:void(0)" id="register-link">Registrarse</a>
           </li>
           <li class="nav-item d-none" id="user-info">
-            <span class="nav-link user-welcome">Welcome, <span id="user-name"></span>!</span>
+            <span class="nav-link user-welcome">Bienvenido, <span id="user-name"></span>!</span>
           </li>
           <li class="nav-item d-none" id="logout-item">
-            <a class="nav-link" href="javascript:void(0)" id="logout-link">Logout</a>
+            <a class="nav-link" href="javascript:void(0)" id="logout-link">Cerrar Sesion</a>
           </li>
         </ul>
       </div>
@@ -243,9 +45,9 @@
   <section id="home-section">
     <div class="hero-section">
       <div class="container">
-        <h1>Your Journey Starts Here</h1>
-        <p class="lead mb-4">Reliable car rentals at affordable prices in Goya, Corrientes</p>
-        <button class="btn btn-primary btn-lg" id="view-fleet-btn">View Our Fleet</button>
+        <h1>Tu viaje comienza aqui.</h1>
+        <p class="lead mb-4">Alquiler de autos en Goya, Corrientes</p>
+        <button class="btn btn-primary btn-lg" id="view-fleet-btn">Nuestros Coches</button>
       </div>
     </div>
     
@@ -253,10 +55,10 @@
       <div class="row">
         <div class="col-md-6">
           <div class="contact-info">
-            <h3 class="mb-4">Contact Information</h3>
-            <p><i class="fas fa-phone me-2"></i> Phone: 3777-885466</p>
+            <h3 class="mb-4">Contacto</h3>
+            <p><i class="fas fa-phone me-2"></i> Telefono: 3777-885466</p>
             <p><i class="fas fa-envelope me-2"></i> Email: info@carrentaleasy.com</p>
-            <p><i class="fas fa-map-marker-alt me-2"></i> Address: Av. Sarmiento 500, Goya, Corrientes, Argentina</p>
+            <p><i class="fas fa-map-marker-alt me-2"></i> Direccion: Av. Sarmiento 500, Goya, Corrientes, Argentina</p>
           </div>
         </div>
         <div class="col-md-6">
@@ -271,7 +73,7 @@
   <!-- Fleet Section -->
   <section id="fleet-section" class="py-5 hide">
     <div class="container">
-      <h2 class="text-center mb-5">Our Fleet</h2>
+      <h2 class="text-center mb-5">Nuestros coches</h2>
       <div class="row" id="vehicle-container">
         <!-- Vehicle cards will be dynamically generated here -->
       </div>
@@ -282,18 +84,18 @@
   <section id="login-section" class="hide">
     <div class="container">
       <div class="auth-container">
-        <h2>Login</h2>
+        <h2>Iniciar Sesion</h2>
         <form id="login-form">
           <div class="mb-3">
-            <label for="login-email" class="form-label">Email address</label>
+            <label for="login-email" class="form-label">Email </label>
             <input type="email" class="form-control" id="login-email" required>
           </div>
           <div class="mb-3">
-            <label for="login-password" class="form-label">Password</label>
+            <label for="login-password" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="login-password" required>
           </div>
-          <a href="javascript:void(0)" class="forgot-password">Forgot Password?</a>
-          <button type="submit" class="btn auth-btn">Login</button>
+          <a href="javascript:void(0)" class="forgot-password">¿Olvidaste tu contraseña?</a>
+          <button type="submit" class="btn auth-btn">Iniciar Sesion</button>
         </form>
       </div>
     </div>
@@ -303,25 +105,25 @@
   <section id="register-section" class="hide">
     <div class="container">
       <div class="auth-container">
-        <h2>Register</h2>
+        <h2>Registrarse</h2>
         <form id="register-form">
           <div class="mb-3">
-            <label for="register-firstname" class="form-label">First Name</label>
+            <label for="register-firstname" class="form-label">Nombre/s</label>
             <input type="text" class="form-control" id="register-firstname" required>
           </div>
           <div class="mb-3">
-            <label for="register-lastname" class="form-label">Last Name</label>
+            <label for="register-lastname" class="form-label">Apellido/s</label>
             <input type="text" class="form-control" id="register-lastname" required>
           </div>
           <div class="mb-3">
-            <label for="register-email" class="form-label">Email address</label>
+            <label for="register-email" class="form-label">Email </label>
             <input type="email" class="form-control" id="register-email" required>
           </div>
           <div class="mb-3">
-            <label for="register-password" class="form-label">Password</label>
+            <label for="register-password" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="register-password" required>
           </div>
-          <button type="submit" class="btn auth-btn">Register</button>
+          <button type="submit" class="btn auth-btn">Registrarse</button>
         </form>
       </div>
     </div>
@@ -332,7 +134,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="reservationModalLabel">Reserve Your Vehicle</h5>
+          <h5 class="modal-title" id="reservationModalLabel">Reserva tu Vehiculo</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -340,7 +142,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="mb-3">
-                  <label for="fullname" class="form-label">Full Name</label>
+                  <label for="fullname" class="form-label">Nombre Completo</label>
                   <input type="text" class="form-control" id="fullname" required>
                 </div>
               </div>
@@ -352,30 +154,30 @@
               </div>
             </div>
             <div class="mb-3">
-              <label for="address" class="form-label">Address</label>
+              <label for="address" class="form-label">Direccion</label>
               <input type="text" class="form-control" id="address" required>
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="mb-3">
-                  <label for="start-date" class="form-label">Rental Start Date</label>
+                  <label for="start-date" class="form-label">Fecha de inicio del alquiler</label>
                   <input type="date" class="form-control" id="start-date" required>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="mb-3">
-                  <label for="rental-days" class="form-label">Number of Days</label>
+                  <label for="rental-days" class="form-label">Número de días</label>
                   <input type="number" class="form-control" id="rental-days" min="1" max="30" required>
                 </div>
               </div>
             </div>
             <div class="mb-3">
-              <label for="total-cost" class="form-label">Total Cost (ARS)</label>
+              <label for="total-cost" class="form-label">Costo total (ARS)</label>
               <input type="text" class="form-control" id="total-cost" readonly>
             </div>
             
             <div class="payment-method">
-              <label class="form-label">Payment Method</label>
+              <label class="form-label">Metodo de Pago</label>
               <div class="form-check">
                 <input class="form-check-input" type="radio" name="payment-method" id="transferencia" value="transferencia" checked>
                 <label class="form-check-label" for="transferencia">
@@ -399,33 +201,33 @@
           
           <div id="reservation-loading" class="text-center py-4 hide">
             <div class="spinner-border text-primary" role="status">
-              <span class="visually-hidden">Loading...</span>
+              <span class="visually-hidden">Cargando...</span>
             </div>
-            <p class="mt-3">Processing your reservation...</p>
+            <p class="mt-3">Processando tu Reserva...</p>
           </div>
           
           <div id="reservation-success" class="success-container hide">
             <div class="success-icon">
               <i class="fas fa-check-circle"></i>
             </div>
-            <h4>Reservation Successful!</h4>
-            <p>Your vehicle has been reserved successfully.</p>
+            <h4>¡Reserva realizada con éxito!</h4>
+            <p>Su vehículo ha sido reservado exitosamente.</p>
             
             <div class="reservation-summary">
-              <h5>Reservation Details</h5>
-              <p><strong>Vehicle:</strong> <span id="summary-vehicle"></span></p>
-              <p><strong>Start Date:</strong> <span id="summary-date"></span></p>
-              <p><strong>Duration:</strong> <span id="summary-days"></span> days</p>
-              <p><strong>Total Cost:</strong> ARS <span id="summary-cost"></span></p>
-              <p><strong>Payment Method:</strong> <span id="summary-payment"></span></p>
+              <h5>Detalles de la reserva</h5>
+              <p><strong>Vehiculo:</strong> <span id="summary-vehicle"></span></p>
+              <p><strong>Fecha incio:</strong> <span id="summary-date"></span></p>
+              <p><strong>Duracion:</strong> <span id="summary-days"></span> dias</p>
+              <p><strong>Costo Total:</strong> ARS <span id="summary-cost"></span></p>
+              <p><strong>Metodo de pago:</strong> <span id="summary-payment"></span></p>
             </div>
             
-            <a href="javascript:void(0)" class="btn btn-primary mt-3" id="make-another-reservation">Make Another Reservation</a>
+            <a href="javascript:void(0)" class="btn btn-primary mt-3" id="make-another-reservation">Hacer otra reserva</a>
           </div>
         </div>
         <div class="modal-footer" id="modal-footer-buttons">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="confirm-reservation">Confirm Reservation</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-primary" id="confirm-reservation">Confirmar Reserva</button>
         </div>
       </div>
     </div>
@@ -435,8 +237,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h4>CarRentalEasy</h4>
-          <p>The best car rental service in Goya, Corrientes.</p>
+          <h4>CarRental</h4>
+          <p>El mejor servicio de alquiler de autos en Goya, Corrientes.</p>
         </div>
         <div class="col-md-6 text-md-end">
           <p><i class="fas fa-phone me-2"></i> 3777-885466</p>
@@ -445,7 +247,7 @@
       </div>
       <div class="row mt-3">
         <div class="col-12 text-center">
-          <p>&copy; 2025 CarRentalEasy. All rights reserved.</p>
+          <p>&copy; 2025 CarRentalEasy. Todos los derechos reservados.</p>
         </div>
       </div>
     </div>
@@ -453,289 +255,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script id="app-script">
-    $(document).ready(function() {
-      // Vehicles data
-      const vehicles = [
-        { id: 1, model: 'Ford EcoSport', pricePerDay: 15000, image: 'https://cdn.pixabay.com/photo/2019/08/12/10/47/ford-eco-sport-4390742_1280.jpg' },
-        { id: 2, model: 'Ford EcoSport', pricePerDay: 15000, image: 'https://cdn.pixabay.com/photo/2019/08/12/10/47/ford-eco-sport-4390742_1280.jpg' },
-        { id: 3, model: 'Ford EcoSport', pricePerDay: 15000, image: 'https://cdn.pixabay.com/photo/2019/08/12/10/47/ford-eco-sport-4390742_1280.jpg' },
-        { id: 4, model: 'Ford EcoSport', pricePerDay: 15000, image: 'https://cdn.pixabay.com/photo/2019/08/12/10/47/ford-eco-sport-4390742_1280.jpg' },
-        { id: 5, model: 'Ford EcoSport', pricePerDay: 15000, image: 'https://cdn.pixabay.com/photo/2019/08/12/10/47/ford-eco-sport-4390742_1280.jpg' },
-        { id: 6, model: 'Ford EcoSport', pricePerDay: 15000, image: 'https://cdn.pixabay.com/photo/2019/08/12/10/47/ford-eco-sport-4390742_1280.jpg' },
-        { id: 7, model: 'Ford EcoSport', pricePerDay: 15000, image: 'https://cdn.pixabay.com/photo/2019/08/12/10/47/ford-eco-sport-4390742_1280.jpg' },
-        { id: 8, model: 'Ford EcoSport', pricePerDay: 15000, image: 'https://cdn.pixabay.com/photo/2019/08/12/10/47/ford-eco-sport-4390742_1280.jpg' },
-        { id: 9, model: 'Ford EcoSport', pricePerDay: 15000, image: 'https://cdn.pixabay.com/photo/2019/08/12/10/47/ford-eco-sport-4390742_1280.jpg' },
-        { id: 10, model: 'Ford EcoSport', pricePerDay: 15000, image: 'https://cdn.pixabay.com/photo/2019/08/12/10/47/ford-eco-sport-4390742_1280.jpg' }
-      ];
-      
-      // Navigation
-      function showSection(sectionId) {
-        $('#home-section, #fleet-section, #login-section, #register-section').addClass('hide');
-        $(sectionId).removeClass('hide');
-      }
-      
-      $('#home-link').click(function() {
-        showSection('#home-section');
-      });
-      
-      $('#fleet-link').click(function() {
-        showSection('#fleet-section');
-        populateVehicles();
-      });
-      
-      $('#login-link').click(function() {
-        showSection('#login-section');
-      });
-      
-      $('#register-link').click(function() {
-        showSection('#register-section');
-      });
-      
-      $('#view-fleet-btn').click(function() {
-        showSection('#fleet-section');
-        populateVehicles();
-      });
-      
-      // Populate vehicles
-      function populateVehicles() {
-        const container = $('#vehicle-container');
-        container.empty();
-        
-        vehicles.forEach(vehicle => {
-          const card = `
-            <div class="col-md-4 col-sm-6">
-              <div class="card vehicle-card">
-                <img src="${vehicle.image}" class="card-img-top vehicle-img" alt="${vehicle.model}">
-                <div class="card-body">
-                  <h5 class="card-title">${vehicle.model}</h5>
-                  <p class="card-text">ARS ${vehicle.pricePerDay} per day</p>
-                  <button class="btn rent-btn" data-vehicle-id="${vehicle.id}">Rent Now</button>
-                </div>
-              </div>
-            </div>
-          `;
-          
-          container.append(card);
-        });
-        
-        // Add event listeners to rent buttons
-        $('.rent-btn').click(function() {
-          const vehicleId = $(this).data('vehicle-id');
-          openReservationModal(vehicleId);
-        });
-      }
-      
-      // User authentication
-      let currentUser = null;
-      
-      // Check if user is already logged in
-      function checkLoggedInUser() {
-        const userData = localStorage.getItem('currentUser');
-        if (userData) {
-          currentUser = JSON.parse(userData);
-          updateNavForLoggedInUser();
-        }
-      }
-      
-      function updateNavForLoggedInUser() {
-        if (currentUser) {
-          $('#login-link, #register-link').parent().addClass('d-none');
-          $('#user-info, #logout-item').removeClass('d-none');
-          $('#user-name').text(currentUser.firstName);
-        } else {
-          $('#login-link, #register-link').parent().removeClass('d-none');
-          $('#user-info, #logout-item').addClass('d-none');
-        }
-      }
-      
-      // Register form submission
-      $('#register-form').submit(function(e) {
-        e.preventDefault();
-        
-        const firstName = $('#register-firstname').val();
-        const lastName = $('#register-lastname').val();
-        const email = $('#register-email').val();
-        const password = $('#register-password').val();
-        
-        // Save user to localStorage
-        const newUser = {
-          firstName,
-          lastName,
-          email,
-          password
-        };
-        
-        // Get existing users or create new array
-        let users = JSON.parse(localStorage.getItem('users')) || [];
-        users.push(newUser);
-        localStorage.setItem('users', JSON.stringify(users));
-        
-        // Set as current user
-        currentUser = newUser;
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
-        
-        // Update UI
-        updateNavForLoggedInUser();
-        
-        // Redirect to fleet
-        showSection('#fleet-section');
-        populateVehicles();
-        
-        // Reset form
-        $('#register-form')[0].reset();
-      });
-      
-      // Login form submission
-      $('#login-form').submit(function(e) {
-        e.preventDefault();
-        
-        const email = $('#login-email').val();
-        const password = $('#login-password').val();
-        
-        // Get users from localStorage
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        
-        // Find user
-        const user = users.find(u => u.email === email && u.password === password);
-        
-        if (user) {
-          // Set as current user
-          currentUser = user;
-          localStorage.setItem('currentUser', JSON.stringify(currentUser));
-          
-          // Update UI
-          updateNavForLoggedInUser();
-          
-          // Redirect to fleet
-          showSection('#fleet-section');
-          populateVehicles();
-          
-          // Reset form
-          $('#login-form')[0].reset();
-        } else {
-          alert('Invalid email or password');
-        }
-      });
-      
-      // Logout
-      $('#logout-link').click(function() {
-        // Clear current user
-        currentUser = null;
-        localStorage.removeItem('currentUser');
-        
-        // Update UI
-        updateNavForLoggedInUser();
-        
-        // Redirect to home
-        showSection('#home-section');
-      });
-      
-      // Reservation modal
-      let selectedVehicle = null;
-      
-      function openReservationModal(vehicleId) {
-        // Check if user is logged in
-        if (!currentUser) {
-          alert('Please login to make a reservation');
-          showSection('#login-section');
-          return;
-        }
-        
-        // Find vehicle
-        selectedVehicle = vehicles.find(v => v.id === vehicleId);
-        
-        // Set user details
-        $('#fullname').val(`${currentUser.firstName} ${currentUser.lastName}`);
-        
-        // Reset other fields
-        $('#dni, #address, #start-date, #rental-days').val('');
-        $('#total-cost').val('');
-        
-        // Show modal
-        const reservationModal = new bootstrap.Modal(document.getElementById('reservationModal'));
-        reservationModal.show();
-        
-        // Reset modal state
-        $('#reservation-form').show();
-        $('#reservation-loading, #reservation-success').addClass('hide');
-        $('#modal-footer-buttons').show();
-      }
-      
-      // Calculate total cost
-      $('#rental-days, #start-date').on('change input', function() {
-        if (selectedVehicle && $('#rental-days').val()) {
-          const days = parseInt($('#rental-days').val());
-          const totalCost = days * selectedVehicle.pricePerDay;
-          $('#total-cost').val(totalCost.toLocaleString('es-AR'));
-        }
-      });
-      
-      // Confirm reservation
-      $('#confirm-reservation').click(function() {
-        // Validate form
-        if (!$('#reservation-form')[0].checkValidity()) {
-          $('#reservation-form')[0].reportValidity();
-          return;
-        }
-        
-        // Get form data
-        const reservationData = {
-          vehicleId: selectedVehicle.id,
-          vehicleModel: selectedVehicle.model,
-          fullName: $('#fullname').val(),
-          dni: $('#dni').val(),
-          address: $('#address').val(),
-          startDate: $('#start-date').val(),
-          days: parseInt($('#rental-days').val()),
-          totalCost: $('#total-cost').val().replace(/,/g, ''), // Remove commas for calculation
-          paymentMethod: $('input[name="payment-method"]:checked').val(),
-          userId: currentUser.email,
-          timestamp: new Date().toISOString()
-        };
-        
-        // Show loading
-        $('#reservation-form').hide();
-        $('#modal-footer-buttons').hide();
-        $('#reservation-loading').removeClass('hide');
-        
-        // Simulate processing time
-        setTimeout(function() {
-          // Hide loading
-          $('#reservation-loading').addClass('hide');
-          
-          // Show success
-          $('#reservation-success').removeClass('hide');
-          
-          // Set summary details
-          $('#summary-vehicle').text(selectedVehicle.model);
-          $('#summary-date').text(new Date(reservationData.startDate).toLocaleDateString());
-          $('#summary-days').text(reservationData.days);
-          $('#summary-cost').text(reservationData.totalCost);
-          $('#summary-payment').text(reservationData.paymentMethod);
-          
-          // Save reservation to localStorage
-          let reservations = JSON.parse(localStorage.getItem('reservations')) || [];
-          reservations.push(reservationData);
-          localStorage.setItem('reservations', JSON.stringify(reservations));
-        }, 1500);
-      });
-      
-      // Make another reservation
-      $('#make-another-reservation').click(function() {
-        // Hide modal
-        const reservationModal = bootstrap.Modal.getInstance(document.getElementById('reservationModal'));
-        reservationModal.hide();
-        
-        // Redirect to fleet
-        showSection('#fleet-section');
-        populateVehicles();
-      });
-      
-      // Initialize
-      checkLoggedInUser();
-      showSection('#home-section');
-    });
-  </script>
+  <script src="../js/login.js"></script>
 </body>
 </html>
