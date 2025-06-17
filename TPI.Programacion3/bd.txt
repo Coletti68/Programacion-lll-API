@@ -1,0 +1,92 @@
+USE AlquilerBDD;
+GO
+
+CREATE TABLE Usuario (
+    UsuarioId INT PRIMARY KEY IDENTITY,
+    Nombre_Completo NVARCHAR(100),
+	TipoDocumento NVARCHAR(50),
+    DNI NVARCHAR(12),
+	FechaNacimiento DATE,
+    Telefono NVARCHAR(30),
+    Email NVARCHAR(100),
+	Pais NVARCHAR(100),
+    Direccion NVARCHAR(200),
+	FechaRegistro DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE Vehiculo (
+    VehiculoId INT PRIMARY KEY IDENTITY,
+    Marca NVARCHAR(50),
+    Modelo NVARCHAR(50),
+    Anio INT,
+    Placa NVARCHAR(20) UNIQUE,
+    Color NVARCHAR(30),
+    Tipo NVARCHAR(30), -- SEDAN
+    PrecioPorDia DECIMAL(10,2),
+    Estado NVARCHAR(20) CHECK (Estado IN ('Disponible', 'Alquilado', 'Mantenimiento', 'Reservado'))
+);
+
+CREATE TABLE Empleado (
+    EmpleadoId INT PRIMARY KEY IDENTITY,
+    Nombre_Completo NVARCHAR(100),
+    Cargo NVARCHAR(50),
+	DNI NVARCHAR(8),
+    Telefono NVARCHAR(20),
+    Email NVARCHAR(100),
+	Sucursal NVARCHAR(50),
+	FechaAlta DATE DEFAULT CAST(GETDATE() AS DATE),
+	Activo BIT DEFAULT 1
+);
+
+CREATE TABLE Alquiler (
+    AlquilerId INT PRIMARY KEY IDENTITY,
+    ClienteId INT FOREIGN KEY REFERENCES Usuario(UsuarioId),
+    VehiculoId INT FOREIGN KEY REFERENCES Vehiculo(VehiculoId),
+	EmpleadoId INT FOREIGN KEY REFERENCES Empleado(EmpleadoId),
+    FechaInicio DATE,
+    FechaFin DATE,
+    FechaDevolucion DATE NULL,
+    Total DECIMAL(10,2),
+    Estado NVARCHAR(20) -- Activo, Finalizado, Cancelado
+
+);
+
+CREATE TABLE AceptacionTerminos (
+    Id INT PRIMARY KEY IDENTITY,
+    ClienteId INT FOREIGN KEY REFERENCES Usuario(UsuarioId),
+    AlquilerId INT FOREIGN KEY REFERENCES Alquiler(AlquilerId),
+    FechaAceptacion DATETIME DEFAULT GETDATE(),
+    VersionTerminos NVARCHAR(20) DEFAULT 'v1.0',
+    IP NVARCHAR(50) -- IP desde donde se aceptó (opcional)
+);
+
+CREATE TABLE Pago (
+    PagoId INT PRIMARY KEY IDENTITY,
+    AlquilerId INT FOREIGN KEY REFERENCES Alquiler(AlquilerId),
+    FechaPago DATE,
+    Monto DECIMAL(10,2),
+    MetodoPago NVARCHAR(30) CHECK (MetodoPago IN ('Efectivo', 'Tarjeta', 'Transferencia')),
+    CodigoReferencia NVARCHAR(100), -- ID de la transacción externa
+	FechaRegistro DATETIME DEFAULT GETDATE(),
+	Observaciones NVARCHAR(255)
+);
+
+CREATE TABLE Multa (
+    MultaId INT PRIMARY KEY IDENTITY,
+    AlquilerId INT FOREIGN KEY REFERENCES Alquiler(AlquilerId),
+    Descripcion NVARCHAR(200),
+    Monto DECIMAL(10,2),
+	FechaMulta DATE DEFAULT CAST(GETDATE() AS DATE),
+	Estado NVARCHAR(20) DEFAULT 'Pendiente' CHECK(Estado IN ('Pago', 'Atrasado')),
+	Tipo NVARCHAR(50) CHECK (Tipo IN ('Velocidad', 'Daños', 'Entrega tardía', 'Otro'))
+);
+
+CREATE TABLE Contacto (
+    ContactoId INT PRIMARY KEY IDENTITY,
+    UsuarioId INT FOREIGN KEY REFERENCES Usuario(UsuarioId),
+    Email NVARCHAR(100),
+    Motivo NVARCHAR(50) CHECK (Motivo IN ('Consulta', 'Queja', 'Sugerencia', 'Problema tecnico', 'Otro')),
+    Mensaje NVARCHAR(100),
+    Fecha DATETIME DEFAULT GETDATE(),
+    Respondido BIT DEFAULT 0
+);
