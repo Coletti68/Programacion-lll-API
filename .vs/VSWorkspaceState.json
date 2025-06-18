@@ -4,12 +4,14 @@
     "\\TPI.Programacion3",
     "\\TPI.Programacion3\\Web Integrador",
     "\\TPI.Programacion3\\Web Integrador\\RentCars.Api",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\NewFolder",
     "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\DTOs",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.WebMVC"
+    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Properties",
+    "\\TPI.Programacion3\\Web Integrador\\RentCars.WebMVC",
+    "\\TPI.Programacion3\\Web Integrador\\RentCars.WebMVC\\RentCars.WebMVC",
+    "\\TPI.Programacion3\\Web Integrador\\RentCars.WebMVC\\RentCars.WebMVC\\Controllers",
+    "\\TPI.Programacion3\\Web Integrador\\RentCars.WebMVC\\RentCars.WebMVC\\Models",
+    "\\TPI.Programacion3\\Web Integrador\\RentCars.WebMVC\\RentCars.WebMVC\\obj"
   ],
-  "SelectedNode": "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\DTOs",
+  "SelectedNode": "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api",
   "PreviewInSolutionExplorer": false
 }
