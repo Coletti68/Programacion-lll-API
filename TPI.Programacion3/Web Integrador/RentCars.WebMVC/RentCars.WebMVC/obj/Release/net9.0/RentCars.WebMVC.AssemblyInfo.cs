@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RentCars.WebMVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68d5bcf6688203a4e445d7a367b36af3972c1047")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1860a1e45a4a6101c03b5dccd06fde50879d3610")]
 [assembly: System.Reflection.AssemblyProductAttribute("RentCars.WebMVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RentCars.WebMVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

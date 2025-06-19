@@ -1,0 +1,136 @@
+﻿ESTRUCTURA DE CARPETAS DE LA API – DESCRIPCIÓN
+
+Controllers/
+🧠 “Qué responder”
+Contiene los controladores que reciben las solicitudes HTTP (GET, POST, etc.).
+Son la puerta de entrada a la API.
+No deben contener lógica pesada: deben delegar a los servicios.
+
+Ejemplo:
+
+AuthController.cs → /api/auth/login
+
+VehiculoController.cs → /api/vehiculo/listar
+
+Models/
+🧠 “Cómo se guardan los datos”
+Contiene las entidades que representan las tablas de la base de datos (EF Core).
+Se usan en ApplicationDbContext.cs para mapear con SQL Server.
+
+Ejemplo:
+
+Usuario.cs
+
+Vehiculo.cs
+
+Alquiler.cs
+
+DTOs/
+🧠 “Qué se envía y recibe”
+Contiene los Data Transfer Objects: estructuras que se usan para enviar/recibir datos desde los controladores.
+Se dividen por entidad (por buena práctica).
+
+Tipos comunes:
+
+Request DTOs (LoginRequest, AlquilerRequest)
+
+Response DTOs (UsuarioResponse, VehiculoListItem)
+
+Services/
+🧠 “Qué hace la lógica del sistema”
+Contiene la lógica de negocio reutilizable.
+Los controladores llaman a los servicios para ejecutar operaciones.
+Ejemplo:
+
+AuthService → registrar usuario, login, generar JWT
+
+VehiculoService → calcular disponibilidad
+
+QRService → generar códigos QR
+
+Dentro de Services puede haber:
+
+Interfaces/ (opcional): para separar definición de implementación (IAuthService.cs → AuthService.cs)
+
+Helpers/
+🧠 “Herramientas de apoyo”
+Contiene clases auxiliares y estáticas que hacen tareas técnicas específicas.
+
+Ejemplo:
+
+PasswordHasher.cs → genera y valida hash de contraseñas
+
+JwtGenerator.cs → genera y valida JWT
+
+QRHelper.cs → genera QR a partir de texto/URL
+
+Data/
+🧠 “Conexión a la base de datos”
+Contiene la clase ApplicationDbContext.cs, que configura Entity Framework para mapear tus modelos con SQL Server.
+También puede tener clases de seed (datos iniciales).
+
+ApplicationDbContext.cs: define los DbSet (tablas)
+
+SeedData.cs: inserta datos iniciales si es necesario
+
+Properties/
+🛠 Carpeta generada automáticamente (por ejemplo, launchSettings.json). No es obligatorio tocarla salvo configuración de debugging.
+
+appsettings.json y appsettings.Development.json
+📑 Archivos de configuración de la API.
+Aquí colocás:
+
+Cadena de conexión a la base de datos
+
+Claves de JWT
+
+Variables de configuración personalizadas (por ejemplo, IP de origen permitidas)
+
+Program.cs
+🧠 “Inicio del proyecto”
+Archivo que arranca la API y configura el middleware, servicios y dependencia.
+Aquí se hace:
+
+Carga de configuración
+
+Configuración JWT
+
+Inyección de servicios (AddScoped)
+
+Uso de middlewares
+
+—
+
+✅ Ejemplo de flujo completo de la API
+
+Supongamos que alguien quiere registrar un usuario:
+
+Se llama POST /api/auth/register → entra a AuthController.cs
+
+El controller recibe un RegisterRequest DTO.
+
+Llama a AuthService.Register(dto)
+
+AuthService hace validaciones, hashea la contraseña (con PasswordHasher), guarda el Usuario en la DB (con ApplicationDbContext).
+
+Devuelve un UsuarioResponse DTO.
+
+El Controller responde con un 200 OK + UsuarioResponse al frontend.
+
+📁 Helpers/ → tareas técnicas reutilizables (estáticas o de soporte)
+
+📁 Services/ → lógica de negocio (implementación + interfaz)
+
+
+ Diferencia entre Interfaces e Implementaciones (en Services/)
+
+
+📁 Interfaces → el "contrato": define qué métodos va a tener un servicio, pero no los implementa.
+📁 Implementaciones → el "código real": es donde se escribe lo que hace cada método del servicio.
+
+Analogía rápida:
+
+Interface: "Una impresora debe poder imprimir() y escanear()"
+
+Implementación: "Mi Epson imprime mandando datos por USB y escanea guardando un PDF"
+
