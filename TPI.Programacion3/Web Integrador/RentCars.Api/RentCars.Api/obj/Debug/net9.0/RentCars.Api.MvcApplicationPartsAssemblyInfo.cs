@@ -11,13 +11,7 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("RentCars.Api")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+325216fc7984926891f0d32a43d7f20765b28e1c")]
-[assembly: System.Reflection.AssemblyProductAttribute("RentCars.Api")]
-[assembly: System.Reflection.AssemblyTitleAttribute("RentCars.Api")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ApplicationPartAttribute("Microsoft.AspNetCore.OpenApi")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.
 

@@ -1,0 +1,8 @@
+C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.csproj.AssemblyReference.cache
+C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.AssemblyInfoInputs.cache
+C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.AssemblyInfo.cs
+C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.csproj.CoreCompileInputs.cache
+C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.sourcelink.json

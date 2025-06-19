@@ -1,9 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\",
+  "WorkspaceRootPath": "C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D291C60A-0853-47C2-86A1-32599A362B3F}|RentCars.Api\\RentCars.Api.csproj|c:\\users\\usuario\\desktop\\github\\programacion-lll\\tpi.programacion3\\web integrador\\rentcars.api\\rentcars.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D291C60A-0853-47C2-86A1-32599A362B3F}|RentCars.Api\\RentCars.Api.csproj|c:\\users\\mauri\\onedrive\\documentos\\github\\programacion-lll\\tpi.programacion3\\web integrador\\rentcars.api\\rentcars.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D291C60A-0853-47C2-86A1-32599A362B3F}|RentCars.Api\\RentCars.Api.csproj|solutionrelative:rentcars.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D291C60A-0853-47C2-86A1-32599A362B3F}|RentCars.Api\\RentCars.Api.csproj|c:\\users\\mauri\\onedrive\\documentos\\github\\programacion-lll\\tpi.programacion3\\web integrador\\rentcars.api\\rentcars.api\\controllers\\usuariocontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D291C60A-0853-47C2-86A1-32599A362B3F}|RentCars.Api\\RentCars.Api.csproj|solutionrelative:rentcars.api\\controllers\\usuariocontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D291C60A-0853-47C2-86A1-32599A362B3F}|RentCars.Api\\RentCars.Api.csproj|c:\\users\\mauri\\onedrive\\documentos\\github\\programacion-lll\\tpi.programacion3\\web integrador\\rentcars.api\\rentcars.api\\helpers\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D291C60A-0853-47C2-86A1-32599A362B3F}|RentCars.Api\\RentCars.Api.csproj|solutionrelative:rentcars.api\\helpers\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D291C60A-0853-47C2-86A1-32599A362B3F}|RentCars.Api\\RentCars.Api.csproj|c:\\users\\mauri\\onedrive\\documentos\\github\\programacion-lll\\tpi.programacion3\\web integrador\\rentcars.api\\rentcars.api\\dtos\\contacto\\contactoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D291C60A-0853-47C2-86A1-32599A362B3F}|RentCars.Api\\RentCars.Api.csproj|solutionrelative:rentcars.api\\dtos\\contacto\\contactoresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D291C60A-0853-47C2-86A1-32599A362B3F}|RentCars.Api\\RentCars.Api.csproj|c:\\users\\mauri\\onedrive\\documentos\\github\\programacion-lll\\tpi.programacion3\\web integrador\\rentcars.api\\rentcars.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D291C60A-0853-47C2-86A1-32599A362B3F}|RentCars.Api\\RentCars.Api.csproj|solutionrelative:rentcars.api\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -14,24 +30,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "RentCars.Api\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "RentCars.Api\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAwwBcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T17:02:17.704Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Program.cs",
+              "RelativeDocumentMoniker": "RentCars.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Program.cs",
+              "RelativeToolTip": "RentCars.Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T18:46:58.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Usuariocontoller.cs",
+              "DocumentMoniker": "C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Usuariocontoller.cs",
+              "RelativeDocumentMoniker": "RentCars.Api\\Controllers\\Usuariocontoller.cs",
+              "ToolTip": "C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Usuariocontoller.cs",
+              "RelativeToolTip": "RentCars.Api\\Controllers\\Usuariocontoller.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T18:46:35.306Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PasswordHasher.cs",
+              "DocumentMoniker": "C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Helpers\\PasswordHasher.cs",
+              "RelativeDocumentMoniker": "RentCars.Api\\Helpers\\PasswordHasher.cs",
+              "ToolTip": "C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Helpers\\PasswordHasher.cs",
+              "RelativeToolTip": "RentCars.Api\\Helpers\\PasswordHasher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T18:46:29.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ContactoResponse.cs",
+              "DocumentMoniker": "C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\DTOs\\Contacto\\ContactoResponse.cs",
+              "RelativeDocumentMoniker": "RentCars.Api\\DTOs\\Contacto\\ContactoResponse.cs",
+              "ToolTip": "C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\DTOs\\Contacto\\ContactoResponse.cs",
+              "RelativeToolTip": "RentCars.Api\\DTOs\\Contacto\\ContactoResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T18:46:18.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "RentCars.Api\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\mauri\\OneDrive\\Documentos\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "RentCars.Api\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA4wA0AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T17:02:17.704Z",
+              "EditorCaption": ""
             }
           ]
         }
