@@ -2,7 +2,7 @@ namespace RentCars.Api.Models
 {
     public class Empleado
     {
-        public int EmpleadoId { get; set; }
+        public int Id { get; set; }
         public string Nombre_Completo { get; set; }
         public string Cargo { get; set; }
         public string DNI { get; set; }

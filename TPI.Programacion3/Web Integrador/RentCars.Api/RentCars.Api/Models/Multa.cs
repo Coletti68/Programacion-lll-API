@@ -2,7 +2,7 @@ namespace RentCars.Api.Models
 {
     public class Multa
     {
-        public int MultaId { get; set; }
+        public int Id { get; set; }
         public int AlquilerId { get; set; }
         public string Descripcion { get; set; }
         public decimal Monto { get; set; }

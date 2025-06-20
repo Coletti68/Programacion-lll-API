@@ -2,7 +2,7 @@ namespace RentCars.Api.Models
 {
     public class Contacto
     {
-        public int ContactoId { get; set; }
+        public int Id { get; set; }
         public int UsuarioId { get; set; }
         public string Email { get; set; }
         public string Motivo { get; set; }

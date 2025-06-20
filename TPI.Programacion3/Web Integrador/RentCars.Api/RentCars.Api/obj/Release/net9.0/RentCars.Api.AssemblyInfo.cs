@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RentCars.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+baa90e8c6d683b74cefbfaca980db11daac31828")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c273f9d7d0dc18c9f35a4df4babc4adc62c83ce")]
 [assembly: System.Reflection.AssemblyProductAttribute("RentCars.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RentCars.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

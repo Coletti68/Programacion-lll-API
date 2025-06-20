@@ -2,7 +2,7 @@ namespace RentCars.Api.Models
 {
     public class Pago
     {
-        public int PagoId { get; set; }
+        public int Id { get; set; }
         public int AlquilerId { get; set; }
         public DateTime FechaPago { get; set; }
         public decimal Monto { get; set; }
