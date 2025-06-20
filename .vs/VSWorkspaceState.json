@@ -5,9 +5,8 @@
     "\\TPI.Programacion3\\Web Integrador",
     "\\TPI.Programacion3\\Web Integrador\\RentCars.Api",
     "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Data",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models"
+    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers"
   ],
-  "SelectedNode": "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Data\\ApplicationDbContext.cs",
+  "SelectedNode": "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Usuariocontoller.cs",
   "PreviewInSolutionExplorer": true
 }

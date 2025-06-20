@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "njBntpidEFv8uu/sw3lCUCDrcG6fp0q+hAQYJHLVmlE=",
+  "Source": "RentCars.Api",
+  "BasePath": "_content/RentCars.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

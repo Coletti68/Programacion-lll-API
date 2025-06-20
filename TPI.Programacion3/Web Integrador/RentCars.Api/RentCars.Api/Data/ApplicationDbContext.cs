@@ -10,7 +10,6 @@ namespace RentCars.Api.Data
             : base(options)
         {
         }
-
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Vehiculo> Vehiculos { get; set; }
         public DbSet<Empleado> Empleados { get; set; }

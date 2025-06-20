@@ -2,7 +2,7 @@
 using RentCars.Api.Data;
 using RentCars.Api.Services.Interfaces;
 using RentCars.Api.Services.Implementaciones;
-using RentCars.Api.Helpers;
+using RentCars.Api.Data.Services.Implementaciones;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +25,7 @@ builder.Services.AddScoped<IAlquilerService, AlquilerService>();
 builder.Services.AddScoped<IPagoService, PagoService>();
 builder.Services.AddScoped<IMultaService, MultaService>();
 builder.Services.AddScoped<IContactoService, ContactoService>();
-builder.Services.AddScoped<IQRService, QRService>();
+//builder.Services.AddScoped<IQRService, QRService>();
 
 // 5. CORS (opcional, para permitir peticiones desde frontend o Android)
 builder.Services.AddCors(options =>

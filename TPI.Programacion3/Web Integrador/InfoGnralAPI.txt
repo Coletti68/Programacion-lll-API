@@ -134,3 +134,26 @@ Interface: "Una impresora debe poder imprimir() y escanear()"
 
 Implementación: "Mi Epson imprime mandando datos por USB y escanea guardando un PDF"
 
+¡Buena pregunta! Los endpoints son los “puntos de entrada” de tu API. Son las URLs a las que los clientes (como el frontend SPA, la app Android o el navegador) acceden para pedir o enviar información.
+
+🧩 ¿Qué es un endpoint?
+Un endpoint es una ruta HTTP expuesta por tu API, por ejemplo:
+
+📥 GET /api/usuarios → Obtener todos los usuarios
+
+📥 GET /api/usuarios/5 → Obtener el usuario con ID 5
+
+📤 POST /api/usuarios → Crear un nuevo usuario
+
+✏️ PUT /api/usuarios/5 → Editar usuario 5
+
+🗑️ DELETE /api/usuarios/5 → Eliminar usuario 5
+
+—
+
+📁 ¿Dónde se crean los endpoints?
+En los archivos que tenés en tu carpeta:
+
+📂 Controllers → Ej: UsuarioController.cs
+
+Ahí es donde escribís métodos con atributos como [HttpGet], [HttpPost], [HttpPut], [HttpDelete].

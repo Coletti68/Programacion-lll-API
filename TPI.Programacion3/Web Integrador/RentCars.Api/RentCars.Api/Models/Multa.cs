@@ -9,5 +9,7 @@ namespace RentCars.Api.Models
         public DateTime FechaMulta { get; set; }
         public string Estado { get; set; }
         public string Tipo { get; set; }
+        public int UsuarioId { get; internal set; }
+        public int VehiculoId { get; internal set; }
     }
 }

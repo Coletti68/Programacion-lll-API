@@ -1,0 +1,22 @@
+[
+  {
+    "ContainingType": "RentCars.Api.Controllers.TestController",
+    "Method": "ProbarConexion",
+    "RelativePath": "api/Test/conexion",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentCars.Api.Controllers.UsuarioController",
+    "Method": "GetUsuarios",
+    "RelativePath": "api/Usuario",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

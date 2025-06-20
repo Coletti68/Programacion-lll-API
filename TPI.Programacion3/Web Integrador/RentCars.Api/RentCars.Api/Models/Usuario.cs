@@ -12,6 +12,7 @@
         public string Pais { get; set; }
         public string Direccion { get; set; }
         public DateTime FechaRegistro { get; set; }
+        public string Password { get; internal set; }
     }
 }
 

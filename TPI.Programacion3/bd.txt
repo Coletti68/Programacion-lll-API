@@ -4,7 +4,8 @@ GO
 CREATE TABLE Usuario (
     UsuarioId INT PRIMARY KEY IDENTITY,
     Nombre_Completo NVARCHAR(100),
-	TipoDocumento NVARCHAR(50),
+	password NVARCHAR(255) NOT NULL, -- Almacenar el hash de la contraseña
+    TipoDocumento NVARCHAR(50),
     DNI NVARCHAR(12),
 	FechaNacimiento DATE,
     Telefono NVARCHAR(30),
