@@ -1,25 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using RentCars.Api.Models;
-using RentCars.Api.Services;
-using RentCars.Api.Services.Implementaciones; // Ensure this namespace contains IAceptacionTerminosService
 
-[ApiController] // Add this attribute to make it a valid controller
-[Route("api/[controller]")]
-public class AceptacionTerminosController : ControllerBase // Fix the missing class definition
+public class AceptacionTerminosService : IAceptacionTerminosService
 {
-    private readonly AceptacionTerminosService _aceptacionService;
+    private readonly ApplicationDbContext _context;
 
-    // Constructor
-    public AceptacionTerminosController(AceptacionTerminosService aceptacionService)
+    public AceptacionTerminosController(IAceptacionTerminosService aceptacionService)
     {
-        _aceptacionService = aceptacionService ?? throw new ArgumentNullException(nameof(aceptacionService));
+        _aceptacionService = aceptacionService;
     }
 
     // GET: api/aceptacionterminos
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AceptacionTerminos>>> GetAceptaciones()
     {
-        var aceptaciones = await _aceptacionService.GetAllAceptacionesAsync();
+        var aceptaciones = await _aceptacionService.GetAllAsync();
         return Ok(aceptaciones);
     }
 
@@ -27,7 +23,7 @@ public class AceptacionTerminosController : ControllerBase // Fix the missing cl
     [HttpGet("{id}")]
     public async Task<ActionResult<AceptacionTerminos>> GetAceptacion(int id)
     {
-        var aceptacion = await _aceptacionService.GetAceptacionByIdAsync(id);
+        var aceptacion = await _aceptacionService.GetByIdAsync(id);
         if (aceptacion == null)
             return NotFound();
 
@@ -38,7 +34,7 @@ public class AceptacionTerminosController : ControllerBase // Fix the missing cl
     [HttpPost]
     public async Task<ActionResult<AceptacionTerminos>> CreateAceptacion(AceptacionTerminos aceptacion)
     {
-        var creada = await _aceptacionService.CreateAceptacionAsync(aceptacion);
+        var creada = await _aceptacionService.CreateAsync(aceptacion);
         return CreatedAtAction(nameof(GetAceptacion), new { id = creada.Id }, creada);
     }
 
@@ -49,7 +45,7 @@ public class AceptacionTerminosController : ControllerBase // Fix the missing cl
         if (id != aceptacion.Id)
             return BadRequest("El ID no coincide con el recurso a actualizar.");
 
-        var actualizada = await _aceptacionService.UpdateAceptacionAsync(aceptacion);
+        var actualizada = await _aceptacionService.UpdateAsync(aceptacion);
         if (actualizada == null)
             return NotFound();
 
@@ -60,7 +56,7 @@ public class AceptacionTerminosController : ControllerBase // Fix the missing cl
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAceptacion(int id)
     {
-        var eliminada = await _aceptacionService.DeleteAceptacionAsync(id);
+        var eliminada = await _aceptacionService.DeleteAsync(id);
         if (!eliminada)
             return NotFound();
 

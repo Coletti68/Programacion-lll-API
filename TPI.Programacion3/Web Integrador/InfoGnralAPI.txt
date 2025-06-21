@@ -157,3 +157,23 @@ En los archivos que tenés en tu carpeta:
 📂 Controllers → Ej: UsuarioController.cs
 
 Ahí es donde escribís métodos con atributos como [HttpGet], [HttpPost], [HttpPut], [HttpDelete].
+
+En C#, la palabra clave Task forma parte de la programación asincrónica (async) y representa una operación que se va a ejecutar de forma paralela o en segundo plano. Es parte fundamental de los métodos asincrónicos con async/await.
+
+📌 ¿Qué es Task?
+Task es como una "promesa de que en algún momento va a haber un resultado", pero no necesariamente de forma inmediata.
+
+Es el equivalente en otros lenguajes a:
+
+JavaScript → Promise
+
+Python → async/await (con Future o coroutine)
+
+¿Por qué se usa en los Services?
+Porque muchos métodos acceden a la base de datos, y esas operaciones pueden tardar (consulta, escritura, etc). Si usás Task, evitás bloquear el hilo principal y tu API sigue siendo rápida y escalable.
+
+Concepto	Significado
+Task	Representa una operación asincrónica
+Task<T>	Representa una operación asincrónica que devuelve algo
+async/await	Permiten escribir código asincrónico como si fuera sincrónico
+¿Por qué se usa?	Para no bloquear el servidor mientras espera la BDD
