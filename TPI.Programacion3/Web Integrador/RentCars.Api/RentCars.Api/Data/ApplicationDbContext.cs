@@ -14,7 +14,7 @@ namespace RentCars.Api.Data
         public DbSet<Vehiculo> Vehiculos { get; set; }
         public DbSet<Empleado> Empleados { get; set; }
         public DbSet<Alquiler> Alquileres { get; set; }
-        public DbSet<AceptacionTerminos> Aceptaciones { get; set; }
+        public DbSet<AceptacionTerminos> AceptacionTerminos { get; set; }
         public DbSet<Pago> Pagos { get; set; }
         public DbSet<Multa> Multas { get; set; }
         public DbSet<Contacto> Contactos { get; set; }

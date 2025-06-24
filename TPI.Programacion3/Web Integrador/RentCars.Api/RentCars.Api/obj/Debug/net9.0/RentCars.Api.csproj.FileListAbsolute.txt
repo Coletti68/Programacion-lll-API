@@ -346,3 +346,6 @@ C:\Users\54377\Documents\GitHub\Programacion-lll\TPI.Programacion3\Web Integrado
 C:\Users\54377\Documents\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.pdb
 C:\Users\54377\Documents\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.genruntimeconfig.cache
 C:\Users\54377\Documents\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\ref\RentCars.Api.dll
+C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.dll
+C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\refint\RentCars.Api.dll
+C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.pdb

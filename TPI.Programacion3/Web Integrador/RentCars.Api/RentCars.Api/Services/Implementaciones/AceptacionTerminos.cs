@@ -5,7 +5,7 @@ using RentCars.Api.Services.Interfaces;
 
 namespace RentCars.Api.Services.Implementaciones
 {
-    public class AceptacionTerminosService : IAceptacionTerminosService
+    public class AceptacionTerminosService 
     {
         private readonly ApplicationDbContext _context;
 
@@ -23,6 +23,7 @@ namespace RentCars.Api.Services.Implementaciones
         {
             return await _context.AceptacionTerminos.FindAsync(id);
         }
+        
 
         public async Task<AceptacionTerminos> CreateAsync(AceptacionTerminos aceptacion)
         {
