@@ -15,24 +15,28 @@ namespace RentCars.Api.Services.Implementaciones
         }
 
         public async Task<IEnumerable<AceptacionTerminos>> GetAllAsync()
-            => await _context.Aceptaciones.ToListAsync();
+        {
+            return await _context.AceptacionTerminos.ToListAsync();
+        }
 
-        public async Task<AceptacionTerminos> GetByIdAsync(int id)
-            => await _context.Aceptaciones.FindAsync(id);
+        public async Task<AceptacionTerminos?> GetByIdAsync(int id)
+        {
+            return await _context.AceptacionTerminos.FindAsync(id);
+        }
 
         public async Task<AceptacionTerminos> CreateAsync(AceptacionTerminos aceptacion)
         {
-            _context.Aceptaciones.Add(aceptacion);
+            _context.AceptacionTerminos.Add(aceptacion);
             await _context.SaveChangesAsync();
             return aceptacion;
         }
 
         public async Task<bool> DeleteAsync(int id)
         {
-            var acc = await _context.Aceptaciones.FindAsync(id);
-            if (acc == null) return false;
+            var terminos = await _context.AceptacionTerminos.FindAsync(id);
+            if (terminos == null) return false;
 
-            _context.Aceptaciones.Remove(acc);
+            _context.AceptacionTerminos.Remove(terminos);
             await _context.SaveChangesAsync();
             return true;
         }

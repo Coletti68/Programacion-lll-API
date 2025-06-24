@@ -1,30 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\",
+  "WorkspaceRootPath": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\AceptacionTerminos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Empleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Empleadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\AceptacionTerminoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\AceptacionTerminoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\AceptacionTerminos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\AceptacionTerminos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\AceptacionTerminos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\AceptacionTerminos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\InfoGnralAPI.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\InfoGnralAPI.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\EmpleadoService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\EmpleadoService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IAceptacionTerminos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IAceptacionTerminos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IAceptacionTerminos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IEmpleadoService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IEmpleadoService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IEmpleadoService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\AceptacionTerminos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\AceptacionTerminos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\EmpleadoService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\EmpleadoService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.WebMVC\\RentCars.WebMVC\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.WebMVC\\RentCars.WebMVC\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Multacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Multacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Pagocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Pagocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\Contacto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\Contacto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,80 +66,158 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "InfoGnralAPI.txt",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\InfoGnralAPI.txt",
-              "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\InfoGnralAPI.txt",
-              "ToolTip": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\InfoGnralAPI.txt",
-              "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\InfoGnralAPI.txt",
-              "ViewState": "AgIAAJAAAAAAAAAAAAAAALIAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-06-21T04:12:52.969Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "AceptacionTerminos.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\AceptacionTerminos.cs",
+              "DocumentMoniker": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\AceptacionTerminos.cs",
               "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\AceptacionTerminos.cs",
-              "ToolTip": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\AceptacionTerminos.cs",
+              "ToolTip": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\AceptacionTerminos.cs",
               "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\AceptacionTerminos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-21T04:10:08.736Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EmpleadoService.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\EmpleadoService.cs",
-              "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\EmpleadoService.cs",
-              "ToolTip": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\EmpleadoService.cs",
-              "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\EmpleadoService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T04:10:02.132Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IAceptacionTerminos.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IAceptacionTerminos.cs",
-              "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IAceptacionTerminos.cs",
-              "ToolTip": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IAceptacionTerminos.cs",
-              "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IAceptacionTerminos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T04:08:59.556Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "IEmpleadoService.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IEmpleadoService.cs",
+              "DocumentMoniker": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IEmpleadoService.cs",
               "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IEmpleadoService.cs",
-              "ToolTip": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IEmpleadoService.cs",
+              "ToolTip": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IEmpleadoService.cs",
               "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IEmpleadoService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-21T04:08:50.19Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
+              "Title": "IAceptacionTerminos.cs",
+              "DocumentMoniker": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IAceptacionTerminos.cs",
+              "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IAceptacionTerminos.cs",
+              "ToolTip": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IAceptacionTerminos.cs",
+              "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Interfaces\\IAceptacionTerminos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-21T04:08:59.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "AceptacionTerminos.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\AceptacionTerminos.cs",
+              "DocumentMoniker": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\AceptacionTerminos.cs",
               "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\AceptacionTerminos.cs",
-              "ToolTip": "C:\\Users\\Usuario\\Desktop\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\AceptacionTerminos.cs",
+              "ToolTip": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\AceptacionTerminos.cs",
               "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\AceptacionTerminos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-21T04:04:22.634Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AceptacionTerminoscontroller.cs",
+              "DocumentMoniker": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\AceptacionTerminoscontroller.cs",
+              "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\AceptacionTerminoscontroller.cs",
+              "ToolTip": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\AceptacionTerminoscontroller.cs",
+              "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\AceptacionTerminoscontroller.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAADMAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T19:26:13.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Empleadocontroller.cs",
+              "DocumentMoniker": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Empleadocontroller.cs",
+              "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Empleadocontroller.cs",
+              "ToolTip": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Empleadocontroller.cs",
+              "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Empleadocontroller.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T19:26:59.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EmpleadoService.cs",
+              "DocumentMoniker": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\EmpleadoService.cs",
+              "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\EmpleadoService.cs",
+              "ToolTip": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\EmpleadoService.cs",
+              "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones\\EmpleadoService.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-21T04:10:02.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Contacto.cs",
+              "DocumentMoniker": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\Contacto.cs",
+              "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\Contacto.cs",
+              "ToolTip": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\Contacto.cs",
+              "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Models\\Contacto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T18:06:13.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Multacontroller.cs",
+              "DocumentMoniker": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Multacontroller.cs",
+              "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Multacontroller.cs",
+              "ToolTip": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Multacontroller.cs",
+              "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Multacontroller.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAawDcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T18:08:50.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Program.cs",
+              "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Program.cs",
+              "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Program.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAABgAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T19:00:10.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Pagocontroller.cs",
+              "DocumentMoniker": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Pagocontroller.cs",
+              "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Pagocontroller.cs",
+              "ToolTip": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Pagocontroller.cs",
+              "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers\\Pagocontroller.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAADwvzUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T18:49:44.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.WebMVC\\RentCars.WebMVC\\Program.cs",
+              "RelativeDocumentMoniker": "TPI.Programacion3\\Web Integrador\\RentCars.WebMVC\\RentCars.WebMVC\\Program.cs",
+              "ToolTip": "C:\\Users\\54377\\Documents\\GitHub\\Programacion-lll\\TPI.Programacion3\\Web Integrador\\RentCars.WebMVC\\RentCars.WebMVC\\Program.cs",
+              "RelativeToolTip": "TPI.Programacion3\\Web Integrador\\RentCars.WebMVC\\RentCars.WebMVC\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T18:59:29.429Z",
               "EditorCaption": ""
             }
           ]

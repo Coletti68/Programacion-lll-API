@@ -22,6 +22,7 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IVehiculoService, VehiculoService>();
 builder.Services.AddScoped<IAlquilerService, AlquilerService>();
+builder.Services.AddScoped<IAceptacionTerminosService, AceptacionTerminosService>();
 builder.Services.AddScoped<IPagoService, PagoService>();
 builder.Services.AddScoped<IMultaService, MultaService>();
 builder.Services.AddScoped<IContactoService, ContactoService>();

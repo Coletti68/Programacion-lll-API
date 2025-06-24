@@ -4,11 +4,10 @@ namespace RentCars.Api.Services.Interfaces
 {
     public interface IEmpleadoService
     {
-        Task<Empleado> GetEmpleadoByIdAsync(int id);
-        Task<IEnumerable<Empleado>> GetAllEmpleadosAsync();
-        Task<Empleado> CreateEmpleadoAsync(Empleado empleado);
-        Task<Empleado> UpdateEmpleadoAsync(Empleado empleado);
-        Task<bool> DeleteEmpleadoAsync(int id);
-        Task<bool> IsEmailInUseAsync(string email);
+        Task<IEnumerable<Empleado>> GetAllAsync();
+        Task<Empleado> GetByIdAsync(int id);
+        Task<Empleado> CreateAsync(Empleado empleado);
+        Task<Empleado> UpdateAsync(Empleado empleado);
+        Task<bool> DeleteAsync(int id);
     }
 }

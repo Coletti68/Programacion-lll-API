@@ -14,54 +14,50 @@ public class EmpleadoController : ControllerBase
         _empleadoService = empleadoService;
     }
 
-    // GET: api/empleado
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Empleado>>> GetEmpleados()
     {
-        var empleados = await _empleadoService.GetAllEmpleadosAsync(); // Updated method name
+        var empleados = await _empleadoService.GetAllAsync(); // <- aquí
         return Ok(empleados);
     }
 
-    // GET: api/empleado/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Empleado>> GetEmpleado(int id)
     {
-        var empleado = await _empleadoService.GetEmpleadoByIdAsync(id); // Updated method name
+        var empleado = await _empleadoService.GetByIdAsync(id); // <- aquí
         if (empleado == null)
             return NotFound();
         return Ok(empleado);
     }
 
-    // POST: api/empleado
     [HttpPost]
     public async Task<ActionResult<Empleado>> CreateEmpleado(Empleado empleado)
     {
-        var creado = await _empleadoService.CreateEmpleadoAsync(empleado); // Updated method name
+        var creado = await _empleadoService.CreateAsync(empleado); // <- aquí
         return CreatedAtAction(nameof(GetEmpleado), new { id = creado.Id }, creado);
     }
 
-    // PUT: api/empleado/5
     [HttpPut("{id}")]
     public async Task<ActionResult> UpdateEmpleado(int id, Empleado empleado)
     {
         if (id != empleado.Id)
             return BadRequest("ID no coincide.");
 
-        var actualizado = await _empleadoService.UpdateEmpleadoAsync(empleado); // Updated method name
+        var actualizado = await _empleadoService.UpdateAsync(empleado); // <- aquí
         if (actualizado == null)
             return NotFound();
 
         return NoContent();
     }
 
-    // DELETE: api/empleado/5
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteEmpleado(int id)
     {
-        var eliminado = await _empleadoService.DeleteEmpleadoAsync(id); // Updated method name
+        var eliminado = await _empleadoService.DeleteAsync(id); // <- aquí
         if (!eliminado)
             return NotFound();
 
         return NoContent();
     }
+
 }
