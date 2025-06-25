@@ -1,15 +1,15 @@
 using RentCars.Api.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace RentCars.Api.Services.Interfaces
 {
     public interface IUsuarioService
     {
-        Task<Usuario> GetUsuarioByIdAsync(int id);
-        Task<IEnumerable<Usuario>> GetAllUsuariosAsync();
-        Task<Usuario> CreateUsuarioAsync(Usuario usuario);
-        Task<Usuario> UpdateUsuarioAsync(Usuario usuario);
-        Task<bool> DeleteUsuarioAsync(int id);
-        Task<Usuario> AuthenticateAsync(string email, string password);
-        Task<bool> IsEmailInUseAsync(string email);
+        Task<IEnumerable<Usuario>> GetAllAsync();
+        Task<Usuario?> GetByIdAsync(int id);
+        Task<Usuario> CreateAsync(Usuario usuario);
+        Task<Usuario?> UpdateAsync(int id, Usuario usuario);
+        Task<bool> DeleteAsync(int id);
     }
-}   
+}

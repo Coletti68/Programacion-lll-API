@@ -1,4 +1,5 @@
-using Microsoft.EntityFrameworkCore;
+using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace RentCars.Api.Models
 {
@@ -6,12 +7,13 @@ namespace RentCars.Api.Models
 	{
 		public int Id { get; set; }
 		public int ClienteId { get; set; }
-		public int AlquilerId { get; set; }
-		public DateTime FechaAceptacion { get; set; }
-		public string VersionTerminos { get; set; } = string.Empty;
+		public Usuario Cliente { get; set; }
+        public int AlquilerId { get; set; }
+		public Alquiler Alquiler { get; set; }
+        public DateTime FechaAceptacion { get; set; } = DateTime.Now;
+        public string VersionTerminos { get; set; } =  "v1.0";
 
-        public string IP { get; set; } = string.Empty;
+        public string IP { get; set; }
         
-
     }
 }

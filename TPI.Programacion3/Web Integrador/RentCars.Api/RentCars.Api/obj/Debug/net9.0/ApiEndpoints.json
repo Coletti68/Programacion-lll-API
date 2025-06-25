@@ -1,7 +1,7 @@
 [
   {
-    "ContainingType": "RentCars.Api.Controllers.UsuarioController",
-    "Method": "GetUsuarios",
+    "ContainingType": "UsuarioController",
+    "Method": "GetAll",
     "RelativePath": "api/Usuario",
     "HttpMethod": "GET",
     "IsController": true,
@@ -10,142 +10,26 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "RentCars.Api.Controllers.UsuarioController",
-    "Method": "CreateUsuario",
+    "ContainingType": "UsuarioController",
+    "Method": "Create",
     "RelativePath": "api/Usuario",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "usuario",
-        "Type": "Usuario",
+        "Name": "dto",
+        "Type": "RentCars.Api.DTOs.UsuarioRegistroDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "RentCars.Api.Controllers.UsuarioController",
-    "Method": "GetUsuario",
+    "ContainingType": "UsuarioController",
+    "Method": "GetById",
     "RelativePath": "api/Usuario/{id}",
     "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentCars.Api.Controllers.UsuarioController",
-    "Method": "UpdateUsuario",
-    "RelativePath": "api/Usuario/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "usuario",
-        "Type": "Usuario",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentCars.Api.Controllers.UsuarioController",
-    "Method": "DeleteUsuario",
-    "RelativePath": "api/Usuario/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentCars.Api.Controllers.VehiculosController",
-    "Method": "GetVehiculos",
-    "RelativePath": "api/Vehiculos",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentCars.Api.Controllers.VehiculosController",
-    "Method": "CreateVehiculo",
-    "RelativePath": "api/Vehiculos",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "vehiculo",
-        "Type": "RentCars.Api.Models.Vehiculo",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentCars.Api.Controllers.VehiculosController",
-    "Method": "GetVehiculo",
-    "RelativePath": "api/Vehiculos/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentCars.Api.Controllers.VehiculosController",
-    "Method": "UpdateVehiculo",
-    "RelativePath": "api/Vehiculos/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "vehiculo",
-        "Type": "RentCars.Api.Models.Vehiculo",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentCars.Api.Controllers.VehiculosController",
-    "Method": "DeleteVehiculo",
-    "RelativePath": "api/Vehiculos/{id}",
-    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [

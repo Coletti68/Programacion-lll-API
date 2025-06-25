@@ -1,16 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\TPI.Programacion3",
-    "\\TPI.Programacion3\\Web Integrador",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Controllers",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api\\Services\\Implementaciones",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.WebMVC",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.WebMVC\\RentCars.WebMVC"
+    ""
   ],
-  "SelectedNode": "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api.sln",
+  "SelectedNode": "\\RentCars.Api.sln",
   "PreviewInSolutionExplorer": true
 }

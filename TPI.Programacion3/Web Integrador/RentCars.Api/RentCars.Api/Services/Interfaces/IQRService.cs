@@ -1,4 +1,3 @@
-using RentCars.Api.Models;
 
 /*namespace RentCars.Api.Services.Interfaces
 {

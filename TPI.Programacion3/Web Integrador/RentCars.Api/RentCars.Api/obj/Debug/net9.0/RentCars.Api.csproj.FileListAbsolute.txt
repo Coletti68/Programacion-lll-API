@@ -169,7 +169,6 @@ C:\Users\Usuario\Desktop\GitHub\Programacion-lll\TPI.Programacion3\Web Integrado
 C:\Users\Usuario\Desktop\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.RentCars.Api.props
 C:\Users\Usuario\Desktop\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.RentCars.Api.props
 C:\Users\Usuario\Desktop\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\staticwebassets.pack.json
-C:\Users\Usuario\Desktop\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\Usuario\Desktop\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.963CF433.Up2Date
 C:\Users\Usuario\Desktop\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.dll
 C:\Users\Usuario\Desktop\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\refint\RentCars.Api.dll
@@ -349,3 +348,4 @@ C:\Users\54377\Documents\GitHub\Programacion-lll\TPI.Programacion3\Web Integrado
 C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.dll
 C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\refint\RentCars.Api.dll
 C:\Users\mauri\OneDrive\Documentos\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\RentCars.Api.pdb
+C:\Users\Usuario\Desktop\GitHub\Programacion-lll\TPI.Programacion3\Web Integrador\RentCars.Api\RentCars.Api\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

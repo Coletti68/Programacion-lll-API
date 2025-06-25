@@ -1,8 +1,10 @@
-namespace RentCars.Api.Models
-{
+using System;
+
+    namespace RentCars.Api.Models
+{ 
     public class Empleado
     {
-        public int Id { get; set; }
+        public int EmpleadoId { get; set; }
         public string Nombre_Completo { get; set; }
         public string Cargo { get; set; }
         public string DNI { get; set; }
@@ -11,5 +13,9 @@ namespace RentCars.Api.Models
         public string Sucursal { get; set; }
         public DateTime FechaAlta { get; set; }
         public bool Activo { get; set; }
+
+        public ICollection<Alquiler> Alquileres { get; set; }
+
     }
 }
+

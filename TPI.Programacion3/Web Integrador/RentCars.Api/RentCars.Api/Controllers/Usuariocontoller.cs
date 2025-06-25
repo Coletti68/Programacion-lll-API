@@ -1,56 +1,63 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+//using RentCars.Api.DTOs;
 using RentCars.Api.Models;
+using RentCars.Api.Services.Implementaciones;
 using RentCars.Api.Services.Interfaces;
 
-namespace RentCars.Api.Controllers
+
+[Route("api/[controller]")]
+[ApiController]
+public class UsuarioController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UsuarioController : ControllerBase
+    private readonly IUsuarioService _usuarioService;
+
+    public UsuarioController(IUsuarioService usuarioService)
     {
-        private readonly IUsuarioService _usuarioService;
+        _usuarioService = usuarioService;
+    }
 
-        public UsuarioController(IUsuarioService usuarioService)
-        {
-            _usuarioService = usuarioService;
-        }
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var usuarios = await _usuarioService.GetAllAsync();
+        return Ok(usuarios);
+    }
 
-        [HttpGet]
-        public async Task<IActionResult> GetUsuarios()
-        {
-            var usuarios = await _usuarioService.GetAllUsuariosAsync();
-            return Ok(usuarios);
-        }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var usuario = await _usuarioService.GetByIdAsync(id);
+        if (usuario == null) return NotFound();
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetUsuario(int id)
-        {
-            var usuario = await _usuarioService.GetUsuarioByIdAsync(id);
-            if (usuario == null) return NotFound();
-            return Ok(usuario);
-        }
+        return Ok(usuario);
+    }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateUsuario([FromBody] Usuario usuario)
+    /*[HttpPost]
+    public async Task<IActionResult> Create([FromBody] UsuarioRegistroDTO dto)
+    {
+        var nuevo = new Usuario
         {
-            var nuevo = await _usuarioService.CreateUsuarioAsync(usuario);
-            return CreatedAtAction(nameof(GetUsuario), new { id = nuevo.Id }, nuevo);
-        }
+            Nombre_Completo = dto.NombreCompleto,
+            Email = dto.Email,
+            Telefono = dto.Telefono,
+            DNI = dto.Dni,
+            Direccion = dto.Direccion,
+            Pais = dto.Pais,
+            TipoDocumento = dto.TipoDocumento,
+            password = dto.Password
+        };
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUsuario(int id, [FromBody] Usuario usuario)
-        {
-            if (id != usuario.Id) return BadRequest();
-            var actualizado = await _usuarioService.UpdateUsuarioAsync(usuario);
-            return Ok(actualizado);
-        }
+        var creado = await _usuarioService.CreateAsync(nuevo);
+        return CreatedAtAction(nameof(GetById), new { id = creado.UsuarioId }, creado);
+    }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsuario(int id)
-        {
-            var eliminado = await _usuarioService.DeleteUsuarioAsync(id);
-            if (!eliminado) return NotFound();
-            return NoContent();
-        }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var resultado = await _usuarioService.DeleteAsync(id);
+        return resultado ? NoContent() : NotFound();
     }
 }
+    */
+}
+

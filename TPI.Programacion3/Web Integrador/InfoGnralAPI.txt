@@ -177,3 +177,14 @@ Task	Representa una operación asincrónica
 Task<T>	Representa una operación asincrónica que devuelve algo
 async/await	Permiten escribir código asincrónico como si fuera sincrónico
 ¿Por qué se usa?	Para no bloquear el servidor mientras espera la BDD
+
+
+Microsft.EntityFrameworkCore: 
+
+Microsft.EntityFrameworkCore.SqlServer:
+
+Microsft.AspNetCore.OpenApi: 
+
+Microsft.EntityFrameworkCore.Tools:
+
+SwashBuckle.AspNetCore:
