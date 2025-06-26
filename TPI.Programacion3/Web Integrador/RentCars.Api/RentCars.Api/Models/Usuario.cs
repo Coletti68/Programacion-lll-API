@@ -13,7 +13,7 @@ namespace RentCars.Api.Models
         public string password { get; set; }
         public string TipoDocumento { get; set; }
         public string DNI { get; set; }
-        public DateTime FechaVencimiento { get; set; }
+        public DateTime FechaNacimiento { get; set; }
         public string Telefono { get; set; }
         public string Email { get; set; }
         public string Pais { get; set; }

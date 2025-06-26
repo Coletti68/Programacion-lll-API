@@ -18,6 +18,11 @@ builder.Services.AddSwaggerGen();
 
 //llamada a la inyeccion de dependencias del servicio de usuario
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<IVehiculoService, VehiculoService>();
+builder.Services.AddScoped<IEmpleadoService, EmpleadoService>();
+builder.Services.AddScoped<IMultaService, MultaService>();
+
+
 
 
 var app = builder.Build();

@@ -1,15 +1,13 @@
 using RentCars.Api.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace RentCars.Api.Services.Interfaces
 {
     public interface IUsuarioService
     {
-        Task<IEnumerable<Usuario>> GetAllAsync();
-        Task<Usuario?> GetByIdAsync(int id);
-        Task<Usuario> CreateAsync(Usuario usuario);
-        Task<Usuario?> UpdateAsync(int id, Usuario usuario);
-        Task<bool> DeleteAsync(int id);
+        Task<IEnumerable<Usuario>> GetAllAsync(); //- Devuelve una colección de todos los usuarios de forma asíncrona.
+        Task<Usuario?> GetByIdAsync(int id); //- Busca un usuario por su ID en la base de datos. ? = puede ser null si no encuentra
+        Task<Usuario> CreateAsync(Usuario usuario); // Recibe un obj Usuario y lo inserta en la bdd
+        Task<Usuario> UpdateAsync(int id, Usuario usuario); //Espera un obj usuario ya editado, sino devuelve false
+        Task<bool> DeleteAsync(int id); //Elimina un usuario por us ID, devuelve true si lo encontro y borro, sino false
     }
 }

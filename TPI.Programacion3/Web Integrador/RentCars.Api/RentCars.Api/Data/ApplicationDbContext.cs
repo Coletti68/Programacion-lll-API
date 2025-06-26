@@ -16,7 +16,8 @@ namespace RentCars.Api.Data
         public DbSet<Multa> Multas { get; set; }
         public DbSet<Contacto> Contactos { get; set; }
         public DbSet<Pago> Pagos { get; set; }
-        public DbSet<AceptacionTerminos> Aceptaciones { get; set; }
+        public DbSet<AceptacionTerminos> AceptacionesTerminos { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AceptacionTerminos>()
