@@ -28,6 +28,14 @@ namespace RentCars.Api.Services.Implementaciones
 
         public async Task<Empleado> CreateAsync(Empleado empleado)
         {
+            bool dniRepetido = await _context.Empleados.AnyAsync(e => e.DNI == empleado.DNI);
+            if (dniRepetido)
+                throw new InvalidOperationException("Ya existe un empleado con ese DNI.");
+
+            bool emailRepetido = await _context.Empleados.AnyAsync(e => e.Email.ToLower() == empleado.Email.ToLower());
+            if (emailRepetido)
+                throw new InvalidOperationException("Ya existe un empleado con ese Email.");
+
             _context.Empleados.Add(empleado);
             await _context.SaveChangesAsync();
             return empleado;

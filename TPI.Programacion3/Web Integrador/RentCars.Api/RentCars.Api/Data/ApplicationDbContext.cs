@@ -20,15 +20,24 @@ namespace RentCars.Api.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Forzar nombres de tabla en singular para coincidir con la base
+            modelBuilder.Entity<Usuario>().ToTable("Usuario");
+            modelBuilder.Entity<Vehiculo>().ToTable("Vehiculo");
+            modelBuilder.Entity<Empleado>().ToTable("Empleado");
+            modelBuilder.Entity<Alquiler>().ToTable("Alquiler");
+            modelBuilder.Entity<AceptacionTerminos>().ToTable("AceptacionTerminos");
+            modelBuilder.Entity<Pago>().ToTable("Pago");
+            modelBuilder.Entity<Multa>().ToTable("Multa");
+            modelBuilder.Entity<Contacto>().ToTable("Contacto");
+            // Relación especial que evita borrado en cascada
             modelBuilder.Entity<AceptacionTerminos>()
-            .HasOne(a => a.Cliente)
-            .WithMany()
-            .HasForeignKey(a => a.ClienteId)
-            .OnDelete(DeleteBehavior.Restrict); // Esto evita la cascada
-            // Acá podés agregar reglas personalizadas si necesitás afinar relaciones
+                .HasOne(a => a.Cliente)
+                .WithMany()
+                .HasForeignKey(a => a.ClienteId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             base.OnModelCreating(modelBuilder);
         }
-
     }
 }
 

@@ -28,10 +28,18 @@ namespace RentCars.Api.Services.Implementaciones
 
         public async Task<Vehiculo> CreateAsync(Vehiculo vehiculo)
         {
+            // Validar que no exista otra placa igual (case-insensitive si querés evitar duplicados del tipo "ABC123" vs "abc123")
+            bool placaExiste = await _context.Vehiculos
+                .AnyAsync(v => v.Placa.ToLower() == vehiculo.Placa.ToLower());
+
+            if (placaExiste)
+                throw new InvalidOperationException("Ya existe un vehículo con esa placa.");
+
             _context.Vehiculos.Add(vehiculo);
             await _context.SaveChangesAsync();
             return vehiculo;
         }
+
 
         public async Task<Vehiculo?> UpdateAsync(int id, Vehiculo vehiculo)
         {

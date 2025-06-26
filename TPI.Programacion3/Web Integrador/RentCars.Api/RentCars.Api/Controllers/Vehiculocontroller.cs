@@ -63,34 +63,41 @@ namespace RentCars.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<VehiculoResponse>> Create([FromBody] VehiculoCreateRequest dto)
         {
-            var nuevo = new Vehiculo
+            try
             {
-                Marca = dto.Marca,
-                Modelo = dto.Modelo,
-                Anio = dto.Anio,
-                Placa = dto.Placa,
-                Color = dto.Color,
-                Tipo = dto.Tipo,
-                PrecioPorDia = dto.PrecioPorDia,
-                Estado = dto.Estado
-            };
+                var nuevo = new Vehiculo
+                {
+                    Marca = dto.Marca,
+                    Modelo = dto.Modelo,
+                    Anio = dto.Anio,
+                    Placa = dto.Placa,
+                    Color = dto.Color,
+                    Tipo = dto.Tipo,
+                    PrecioPorDia = dto.PrecioPorDia,
+                    Estado = dto.Estado
+                };
 
-            var creado = await _vehiculoService.CreateAsync(nuevo);
+                var creado = await _vehiculoService.CreateAsync(nuevo);
 
-            var result = new VehiculoResponse
+                var result = new VehiculoResponse
+                {
+                    VehiculoId = creado.VehiculoId,
+                    Marca = creado.Marca,
+                    Modelo = creado.Modelo,
+                    Anio = creado.Anio,
+                    Placa = creado.Placa,
+                    Color = creado.Color,
+                    Tipo = creado.Tipo,
+                    PrecioPorDia = creado.PrecioPorDia,
+                    Estado = creado.Estado
+                };
+
+                return CreatedAtAction(nameof(GetById), new { id = result.VehiculoId }, result);
+            }
+            catch (InvalidOperationException ex)
             {
-                VehiculoId = creado.VehiculoId,
-                Marca = creado.Marca,
-                Modelo = creado.Modelo,
-                Anio = creado.Anio,
-                Placa = creado.Placa,
-                Color = creado.Color,
-                Tipo = creado.Tipo,
-                PrecioPorDia = creado.PrecioPorDia,
-                Estado = creado.Estado
-            };
-
-            return CreatedAtAction(nameof(GetById), new { id = result.VehiculoId }, result);
+                return BadRequest(new { mensaje = ex.Message });
+            }
         }
 
         // PUT: api/vehiculos/5

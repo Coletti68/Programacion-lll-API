@@ -22,9 +22,6 @@ builder.Services.AddScoped<IVehiculoService, VehiculoService>();
 builder.Services.AddScoped<IEmpleadoService, EmpleadoService>();
 builder.Services.AddScoped<IMultaService, MultaService>();
 
-
-
-
 var app = builder.Build();
 
 // 🌐 Middleware para Swagger

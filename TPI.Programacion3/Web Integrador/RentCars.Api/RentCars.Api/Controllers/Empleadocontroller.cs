@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RentCars.Api.DTOs.Empleado;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
@@ -63,63 +62,39 @@ namespace RentCars.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<EmpleadoResponse>> Create(EmpleadoCreateRequest dto)
         {
-            var nuevo = new Empleado
+            try
             {
-                Nombre_Completo = dto.Nombre_Completo,
-                Cargo = dto.Cargo,
-                DNI = dto.DNI,
-                Telefono = dto.Telefono,
-                Email = dto.Email,
-                Sucursal = dto.Sucursal,
-                FechaAlta = dto.FechaAlta,
-                Activo = dto.Activo
-            };
+                var nuevo = new Empleado
+                {
+                    Nombre_Completo = dto.Nombre_Completo,
+                    Cargo = dto.Cargo,
+                    DNI = dto.DNI,
+                    Telefono = dto.Telefono,
+                    Email = dto.Email,
+                    Sucursal = dto.Sucursal,
+                    FechaAlta = dto.FechaAlta,
+                    Activo = dto.Activo
+                };
 
-            var creado = await _empleadoService.CreateAsync(nuevo);
+                var creado = await _empleadoService.CreateAsync(nuevo);
 
-            return CreatedAtAction(nameof(GetById), new { id = creado.EmpleadoId }, new EmpleadoResponse
+                return CreatedAtAction(nameof(GetById), new { id = creado.EmpleadoId }, new EmpleadoResponse
+                {
+                    EmpleadoId = creado.EmpleadoId,
+                    Nombre_Completo = creado.Nombre_Completo,
+                    Cargo = creado.Cargo,
+                    DNI = creado.DNI,
+                    Telefono = creado.Telefono,
+                    Email = creado.Email,
+                    Sucursal = creado.Sucursal,
+                    FechaAlta = creado.FechaAlta,
+                    Activo = creado.Activo
+                });
+            }
+            catch (InvalidOperationException ex)
             {
-                EmpleadoId = creado.EmpleadoId,
-                Nombre_Completo = creado.Nombre_Completo,
-                Cargo = creado.Cargo,
-                DNI = creado.DNI,
-                Telefono = creado.Telefono,
-                Email = creado.Email,
-                Sucursal = creado.Sucursal,
-                FechaAlta = creado.FechaAlta,
-                Activo = creado.Activo
-            });
-        }
-
-        [HttpPut("{id}")]
-        public async Task<ActionResult<EmpleadoResponse>> Update(int id, EmpleadoUpdateRequest dto)
-        {
-            var update = new Empleado
-            {
-                Nombre_Completo = dto.Nombre_Completo,
-                Cargo = dto.Cargo,
-                DNI = dto.DNI,
-                Telefono = dto.Telefono,
-                Email = dto.Email,
-                Sucursal = dto.Sucursal,
-                Activo = dto.Activo
-            };
-
-            var actualizado = await _empleadoService.UpdateAsync(id, update);
-            if (actualizado == null) return NotFound();
-
-            return Ok(new EmpleadoResponse
-            {
-                EmpleadoId = actualizado.EmpleadoId,
-                Nombre_Completo = actualizado.Nombre_Completo,
-                Cargo = actualizado.Cargo,
-                DNI = actualizado.DNI,
-                Telefono = actualizado.Telefono,
-                Email = actualizado.Email,
-                Sucursal = actualizado.Sucursal,
-                FechaAlta = actualizado.FechaAlta,
-                Activo = actualizado.Activo
-            });
+                return BadRequest(new { mensaje = ex.Message });
+            }
         }
 
         [HttpDelete("{id}")]
