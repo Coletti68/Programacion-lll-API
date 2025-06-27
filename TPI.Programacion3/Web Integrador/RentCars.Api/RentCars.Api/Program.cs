@@ -21,8 +21,10 @@ builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IVehiculoService, VehiculoService>();
 builder.Services.AddScoped<IEmpleadoService, EmpleadoService>();
 builder.Services.AddScoped<IMultaService, MultaService>();
+builder.Services.AddScoped<IContactoService, ContactoService>();
+builder.Services.AddScoped<IPagoService, PagoService>();
+builder.Services.AddScoped<IAlquilerService, AlquilerService>();
 
-var app = builder.Build();
 
 // 🌐 Middleware para Swagger
 if (app.Environment.IsDevelopment())

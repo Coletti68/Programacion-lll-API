@@ -12,7 +12,6 @@ namespace RentCars.Api.Models
 		public Alquiler Alquiler { get; set; }
         public DateTime FechaAceptacion { get; set; } = DateTime.Now;
         public string VersionTerminos { get; set; } =  "v1.0";
-
         public string IP { get; set; }
         
     }

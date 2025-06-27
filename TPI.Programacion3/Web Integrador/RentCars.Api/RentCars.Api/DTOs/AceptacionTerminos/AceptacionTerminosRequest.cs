@@ -1,7 +1,5 @@
 using RentCars.Api.DTOs.Aceptacion;
 
-AceptacionTerminosRequest.cs
-
 namespace RentCars.Api.DTOs.Aceptacion
 {
     public class AceptacionTerminosRequest

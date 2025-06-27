@@ -97,6 +97,44 @@ namespace RentCars.Api.Controllers
             }
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult<EmpleadoResponse>> Update(int id, EmpleadoUpdateRequest dto)
+        {
+            try
+            {
+                var empleado = new Empleado
+                {
+                    Nombre_Completo = dto.Nombre_Completo!,
+                    Cargo = dto.Cargo!,
+                    DNI = dto.DNI!,
+                    Telefono = dto.Telefono!,
+                    Email = dto.Email!,
+                    Sucursal = dto.Sucursal!,
+                    Activo = dto.Activo ?? true // o conservás el valor anterior en el servicio
+                };
+
+                var actualizado = await _empleadoService.UpdateAsync(id, empleado);
+                if (actualizado == null) return NotFound();
+
+                return Ok(new EmpleadoResponse
+                {
+                    EmpleadoId = actualizado.EmpleadoId,
+                    Nombre_Completo = actualizado.Nombre_Completo,
+                    Cargo = actualizado.Cargo,
+                    DNI = actualizado.DNI,
+                    Telefono = actualizado.Telefono,
+                    Email = actualizado.Email,
+                    Sucursal = actualizado.Sucursal,
+                    FechaAlta = actualizado.FechaAlta,
+                    Activo = actualizado.Activo
+                });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { mensaje = ex.Message });
+            }
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
