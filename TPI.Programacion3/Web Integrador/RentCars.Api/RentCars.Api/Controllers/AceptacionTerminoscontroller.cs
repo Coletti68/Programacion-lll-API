@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RentCars.Api.DTOs.Aceptacion;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
+using System.Linq;
 
 namespace RentCars.Api.Controllers
 {
@@ -19,30 +21,88 @@ namespace RentCars.Api.Controllers
         public async Task<IActionResult> GetAll()
         {
             var lista = await _service.GetAllAsync();
-            return Ok(lista);
+
+            var response = lista.Select(at => new AceptacionTerminosResponse
+            {
+                Id = at.Id,
+                ClienteId = at.ClienteId,
+                AlquilerId = at.AlquilerId,
+                FechaAceptacion = at.FechaAceptacion,
+                VersionTerminos = at.VersionTerminos
+            });
+
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var item = await _service.GetByIdAsync(id);
-            if (item == null) return NotFound();
-            return Ok(item);
+            var at = await _service.GetByIdAsync(id);
+            if (at == null) return NotFound();
+
+            var response = new AceptacionTerminosResponse
+            {
+                Id = at.Id,
+                ClienteId = at.ClienteId,
+                AlquilerId = at.AlquilerId,
+                FechaAceptacion = at.FechaAceptacion,
+                VersionTerminos = at.VersionTerminos
+            };
+
+            return Ok(response);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] AceptacionTerminos nuevo)
+        public async Task<IActionResult> Create([FromBody] AceptacionTerminosRequest dto)
         {
+            var nuevo = new AceptacionTerminos
+            {
+                ClienteId = dto.ClienteId,
+                AlquilerId = dto.AlquilerId,
+                VersionTerminos = dto.VersionTerminos,
+                IP = dto.IP,
+                FechaAceptacion = DateTime.Now
+            };
+
             var creado = await _service.CreateAsync(nuevo);
-            return CreatedAtAction(nameof(GetById), new { id = creado.Id }, creado);
+
+            var response = new AceptacionTerminosResponse
+            {
+                Id = creado.Id,
+                ClienteId = creado.ClienteId,
+                AlquilerId = creado.AlquilerId,
+                FechaAceptacion = creado.FechaAceptacion,
+                VersionTerminos = creado.VersionTerminos
+            };
+
+            return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] AceptacionTerminos actualizado)
+        public async Task<IActionResult> Update(int id, [FromBody] AceptacionTerminosRequest dto)
         {
-            var result = await _service.UpdateAsync(id, actualizado);
-            if (result == null) return NotFound();
-            return Ok(result);
+            var actualizado = new AceptacionTerminos
+            {
+                ClienteId = dto.ClienteId,
+                AlquilerId = dto.AlquilerId,
+                VersionTerminos = dto.VersionTerminos,
+                IP = dto.IP,
+                FechaAceptacion = DateTime.Now // Podés elegir mantener la original si preferís
+            };
+
+            var actualizadoDb = await _service.UpdateAsync(id, actualizado);
+            if (actualizadoDb == null) return NotFound();
+
+            var response = new AceptacionTerminosResponse
+            {
+                Id = actualizadoDb.Id,
+                ClienteId = actualizadoDb.ClienteId,
+                AlquilerId = actualizadoDb.AlquilerId,
+                FechaAceptacion = actualizadoDb.FechaAceptacion,
+                VersionTerminos = actualizadoDb.VersionTerminos
+            };
+
+            return Ok(response);
         }
 
         [HttpDelete("{id}")]
