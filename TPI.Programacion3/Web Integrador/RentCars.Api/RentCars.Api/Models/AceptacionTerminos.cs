@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RentCars.Api.Models
@@ -7,7 +8,8 @@ namespace RentCars.Api.Models
 	{
 		public int Id { get; set; }
 		public int ClienteId { get; set; }
-		public Usuario Cliente { get; set; }
+        
+        public Usuario Usuario { get; set; }
         public int AlquilerId { get; set; }
 		public Alquiler Alquiler { get; set; }
         public DateTime FechaAceptacion { get; set; } = DateTime.Now;

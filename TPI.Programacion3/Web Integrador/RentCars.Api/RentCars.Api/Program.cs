@@ -5,6 +5,7 @@ using RentCars.Api.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // 🔌 Agregar el DbContext con la cadena de conexión del appsettings.json
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -24,7 +25,9 @@ builder.Services.AddScoped<IMultaService, MultaService>();
 builder.Services.AddScoped<IContactoService, ContactoService>();
 builder.Services.AddScoped<IPagoService, PagoService>();
 builder.Services.AddScoped<IAlquilerService, AlquilerService>();
+builder.Services.AddScoped<IAceptacionTerminosService, AceptacionTerminosService>();
 
+var app = builder.Build();
 
 // 🌐 Middleware para Swagger
 if (app.Environment.IsDevelopment())

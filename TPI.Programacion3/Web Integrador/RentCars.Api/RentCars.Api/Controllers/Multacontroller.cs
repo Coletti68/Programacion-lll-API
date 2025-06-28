@@ -31,7 +31,7 @@ namespace RentCars.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(MultaCreateRequest request)
+        public async Task<IActionResult> Create([FromBody] MultaCreateRequest request)
         {
             var created = await _service.CreateAsync(request);
             return CreatedAtAction(nameof(GetById), new { id = created.MultaId }, created);

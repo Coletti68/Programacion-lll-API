@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using RentCars.Api.DTOs.Alquiler;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
 
@@ -33,8 +34,23 @@ namespace RentCars.Api.Controllers
 
         // POST: api/Alquiler
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Alquiler alquiler)
+        public async Task<IActionResult> Create([FromBody] AlquilerRegistroDTO dto)
         {
+            var alquiler = new Alquiler
+            {
+                ClienteId = dto.ClienteId,
+                VehiculoId = dto.VehiculoId,
+                EmpleadoId = dto.EmpleadoId,
+                FechaInicio = dto.FechaInicio,
+                FechaFin = dto.FechaFin,
+                FechaDevolucion = dto.FechaDevolucion,
+                Total = dto.Total,
+                Estado = dto.Estado,
+                Pagos = new List<Pago>(),
+                Multas = new List<Multa>(),
+                Aceptaciones = new List<AceptacionTerminos>()
+            };
+
             var creado = await _alquilerService.CreateAsync(alquiler);
             return CreatedAtAction(nameof(GetById), new { id = creado.AlquilerId }, creado);
         }

@@ -31,10 +31,10 @@ namespace RentCars.Api.Data
             modelBuilder.Entity<Contacto>().ToTable("Contacto");
             // Relación especial que evita borrado en cascada
             modelBuilder.Entity<AceptacionTerminos>()
-                .HasOne(a => a.Cliente)
-                .WithMany()
-                .HasForeignKey(a => a.ClienteId)
-                .OnDelete(DeleteBehavior.Restrict);
+     .HasOne(a => a.Usuario)
+     .WithMany()
+     .HasForeignKey(a => a.ClienteId)
+     .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);
         }

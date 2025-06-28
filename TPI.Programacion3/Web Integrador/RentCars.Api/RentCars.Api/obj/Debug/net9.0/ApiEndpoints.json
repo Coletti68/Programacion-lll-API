@@ -97,8 +97,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "alquiler",
-        "Type": "RentCars.Api.Models.Alquiler",
+        "Name": "dto",
+        "Type": "RentCars.Api.DTOs.Alquiler.AlquilerRegistroDTO",
         "IsRequired": true
       }
     ],

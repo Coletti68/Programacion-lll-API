@@ -149,17 +149,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Alquiler"
+                "$ref": "#/components/schemas/AlquilerRegistroDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Alquiler"
+                "$ref": "#/components/schemas/AlquilerRegistroDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Alquiler"
+                "$ref": "#/components/schemas/AlquilerRegistroDTO"
               }
             }
           }
@@ -1630,7 +1630,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "cliente": {
+          "clienteUsuario": {
             "$ref": "#/components/schemas/Usuario"
           },
           "alquilerId": {
@@ -1745,6 +1745,45 @@
             "items": {
               "$ref": "#/components/schemas/AceptacionTerminos"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlquilerRegistroDTO": {
+        "type": "object",
+        "properties": {
+          "clienteId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vehiculoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "empleadoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fechaInicio": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaFin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaDevolucion": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "total": {
+            "type": "number",
+            "format": "double"
+          },
+          "estado": {
+            "type": "string",
             "nullable": true
           }
         },
