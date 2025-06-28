@@ -1,11 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\TPI.Programacion3",
-    "\\TPI.Programacion3\\Web Integrador",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api",
-    "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api"
+    "\\TPI.Programacion3"
   ],
-  "SelectedNode": "\\TPI.Programacion3\\Web Integrador\\RentCars.Api\\RentCars.Api.sln",
+  "SelectedNode": "\\TPI.Programacion3\\bd.txt",
   "PreviewInSolutionExplorer": true
 }

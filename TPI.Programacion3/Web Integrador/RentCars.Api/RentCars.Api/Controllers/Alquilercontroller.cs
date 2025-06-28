@@ -38,7 +38,7 @@ namespace RentCars.Api.Controllers
         {
             var alquiler = new Alquiler
             {
-                ClienteId = dto.ClienteId,
+                UsuarioId = dto.UsuarioId,
                 VehiculoId = dto.VehiculoId,
                 EmpleadoId = dto.EmpleadoId,
                 FechaInicio = dto.FechaInicio,
@@ -72,7 +72,7 @@ namespace RentCars.Api.Controllers
         }
 
         // GET: api/Alquiler/cliente/{clienteId}
-        [HttpGet("cliente/{clienteId}")]
+        [HttpGet("usuario/{UsuarioId}")]
         public async Task<IActionResult> GetByClienteId(int clienteId)
         {
             var result = await _alquilerService.GetByClienteIdAsync(clienteId);

@@ -255,7 +255,7 @@
         }
       }
     },
-    "/api/Alquiler/cliente/{clienteId}": {
+    "/api/Alquiler/usuario/{UsuarioId}": {
       "get": {
         "tags": [
           "Alquiler"
@@ -263,11 +263,18 @@
         "parameters": [
           {
             "name": "clienteId",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "UsuarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -1626,11 +1633,11 @@
             "type": "integer",
             "format": "int32"
           },
-          "clienteId": {
+          "usuarioId": {
             "type": "integer",
             "format": "int32"
           },
-          "clienteUsuario": {
+          "usuario": {
             "$ref": "#/components/schemas/Usuario"
           },
           "alquilerId": {
@@ -1658,7 +1665,7 @@
       "AceptacionTerminosRequest": {
         "type": "object",
         "properties": {
-          "clienteId": {
+          "usuarioId": {
             "type": "integer",
             "format": "int32"
           },
@@ -1684,11 +1691,11 @@
             "type": "integer",
             "format": "int32"
           },
-          "clienteId": {
+          "usuarioId": {
             "type": "integer",
             "format": "int32"
           },
-          "cliente": {
+          "usuario": {
             "$ref": "#/components/schemas/Usuario"
           },
           "vehiculoId": {
@@ -1753,7 +1760,7 @@
       "AlquilerRegistroDTO": {
         "type": "object",
         "properties": {
-          "clienteId": {
+          "usuarioId": {
             "type": "integer",
             "format": "int32"
           },

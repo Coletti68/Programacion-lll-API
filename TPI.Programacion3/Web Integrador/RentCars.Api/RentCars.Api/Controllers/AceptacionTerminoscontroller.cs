@@ -25,7 +25,7 @@ namespace RentCars.Api.Controllers
             var response = lista.Select(at => new AceptacionTerminosResponse
             {
                 Id = at.Id,
-                ClienteId = at.ClienteId,
+                UsuarioId = at.UsuarioId,
                 AlquilerId = at.AlquilerId,
                 FechaAceptacion = at.FechaAceptacion,
                 VersionTerminos = at.VersionTerminos
@@ -43,7 +43,7 @@ namespace RentCars.Api.Controllers
             var response = new AceptacionTerminosResponse
             {
                 Id = at.Id,
-                ClienteId = at.ClienteId,
+                UsuarioId = at.UsuarioId,
                 AlquilerId = at.AlquilerId,
                 FechaAceptacion = at.FechaAceptacion,
                 VersionTerminos = at.VersionTerminos
@@ -57,7 +57,7 @@ namespace RentCars.Api.Controllers
         {
             var nuevo = new AceptacionTerminos
             {
-                ClienteId = dto.ClienteId,
+                UsuarioId = dto.UsuarioId,
                 AlquilerId = dto.AlquilerId,
                 VersionTerminos = dto.VersionTerminos,
                 IP = dto.IP,
@@ -69,7 +69,7 @@ namespace RentCars.Api.Controllers
             var response = new AceptacionTerminosResponse
             {
                 Id = creado.Id,
-                ClienteId = creado.ClienteId,
+                UsuarioId = creado.UsuarioId,
                 AlquilerId = creado.AlquilerId,
                 FechaAceptacion = creado.FechaAceptacion,
                 VersionTerminos = creado.VersionTerminos
@@ -83,7 +83,7 @@ namespace RentCars.Api.Controllers
         {
             var actualizado = new AceptacionTerminos
             {
-                ClienteId = dto.ClienteId,
+                UsuarioId = dto.UsuarioId,
                 AlquilerId = dto.AlquilerId,
                 VersionTerminos = dto.VersionTerminos,
                 IP = dto.IP,
@@ -96,7 +96,7 @@ namespace RentCars.Api.Controllers
             var response = new AceptacionTerminosResponse
             {
                 Id = actualizadoDb.Id,
-                ClienteId = actualizadoDb.ClienteId,
+                UsuarioId = actualizadoDb.UsuarioId,
                 AlquilerId = actualizadoDb.AlquilerId,
                 FechaAceptacion = actualizadoDb.FechaAceptacion,
                 VersionTerminos = actualizadoDb.VersionTerminos

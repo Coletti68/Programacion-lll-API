@@ -227,22 +227,6 @@
   },
   {
     "ContainingType": "RentCars.Api.Controllers.AlquilerController",
-    "Method": "GetByClienteId",
-    "RelativePath": "api/Alquiler/cliente/{clienteId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "clienteId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentCars.Api.Controllers.AlquilerController",
     "Method": "ContarPorCliente",
     "RelativePath": "api/Alquiler/cliente/{clienteId}/total",
     "HttpMethod": "GET",
@@ -358,6 +342,27 @@
         "Name": "hasta",
         "Type": "System.DateTime",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentCars.Api.Controllers.AlquilerController",
+    "Method": "GetByClienteId",
+    "RelativePath": "api/Alquiler/usuario/{UsuarioId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clienteId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "UsuarioId",
+        "Type": "",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

@@ -41,7 +41,7 @@ CREATE TABLE Empleado (
 
 CREATE TABLE Alquiler (
     AlquilerId INT PRIMARY KEY IDENTITY,
-    ClienteId INT FOREIGN KEY REFERENCES Usuario(UsuarioId),
+    UsuarioId INT FOREIGN KEY REFERENCES Usuario(UsuarioId),
     VehiculoId INT FOREIGN KEY REFERENCES Vehiculo(VehiculoId),
 	EmpleadoId INT FOREIGN KEY REFERENCES Empleado(EmpleadoId),
     FechaInicio DATE,
@@ -54,7 +54,7 @@ CREATE TABLE Alquiler (
 
 CREATE TABLE AceptacionTerminos (
     Id INT PRIMARY KEY IDENTITY,
-    ClienteId INT FOREIGN KEY REFERENCES Usuario(UsuarioId),
+    UsuarioId INT FOREIGN KEY REFERENCES Usuario(UsuarioId),
     AlquilerId INT FOREIGN KEY REFERENCES Alquiler(AlquilerId),
     FechaAceptacion DATETIME DEFAULT GETDATE(),
     VersionTerminos NVARCHAR(20) DEFAULT 'v1.0',

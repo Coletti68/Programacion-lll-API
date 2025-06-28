@@ -18,7 +18,7 @@ namespace RentCars.Api.Services.Implementaciones
         public async Task<IEnumerable<Alquiler>> GetAllAsync()
         {
             return await _context.Alquileres
-                .Include(a => a.Cliente)
+                .Include(a => a.UsuarioId)
                 .Include(a => a.Vehiculo)
                 .Include(a => a.Empleado)
                 .ToListAsync();
@@ -27,7 +27,7 @@ namespace RentCars.Api.Services.Implementaciones
         public async Task<Alquiler> GetByIdAsync(int id)
         {
             return await _context.Alquileres
-                .Include(a => a.Cliente)
+                .Include(a => a.UsuarioId)
                 .Include(a => a.Vehiculo)
                 .Include(a => a.Empleado)
                 .FirstOrDefaultAsync(a => a.AlquilerId == id);
@@ -63,7 +63,7 @@ namespace RentCars.Api.Services.Implementaciones
         public async Task<IEnumerable<Alquiler>> GetByClienteIdAsync(int clienteId)
         {
             return await _context.Alquileres
-                .Where(a => a.ClienteId == clienteId)
+                .Where(a => a.UsuarioId == clienteId)
                 .ToListAsync();
         }
 
@@ -162,7 +162,7 @@ namespace RentCars.Api.Services.Implementaciones
         public async Task<int> ContarAlquileresPorClienteAsync(int clienteId)
         {
             return await _context.Alquileres
-                .CountAsync(a => a.ClienteId == clienteId);
+                .CountAsync(a => a.UsuarioId == clienteId);
         }
 
         public async Task<decimal> CalcularTotalFacturadoAsync(DateTime desde, DateTime hasta)

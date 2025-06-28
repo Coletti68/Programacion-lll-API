@@ -5,8 +5,8 @@ namespace RentCars.Api.Models
     public class Alquiler
     {
         public int AlquilerId { get; set; }
-        public int ClienteId { get; set; }
-        public Usuario Cliente { get; set; }
+        public int UsuarioId { get; set; }
+        public Usuario usuario { get; set; }
         public int VehiculoId { get; set; }
         public Vehiculo Vehiculo { get; set; }
         public int EmpleadoId { get; set; }

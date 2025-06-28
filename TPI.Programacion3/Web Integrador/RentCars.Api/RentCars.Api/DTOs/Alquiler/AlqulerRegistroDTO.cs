@@ -2,7 +2,7 @@
 {
     public class AlquilerRegistroDTO
     {
-        public int ClienteId { get; set; }
+        public int UsuarioId { get; set; }
         public int VehiculoId { get; set; }
         public int EmpleadoId { get; set; }
         public DateTime FechaInicio { get; set; }

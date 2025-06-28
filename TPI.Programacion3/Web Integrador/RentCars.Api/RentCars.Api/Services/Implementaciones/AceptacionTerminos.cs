@@ -39,7 +39,7 @@ namespace RentCars.Api.Services.Implementaciones
             if (existente == null) return null;
 
             existente.AlquilerId = at.AlquilerId;
-            existente.ClienteId = at.ClienteId;
+            existente.UsuarioId = at.UsuarioId;
             existente.FechaAceptacion = at.FechaAceptacion;
             existente.VersionTerminos = at.VersionTerminos;
             existente.IP = at.IP;
