@@ -32,10 +32,16 @@ namespace RentCars.Api.Controllers
             return alquiler == null ? NotFound() : Ok(alquiler);
         }
 
+
         // POST: api/Alquiler
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AlquilerRegistroDTO dto)
         {
+            if (!dto.AceptoTerminos)
+            {
+                return BadRequest("Debe aceptar los términos y condiciones para realizar un alquiler.");
+            }
+
             var alquiler = new Alquiler
             {
                 UsuarioId = dto.UsuarioId,
@@ -48,19 +54,18 @@ namespace RentCars.Api.Controllers
                 Estado = dto.Estado,
                 Pagos = new List<Pago>(),
                 Multas = new List<Multa>(),
-                Aceptaciones = new List<AceptacionTerminos>()
+                AceptoTerminos = dto.AceptoTerminos
             };
 
             var creado = await _alquilerService.CreateAsync(alquiler);
             return CreatedAtAction(nameof(GetById), new { id = creado.AlquilerId }, creado);
         }
 
-        // PUT: api/Alquiler/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Alquiler alquiler)
+        public async Task<IActionResult> Update(int id, [FromBody] AlquilerUpdate dto)
         {
-            var result = await _alquilerService.UpdateAsync(id, alquiler);
-            return result ? NoContent() : NotFound();
+            var actualizado = await _alquilerService.UpdateAsync(id, dto);
+            return actualizado ? NoContent() : NotFound();
         }
 
         // DELETE: api/Alquiler/{id}

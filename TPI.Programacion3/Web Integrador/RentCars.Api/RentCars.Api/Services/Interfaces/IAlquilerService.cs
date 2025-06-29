@@ -1,3 +1,4 @@
+using RentCars.Api.DTOs.Alquiler;
 using RentCars.Api.Models;
 
 namespace RentCars.Api.Services.Interfaces
@@ -5,10 +6,10 @@ namespace RentCars.Api.Services.Interfaces
     public interface IAlquilerService
     {
         // CRUD básico
-        Task<IEnumerable<Alquiler>> GetAllAsync();
-        Task<Alquiler> GetByIdAsync(int id);
+        Task<IEnumerable<AlquilerResponse>> GetAllAsync();
+        Task<AlquilerResponse?> GetByIdAsync(int id);
         Task<Alquiler> CreateAsync(Alquiler alquiler);
-        Task<bool> UpdateAsync(int id, Alquiler alquiler);
+        Task<bool> UpdateAsync(int id, AlquilerUpdate dto);
         Task<bool> DeleteAsync(int id);
 
         // Consultas específicas

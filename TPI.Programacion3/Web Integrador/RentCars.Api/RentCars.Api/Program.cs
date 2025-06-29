@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Text.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
 using RentCars.Api.Data;
 using RentCars.Api.Services.Implementaciones;
 using RentCars.Api.Services.Interfaces;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,8 +26,13 @@ builder.Services.AddScoped<IEmpleadoService, EmpleadoService>();
 builder.Services.AddScoped<IMultaService, MultaService>();
 builder.Services.AddScoped<IContactoService, ContactoService>();
 builder.Services.AddScoped<IPagoService, PagoService>();
+
+builder.Services.AddControllers().AddJsonOptions(x =>
+{
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
+
 builder.Services.AddScoped<IAlquilerService, AlquilerService>();
-builder.Services.AddScoped<IAceptacionTerminosService, AceptacionTerminosService>();
 
 var app = builder.Build();
 

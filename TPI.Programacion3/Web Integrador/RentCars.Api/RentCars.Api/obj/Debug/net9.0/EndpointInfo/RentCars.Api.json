@@ -5,131 +5,6 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/AceptacionTerminos": {
-      "get": {
-        "tags": [
-          "AceptacionTerminos"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "AceptacionTerminos"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AceptacionTerminosRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AceptacionTerminosRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AceptacionTerminosRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/AceptacionTerminos/{id}": {
-      "get": {
-        "tags": [
-          "AceptacionTerminos"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "AceptacionTerminos"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AceptacionTerminosRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AceptacionTerminosRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AceptacionTerminosRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "AceptacionTerminos"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Alquiler": {
       "get": {
         "tags": [
@@ -212,17 +87,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Alquiler"
+                "$ref": "#/components/schemas/AlquilerUpdate"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Alquiler"
+                "$ref": "#/components/schemas/AlquilerUpdate"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Alquiler"
+                "$ref": "#/components/schemas/AlquilerUpdate"
               }
             }
           }
@@ -1626,64 +1501,6 @@
   },
   "components": {
     "schemas": {
-      "AceptacionTerminos": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "usuarioId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "usuario": {
-            "$ref": "#/components/schemas/Usuario"
-          },
-          "alquilerId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "alquiler": {
-            "$ref": "#/components/schemas/Alquiler"
-          },
-          "fechaAceptacion": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "versionTerminos": {
-            "type": "string",
-            "nullable": true
-          },
-          "ip": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "AceptacionTerminosRequest": {
-        "type": "object",
-        "properties": {
-          "usuarioId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "alquilerId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "versionTerminos": {
-            "type": "string",
-            "nullable": true
-          },
-          "ip": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "Alquiler": {
         "type": "object",
         "properties": {
@@ -1733,6 +1550,9 @@
             "type": "string",
             "nullable": true
           },
+          "aceptoTerminos": {
+            "type": "boolean"
+          },
           "pagos": {
             "type": "array",
             "items": {
@@ -1744,13 +1564,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Multa"
-            },
-            "nullable": true
-          },
-          "aceptaciones": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AceptacionTerminos"
             },
             "nullable": true
           }
@@ -1792,6 +1605,51 @@
           "estado": {
             "type": "string",
             "nullable": true
+          },
+          "aceptoTerminos": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlquilerUpdate": {
+        "type": "object",
+        "properties": {
+          "fechaInicio": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaFin": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaDevolucion": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "total": {
+            "type": "number",
+            "format": "double"
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "aceptoTerminos": {
+            "type": "boolean"
+          },
+          "usuarioId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vehiculoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "empleadoId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -2134,7 +1992,8 @@
           },
           "fechaRegistro": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
           },
           "observaciones": {
             "type": "string",
@@ -2186,7 +2045,16 @@
           },
           "fechaPago": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
+          },
+          "codigoReferencia": {
+            "type": "string",
+            "nullable": true
+          },
+          "observaciones": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2246,13 +2114,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Alquiler"
-            },
-            "nullable": true
-          },
-          "aceptaciones": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AceptacionTerminos"
             },
             "nullable": true
           },

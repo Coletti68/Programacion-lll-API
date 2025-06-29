@@ -22,7 +22,6 @@ namespace RentCars.Api.Models
 
         // Relaciones
         public ICollection<Alquiler> Alquileres { get; set; }
-        public ICollection<AceptacionTerminos> Aceptaciones { get; set; }
         public ICollection<Contacto> Contactos { get; set; }
 
     }

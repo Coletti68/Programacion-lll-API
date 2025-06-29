@@ -16,7 +16,6 @@ namespace RentCars.Api.Data
         public DbSet<Multa> Multas { get; set; }
         public DbSet<Contacto> Contactos { get; set; }
         public DbSet<Pago> Pagos { get; set; }
-        public DbSet<AceptacionTerminos> AceptacionesTerminos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,18 +24,10 @@ namespace RentCars.Api.Data
             modelBuilder.Entity<Vehiculo>().ToTable("Vehiculo");
             modelBuilder.Entity<Empleado>().ToTable("Empleado");
             modelBuilder.Entity<Alquiler>().ToTable("Alquiler");
-            modelBuilder.Entity<AceptacionTerminos>().ToTable("AceptacionTerminos");
             modelBuilder.Entity<Pago>().ToTable("Pago");
             modelBuilder.Entity<Multa>().ToTable("Multa");
             modelBuilder.Entity<Contacto>().ToTable("Contacto");
-
-            // Relación especial que evita borrado en cascada
-            modelBuilder.Entity<AceptacionTerminos>()
-            .HasOne(a => a.Usuario)
-            .WithMany()
-            .HasForeignKey(a => a.UsuarioId)
-            .OnDelete(DeleteBehavior.Restrict);
-
+           
             base.OnModelCreating(modelBuilder);
         }
     }

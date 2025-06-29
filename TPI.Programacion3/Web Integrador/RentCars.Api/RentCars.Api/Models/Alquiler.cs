@@ -6,7 +6,7 @@ namespace RentCars.Api.Models
     {
         public int AlquilerId { get; set; }
         public int UsuarioId { get; set; }
-        public Usuario usuario { get; set; }
+        public Usuario Usuario { get; set; }
         public int VehiculoId { get; set; }
         public Vehiculo Vehiculo { get; set; }
         public int EmpleadoId { get; set; }
@@ -17,10 +17,11 @@ namespace RentCars.Api.Models
         public decimal Total { get; set; }
         public string Estado { get; set; }
 
+        public bool AceptoTerminos { get; set; } = false;
+
         // Relaciones inversas
         public ICollection<Pago> Pagos { get; set; }
         public ICollection<Multa> Multas { get; set; }
-        public ICollection<AceptacionTerminos> Aceptaciones { get; set; }
 
     }
 }

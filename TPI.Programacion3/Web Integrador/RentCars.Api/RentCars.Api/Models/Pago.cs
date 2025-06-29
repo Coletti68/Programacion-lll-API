@@ -10,9 +10,9 @@ namespace RentCars.Api.Models
         public DateTime FechaPago { get; set; }
         public decimal Monto { get; set; }
         public string MetodoPago { get; set; }
-        public string CodigoReferencia { get; set; }
-        public DateTime FechaRegistro { get; set; } = DateTime.Now;
-        public string Observaciones { get; set; }
+        public string? CodigoReferencia { get; set; }
+        public DateTime? FechaRegistro { get; set; } = DateTime.Now;
+        public string? Observaciones { get; set; }
     }
 }
 

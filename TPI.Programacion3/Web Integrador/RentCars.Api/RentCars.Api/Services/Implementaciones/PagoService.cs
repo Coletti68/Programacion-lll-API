@@ -31,18 +31,20 @@ public class PagoService : IPagoService
 
     public async Task<PagoResponse> GetByIdAsync(int id)
     {
-        var pago = await _context.Pagos.FindAsync(id);
-        if (pago == null) return null;
+      var pago = await _context.Pagos.FindAsync(id);
+      if (pago == null) return null;
 
-        return new PagoResponse
-        {
-            PagoId = pago.PagoId,
-            AlquilerId = pago.AlquilerId,
-            Monto = pago.Monto,
-            MetodoPago = pago.MetodoPago,
-            FechaPago = pago.FechaPago
-        };
-    }
+      return new PagoResponse
+    {
+        PagoId = pago.PagoId,
+        AlquilerId = pago.AlquilerId,
+        Monto = pago.Monto,
+        MetodoPago = pago.MetodoPago,
+        FechaPago = pago.FechaPago,
+        CodigoReferencia = pago.CodigoReferencia,
+        Observaciones = pago.Observaciones
+    };
+}
 
     public async Task<PagoResponse> CreateAsync(PagoCreateRequest request)
     {

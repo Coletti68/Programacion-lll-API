@@ -10,5 +10,6 @@
         public DateTime? FechaDevolucion { get; set; }
         public decimal Total { get; set; }
         public string Estado { get; set; }
+        public bool AceptoTerminos { get; set; } = false;
     }
 }

@@ -48,17 +48,7 @@ CREATE TABLE Alquiler (
     FechaFin DATE,
     FechaDevolucion DATE NULL,
     Total DECIMAL(10,2),
-    Estado NVARCHAR(20) -- Activo, Finalizado, Cancelado
-
-);
-
-CREATE TABLE AceptacionTerminos (
-    Id INT PRIMARY KEY IDENTITY,
-    UsuarioId INT FOREIGN KEY REFERENCES Usuario(UsuarioId),
-    AlquilerId INT FOREIGN KEY REFERENCES Alquiler(AlquilerId),
-    FechaAceptacion DATETIME DEFAULT GETDATE(),
-    VersionTerminos NVARCHAR(20) DEFAULT 'v1.0',
-    IP NVARCHAR(50) -- IP desde donde se aceptó (opcional)
+    Estado NVARCHAR(20) CHECK (Estado IN ('Activo', 'Finalizado', 'Cancelado')),
 );
 
 CREATE TABLE Pago (
@@ -78,7 +68,7 @@ CREATE TABLE Multa (
     Descripcion NVARCHAR(200),
     Monto DECIMAL(10,2),
 	FechaMulta DATE DEFAULT CAST(GETDATE() AS DATE),
-	Estado NVARCHAR(20) DEFAULT 'Pendiente' CHECK(Estado IN ('Pago', 'Atrasado')),
+	Estado NVARCHAR(50) CHECK (Estado IN ('Pendiente', 'Pago', 'Atrasado'))
 	Tipo NVARCHAR(50) CHECK (Tipo IN ('Velocidad', 'Daños', 'Entrega tardía', 'Otro'))
 );
 

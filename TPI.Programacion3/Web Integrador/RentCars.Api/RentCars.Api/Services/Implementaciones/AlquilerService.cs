@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using RentCars.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
+using RentCars.Api.DTOs.Alquiler;
 
 namespace RentCars.Api.Services.Implementaciones
 {
@@ -15,22 +16,27 @@ namespace RentCars.Api.Services.Implementaciones
             _context = context;
         }
 
-        public async Task<IEnumerable<Alquiler>> GetAllAsync()
+        public async Task<IEnumerable<AlquilerResponse>> GetAllAsync()
         {
-            return await _context.Alquileres
-                .Include(a => a.UsuarioId)
+            var alquileres = await _context.Alquileres
+                .Include(a => a.Usuario)
                 .Include(a => a.Vehiculo)
                 .Include(a => a.Empleado)
                 .ToListAsync();
-        }
 
-        public async Task<Alquiler> GetByIdAsync(int id)
-        {
-            return await _context.Alquileres
-                .Include(a => a.UsuarioId)
-                .Include(a => a.Vehiculo)
-                .Include(a => a.Empleado)
-                .FirstOrDefaultAsync(a => a.AlquilerId == id);
+            return alquileres.Select(a => new AlquilerResponse
+            {
+                AlquilerId = a.AlquilerId,
+                UsuarioId = a.UsuarioId,
+                VehiculoId = a.VehiculoId,
+                EmpleadoId = a.EmpleadoId,
+                FechaInicio = a.FechaInicio,
+                FechaFin = a.FechaFin,
+                FechaDevolucion = a.FechaDevolucion,
+                Total = a.Total,
+                Estado = a.Estado,
+                AceptoTerminos = a.AceptoTerminos
+            }).ToList();
         }
 
         public async Task<Alquiler> CreateAsync(Alquiler alquiler)
@@ -40,12 +46,46 @@ namespace RentCars.Api.Services.Implementaciones
             return alquiler;
         }
 
-        public async Task<bool> UpdateAsync(int id, Alquiler alquiler)
+        public async Task<AlquilerResponse?> GetByIdAsync(int id)
         {
-            var existing = await _context.Alquileres.FindAsync(id);
-            if (existing == null) return false;
+            var a = await _context.Alquileres
+                .Include(x => x.Usuario)
+                .Include(x => x.Vehiculo)
+                .Include(x => x.Empleado)
+                .FirstOrDefaultAsync(x => x.AlquilerId == id);
 
-            _context.Entry(existing).CurrentValues.SetValues(alquiler);
+            if (a == null) return null;
+
+            return new AlquilerResponse
+            {
+                AlquilerId = a.AlquilerId,
+                UsuarioId = a.UsuarioId,
+                VehiculoId = a.VehiculoId,
+                EmpleadoId = a.EmpleadoId,
+                FechaInicio = a.FechaInicio,
+                FechaFin = a.FechaFin,
+                FechaDevolucion = a.FechaDevolucion,
+                Total = a.Total,
+                Estado = a.Estado,
+                AceptoTerminos = a.AceptoTerminos
+            };
+        }
+
+        public async Task<bool> UpdateAsync(int id, AlquilerUpdate dto)
+        {
+            var alquiler = await _context.Alquileres.FindAsync(id);
+            if (alquiler == null) return false;
+
+            alquiler.FechaInicio = dto.FechaInicio;
+            alquiler.FechaFin = dto.FechaFin;
+            alquiler.FechaDevolucion = dto.FechaDevolucion;
+            alquiler.Total = dto.Total;
+            alquiler.Estado = dto.Estado;
+            alquiler.AceptoTerminos = dto.AceptoTerminos;
+            alquiler.UsuarioId = dto.UsuarioId;
+            alquiler.VehiculoId = dto.VehiculoId;
+            alquiler.EmpleadoId = dto.EmpleadoId;
+
             await _context.SaveChangesAsync();
             return true;
         }
