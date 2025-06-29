@@ -315,6 +315,80 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "RentCars.Api.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "RentCars.Api.DTOs.Auth.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "RentCars.Api.DTOs.Auth.LoginResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "RentCars.Api.Controllers.AuthController",
+    "Method": "SolicitarReset",
+    "RelativePath": "api/Auth/recuperar-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "RentCars.Api.DTOs.Auth.ForgotPasswordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentCars.Api.Controllers.AuthController",
+    "Method": "Registrar",
+    "RelativePath": "api/Auth/registro",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "RentCars.Api.DTOs.Auth.RegisterRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentCars.Api.Controllers.AuthController",
+    "Method": "Resetear",
+    "RelativePath": "api/Auth/resetear-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "RentCars.Api.DTOs.Auth.ResetPasswordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "RentCars.Api.Controllers.ContactoController",
     "Method": "GetAll",
     "RelativePath": "api/Contacto",
@@ -734,7 +808,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "RentCars.Api.DTOs.Usuario.UsuarioRegistroDTO",
+        "Type": "RentCars.Api.DTOs.Usuario.UsuarioRegisterDTO",
         "IsRequired": true
       }
     ],
@@ -781,7 +855,7 @@
       },
       {
         "Name": "dto",
-        "Type": "RentCars.Api.DTOs.Usuario.UsuarioUpdateDTO",
+        "Type": "RentCars.Api.DTOs.Usuario.UsuarioUpdateRequestDTO",
         "IsRequired": true
       }
     ],

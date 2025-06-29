@@ -38,7 +38,7 @@ namespace RentCars.Api.Services.Implementaciones
             if (existente == null) return null;
 
             existente.Nombre_Completo = usuario.Nombre_Completo;
-            existente.password = usuario.password;
+            existente.PasswordHash = usuario.PasswordHash;
             existente.DNI = usuario.DNI;
             existente.FechaNacimiento = usuario.FechaNacimiento;
             existente.Email = usuario.Email;

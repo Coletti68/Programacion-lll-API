@@ -39,7 +39,7 @@ namespace RentCars.Api.Controllers
             return Ok(response);
         }
 
-        //GET: api/usuario/{id}
+        // GET: api/usuario/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<UsuarioResponseDTO>> GetById(int id)
         {
@@ -65,19 +65,21 @@ namespace RentCars.Api.Controllers
 
         // POST: api/usuario
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] UsuarioRegistroDTO dto)
+        public async Task<IActionResult> Create([FromBody] UsuarioRegisterDTO dto)
         {
             var nuevo = new Usuario
             {
                 Nombre_Completo = dto.NombreCompleto,
-                password = dto.password,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
                 TipoDocumento = dto.TipoDocumento,
                 DNI = dto.DNI,
-                FechaNacimiento = DateTime.Parse(dto.FechaNacimiento).Date,
+                FechaNacimiento = !string.IsNullOrWhiteSpace(dto.FechaNacimiento)
+                    ? DateTime.Parse(dto.FechaNacimiento).Date
+                    : null,
                 Telefono = dto.Telefono,
                 Email = dto.Email,
                 Pais = dto.Pais,
-                Direccion = dto.Direccion,
+                Direccion = dto.Direccion
             };
 
             var creado = await _usuarioService.CreateAsync(nuevo);
@@ -92,20 +94,19 @@ namespace RentCars.Api.Controllers
                 Telefono = creado.Telefono,
                 Email = creado.Email,
                 Pais = creado.Pais,
-                Direccion = creado.Direccion,
+                Direccion = creado.Direccion
             };
 
             return CreatedAtAction(nameof(GetById), new { id = creado.UsuarioId }, response);
         }
 
-        // PUT: api/usuario
+        // PUT: api/usuario/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] UsuarioUpdateDTO dto)
+        public async Task<IActionResult> Update(int id, [FromBody] UsuarioUpdateRequestDTO dto)
         {
             var existente = await _usuarioService.GetByIdAsync(id);
             if (existente == null) return NotFound();
 
-            // Solo actualizás los campos que vengan con valor
             if (!string.IsNullOrEmpty(dto.NombreCompleto))
                 existente.Nombre_Completo = dto.NombreCompleto;
 
@@ -130,14 +131,12 @@ namespace RentCars.Api.Controllers
             if (!string.IsNullOrEmpty(dto.Direccion))
                 existente.Direccion = dto.Direccion;
 
-            if (!string.IsNullOrEmpty(dto.password))
-                existente.password = dto.password; // futuro lugar para hashear
-
+            if (!string.IsNullOrEmpty(dto.Password))
+                existente.PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
 
             var actualizado = await _usuarioService.UpdateAsync(id, existente);
             return actualizado != null ? NoContent() : StatusCode(500, "No se pudo actualizar el usuario.");
         }
-
 
         // DELETE: api/usuario/{id}
         [HttpDelete("{id}")]
