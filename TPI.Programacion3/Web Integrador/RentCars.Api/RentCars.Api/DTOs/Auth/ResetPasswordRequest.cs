@@ -6,12 +6,12 @@ namespace RentCars.Api.DTOs.Auth
     {
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         [Required]
-        public string Token { get; set; }
+        public string Token { get; set; } = string.Empty;
 
         [Required]
-        public string NuevaPassword { get; set; }
+        public string NuevaPassword { get; set; }  = string.Empty;
     }
 }
