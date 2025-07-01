@@ -2098,6 +2098,11 @@
           "tipo": {
             "type": "string",
             "nullable": true
+          },
+          "fechaVencimiento": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2127,6 +2132,11 @@
           },
           "tipo": {
             "type": "string",
+            "nullable": true
+          },
+          "fechaVencimiento": {
+            "type": "string",
+            "format": "date-time",
             "nullable": true
           }
         },

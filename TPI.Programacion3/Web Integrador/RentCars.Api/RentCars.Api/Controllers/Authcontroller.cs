@@ -17,7 +17,7 @@ namespace RentCars.Api.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly ITokenService _tokenService;
-        
+
         public AuthController(ApplicationDbContext context, ITokenService tokenService)
         {
             _context = context;
@@ -119,3 +119,4 @@ namespace RentCars.Api.Controllers
         }
 
     }
+}
