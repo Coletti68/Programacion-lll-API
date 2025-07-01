@@ -10,3 +10,4 @@ obj/
 *.ldf
 *.json
 .env
+.vs/

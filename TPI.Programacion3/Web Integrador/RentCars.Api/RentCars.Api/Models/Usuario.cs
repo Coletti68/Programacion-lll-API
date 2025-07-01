@@ -6,10 +6,10 @@ public class Usuario
     public int UsuarioId { get; set; }
 
     [Required]
-    public string Nombre_Completo { get; set; }
+    public string Nombre_Completo { get; set; } = string.Empty;
 
     [Required]
-    public string PasswordHash { get; set; }
+    public string PasswordHash { get; set; } = string.Empty;
 
     public string? DNI { get; set; }
 
@@ -19,7 +19,7 @@ public class Usuario
 
     [Required]
     [EmailAddress]
-    public string Email { get; set; }
+    public string Email { get; set; }  = string.Empty;
 
     public string? Pais { get; set; }
 

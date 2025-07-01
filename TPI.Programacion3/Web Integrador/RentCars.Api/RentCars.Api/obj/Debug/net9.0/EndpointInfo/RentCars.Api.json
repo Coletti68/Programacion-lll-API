@@ -548,6 +548,18 @@
         }
       }
     },
+    "/api/Auth/actual": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Contacto": {
       "get": {
         "tags": [

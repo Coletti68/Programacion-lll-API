@@ -1,3 +1,15 @@
+
+-- Eliminar la base de datos si ya existe
+IF DB_ID('AlquilerBDD') IS NOT NULL
+BEGIN
+    ALTER DATABASE AlquilerBDD SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE AlquilerBDD;
+END
+GO
+
+-- Crear la base de datos
+CREATE DATABASE AlquilerBDD;
+GO
 USE AlquilerBDD;
 GO
 
@@ -6,7 +18,8 @@ CREATE TABLE Usuario (
     UsuarioId INT PRIMARY KEY IDENTITY,
     Nombre_Completo NVARCHAR(100),
     PasswordHash NVARCHAR(255) NOT NULL,
-    DNI VARCHAR(12),
+    TipoDocumento NVARCHAR(50),
+    DNI NVARCHAR(12),
     FechaNacimiento DATE,
     Telefono NVARCHAR(30),
     Email NVARCHAR(100) UNIQUE,
@@ -15,28 +28,19 @@ CREATE TABLE Usuario (
     FechaRegistro DATETIME DEFAULT GETDATE(),
     Rol NVARCHAR(50) DEFAULT 'Usuario',
     ResetToken NVARCHAR(255),
-    ResetTokenExpira DATETIME,
-	Activo BIT DEFAULT 1
+    ResetTokenExpira DATETIME
 );
 
+-- Crear la tabla Empleado
 CREATE TABLE Empleado (
     EmpleadoId INT PRIMARY KEY IDENTITY,
-    Nombre_Completo NVARCHAR(100) NOT NULL,
-    Cargo NVARCHAR(50) NOT NULL,
-    DNI NVARCHAR(8) NOT NULL,
+    Nombre_Completo NVARCHAR(100),
+    Cargo NVARCHAR(50),
+    DNI NVARCHAR(8),
     Telefono NVARCHAR(20),
     Email NVARCHAR(100),
     Sucursal NVARCHAR(50),
     FechaAlta DATE DEFAULT CAST(GETDATE() AS DATE),
-
-    -- Rol funcional dentro del sistema
-    Rol NVARCHAR(50) DEFAULT 'Operador' CHECK (Rol IN ('Operador', 'Secretaria')),
-
-    -- Acceso al sistema (solo para 'Secretaria')
-    PasswordHash NVARCHAR(255),
-    PasswordSalt NVARCHAR(255),
-
-    -- Estado del empleado (activo/inactivo)
     Activo BIT DEFAULT 1
 );
 
@@ -63,8 +67,7 @@ CREATE TABLE Alquiler (
     FechaFin DATE,
     FechaDevolucion DATE NULL,
     Total DECIMAL(10,2),
-    Estado NVARCHAR(20) CHECK (Estado IN ('Activo', 'Finalizado', 'Cancelado')),
-    AceptoTerminos BIT DEFAULT 0
+    Estado NVARCHAR(20) CHECK (Estado IN ('Activo', 'Finalizado', 'Cancelado'))
 );
 
 -- Crear la tabla Pago
@@ -87,8 +90,7 @@ CREATE TABLE Multa (
     Monto DECIMAL(10,2),
     FechaMulta DATE DEFAULT CAST(GETDATE() AS DATE),
     Estado NVARCHAR(50) CHECK (Estado IN ('Pendiente', 'Pago', 'Atrasado')),
-    Tipo NVARCHAR(50) CHECK (Tipo IN ('Velocidad', 'Daños', 'Entrega tardía', 'Otro')),
-    FechaVencimiento DATETIME NULL
+    Tipo NVARCHAR(50) CHECK (Tipo IN ('Velocidad', 'Daños', 'Entrega tardía', 'Otro'))
 );
 
 -- Crear la tabla Contacto

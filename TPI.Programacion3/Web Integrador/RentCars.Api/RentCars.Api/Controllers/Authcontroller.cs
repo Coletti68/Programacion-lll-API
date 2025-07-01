@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RentCars.Api.Data;
@@ -5,6 +6,7 @@ using RentCars.Api.DTOs.Auth;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace RentCars.Api.Controllers
@@ -15,7 +17,7 @@ namespace RentCars.Api.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly ITokenService _tokenService;
-
+        
         public AuthController(ApplicationDbContext context, ITokenService tokenService)
         {
             _context = context;
@@ -50,7 +52,7 @@ namespace RentCars.Api.Controllers
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == dto.Email);
 
             if (usuario == null || !BCrypt.Net.BCrypt.Verify(dto.Password, usuario.PasswordHash))
-                return Unauthorized("Email o contraseña inválidos.");
+                return Unauthorized("Credenciales Incorrectas.");
 
             var token = _tokenService.GenerarToken(usuario);
 
@@ -60,6 +62,7 @@ namespace RentCars.Api.Controllers
                 Expira = DateTime.Now.AddHours(2)
             });
         }
+
 
         [HttpPost("recuperar-password")]
         public async Task<IActionResult> SolicitarReset(ForgotPasswordRequest dto)
@@ -95,5 +98,24 @@ namespace RentCars.Api.Controllers
 
             return Ok("Contraseña actualizada exitosamente.");
         }
+
+
+
+        [HttpGet("actual")]
+        [Authorize]
+        public async Task<IActionResult> GetCurrentUser()
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            var user = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
+
+            if (user == null) return NotFound();
+            return Ok(new
+            {
+                user.UsuarioId,
+                user.Nombre_Completo,
+                user.Email,
+                user.Rol
+            });
+        }
+
     }
-}
