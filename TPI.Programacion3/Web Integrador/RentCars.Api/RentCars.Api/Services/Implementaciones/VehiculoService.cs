@@ -69,5 +69,20 @@ namespace RentCars.Api.Services.Implementaciones
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<bool> CambiarEstadoAsync(int id, string nuevoEstado)
+        {
+            var estadosValidos = new[] { "Disponible", "Alquilado", "Mantenimiento", "Reservado" };
+            if (!estadosValidos.Contains(nuevoEstado))
+                return false;
+
+            var vehiculo = await _context.Vehiculos.FindAsync(id);
+            if (vehiculo == null)
+                return false;
+
+            vehiculo.Estado = nuevoEstado;
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }

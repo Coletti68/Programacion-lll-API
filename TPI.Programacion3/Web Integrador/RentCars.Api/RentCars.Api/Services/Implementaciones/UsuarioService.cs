@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RentCars.Api.Data;
+using RentCars.Api.DTOs.Alquiler;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
 
@@ -16,17 +17,30 @@ namespace RentCars.Api.Services.Implementaciones
 
         public async Task<IEnumerable<Usuario>> GetAllAsync()
         {
-            return await _context.Usuarios.ToListAsync(); //Accede a la tabla Usuarios del DbContext y convierte los registros en una lista de objetos Usuario.
-
+            return await _context.Usuarios.ToListAsync();
         }
 
         public async Task<Usuario?> GetByIdAsync(int id)
         {
-            return await _context.Usuarios.FindAsync(id); //Busca en la bdd ese user por su id
+            return await _context.Usuarios.FindAsync(id);
         }
 
-        public async Task<Usuario> CreateAsync(Usuario usuario) //recibe un obj user y lo guarda en la bdd
+        public async Task<Usuario> CreateAsync(Usuario usuario)
         {
+            var reglasDni = new Dictionary<string, int>
+                {
+                    { "Argentina", 8 },
+                    { "Brasil", 11 },
+                    { "Paraguay", 6 },
+                    { "Chile", 9 }
+                };
+
+            if (reglasDni.TryGetValue(usuario.Pais, out var longitudEsperada))
+            {
+                if (usuario.DNI == null || usuario.DNI.Length != longitudEsperada)
+                    throw new Exception($"El DNI debe tener {longitudEsperada} dígitos para {usuario.Pais}.");
+            }
+
             _context.Usuarios.Add(usuario);
             await _context.SaveChangesAsync();
             return usuario;
@@ -50,14 +64,33 @@ namespace RentCars.Api.Services.Implementaciones
             return existente;
         }
 
-        public async Task<bool> DeleteAsync(int id) //borra un usuario por su id
+        public async Task<bool> DesactivarAsync(int id)
         {
-            var usuario = await _context.Usuarios.FindAsync(id); //lo busca en la bdd
-            if (usuario == null) return false; //si no existe, para la busqueda ahi
+            var usuario = await _context.Usuarios.FindAsync(id);
+            if (usuario == null) return false;
 
-            _context.Usuarios.Remove(usuario);
-            await _context.SaveChangesAsync(); //lo elimina y guarda los cambios
+            usuario.Activo = false;
+            await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<IEnumerable<AlquilerResumenDTO>> GetHistorialPorUsuarioAsync(int id)
+        {
+            return await _context.Alquileres
+                .Where(a => a.UsuarioId == id)
+                .Include(a => a.Vehiculo)
+                .OrderByDescending(a => a.FechaInicio)
+                .Select(a => new AlquilerResumenDTO
+                {
+                    AlquilerId = a.AlquilerId,
+                    Vehiculo = a.Vehiculo.Marca + " " + a.Vehiculo.Modelo,
+                    FechaInicio = a.FechaInicio,
+                    FechaFin = a.FechaFin,
+                    Total = a.Total,
+                    Estado = a.Estado
+                })
+                .ToListAsync();
         }
     }
 }
+

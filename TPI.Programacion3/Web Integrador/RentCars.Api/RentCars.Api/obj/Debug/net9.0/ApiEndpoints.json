@@ -80,54 +80,18 @@
   },
   {
     "ContainingType": "RentCars.Api.Controllers.AlquilerController",
-    "Method": "RegistrarMulta",
-    "RelativePath": "api/Alquiler/{id}/multa",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "multa",
-        "Type": "RentCars.Api.Models.Multa",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentCars.Api.Controllers.AlquilerController",
-    "Method": "AgregarPago",
-    "RelativePath": "api/Alquiler/{id}/pago",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "pago",
-        "Type": "RentCars.Api.Models.Pago",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentCars.Api.Controllers.AlquilerController",
     "Method": "GetActivos",
     "RelativePath": "api/Alquiler/activos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -140,22 +104,6 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentCars.Api.Controllers.AlquilerController",
-    "Method": "ContarPorCliente",
-    "RelativePath": "api/Alquiler/cliente/{clienteId}/total",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "clienteId",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -270,19 +218,30 @@
   {
     "ContainingType": "RentCars.Api.Controllers.AlquilerController",
     "Method": "GetByClienteId",
-    "RelativePath": "api/Alquiler/usuario/{UsuarioId}",
+    "RelativePath": "api/Alquiler/usuario/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "clienteId",
+        "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
-      },
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentCars.Api.Controllers.AlquilerController",
+    "Method": "ContarPorUsuario",
+    "RelativePath": "api/Alquiler/usuario/{id}/total",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Name": "UsuarioId",
-        "Type": "",
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -655,27 +614,6 @@
   },
   {
     "ContainingType": "RentCars.Api.Controllers.MultasController",
-    "Method": "Update",
-    "RelativePath": "api/Multas/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "request",
-        "Type": "RentCars.Api.DTOs.Multa.MultaUpdateRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentCars.Api.Controllers.MultasController",
     "Method": "Delete",
     "RelativePath": "api/Multas/{id}",
     "HttpMethod": "DELETE",
@@ -688,6 +626,37 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentCars.Api.Controllers.MultasController",
+    "Method": "CambiarEstado",
+    "RelativePath": "api/Multas/{id}/estado",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "nuevoEstado",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentCars.Api.Controllers.MultasController",
+    "Method": "ObtenerMultasImpagas",
+    "RelativePath": "api/Multas/impagas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -863,9 +832,25 @@
   },
   {
     "ContainingType": "RentCars.Api.Controllers.UsuarioController",
-    "Method": "Delete",
+    "Method": "DesactivarUsuario",
     "RelativePath": "api/Usuario/{id}",
     "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentCars.Api.Controllers.UsuarioController",
+    "Method": "ObtenerHistorial",
+    "RelativePath": "api/Usuario/{id}/historial",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -991,6 +976,27 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RentCars.Api.Controllers.VehiculosController",
+    "Method": "CambiarEstado",
+    "RelativePath": "api/Vehiculos/{id}/estado",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "nuevoEstado",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

@@ -130,26 +130,19 @@
         }
       }
     },
-    "/api/Alquiler/usuario/{UsuarioId}": {
+    "/api/Alquiler/usuario/{id}": {
       "get": {
         "tags": [
           "Alquiler"
         ],
         "parameters": [
           {
-            "name": "clienteId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "UsuarioId",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -216,6 +209,16 @@
       "get": {
         "tags": [
           "Alquiler"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -290,90 +293,6 @@
         }
       }
     },
-    "/api/Alquiler/{id}/multa": {
-      "post": {
-        "tags": [
-          "Alquiler"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Multa"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Multa"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Multa"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Alquiler/{id}/pago": {
-      "post": {
-        "tags": [
-          "Alquiler"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Pago"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Pago"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Pago"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Alquiler/disponible": {
       "get": {
         "tags": [
@@ -435,14 +354,14 @@
         }
       }
     },
-    "/api/Alquiler/cliente/{clienteId}/total": {
+    "/api/Alquiler/usuario/{id}/total": {
       "get": {
         "tags": [
           "Alquiler"
         ],
         "parameters": [
           {
-            "name": "clienteId",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -1062,7 +981,30 @@
           }
         }
       },
-      "put": {
+      "delete": {
+        "tags": [
+          "Multas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Multas/{id}/estado": {
+      "patch": {
         "tags": [
           "Multas"
         ],
@@ -1081,17 +1023,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MultaUpdateRequest"
+                "type": "string"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/MultaUpdateRequest"
+                "type": "string"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/MultaUpdateRequest"
+                "type": "string"
               }
             }
           }
@@ -1101,21 +1043,12 @@
             "description": "OK"
           }
         }
-      },
-      "delete": {
+      }
+    },
+    "/api/Multas/impagas": {
+      "get": {
         "tags": [
           "Multas"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -1437,6 +1370,29 @@
         }
       }
     },
+    "/api/Usuario/{id}/historial": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Vehiculos": {
       "get": {
         "tags": [
@@ -1632,6 +1588,48 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Vehiculos/{id}/estado": {
+      "patch": {
+        "tags": [
+          "Vehiculos"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -2122,32 +2120,6 @@
         },
         "additionalProperties": false
       },
-      "MultaUpdateRequest": {
-        "type": "object",
-        "properties": {
-          "descripcion": {
-            "type": "string",
-            "nullable": true
-          },
-          "monto": {
-            "type": "number",
-            "format": "double"
-          },
-          "fechaMulta": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "estado": {
-            "type": "string",
-            "nullable": true
-          },
-          "tipo": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "Pago": {
         "type": "object",
         "properties": {
@@ -2319,10 +2291,6 @@
             "minLength": 1,
             "type": "string"
           },
-          "tipoDocumento": {
-            "type": "string",
-            "nullable": true
-          },
           "dni": {
             "type": "string",
             "nullable": true
@@ -2366,6 +2334,9 @@
             "format": "date-time",
             "nullable": true
           },
+          "activo": {
+            "type": "boolean"
+          },
           "alquileres": {
             "type": "array",
             "items": {
@@ -2398,10 +2369,6 @@
           "password": {
             "minLength": 6,
             "type": "string"
-          },
-          "tipoDocumento": {
-            "type": "string",
-            "nullable": true
           },
           "dni": {
             "type": "string",
@@ -2442,10 +2409,6 @@
             "type": "string",
             "nullable": true
           },
-          "tipoDocumento": {
-            "type": "string",
-            "nullable": true
-          },
           "dni": {
             "type": "string",
             "nullable": true
@@ -2474,6 +2437,9 @@
           "fechaRegistro": {
             "type": "string",
             "format": "date-time"
+          },
+          "activo": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -2482,10 +2448,6 @@
         "type": "object",
         "properties": {
           "nombreCompleto": {
-            "type": "string",
-            "nullable": true
-          },
-          "tipoDocumento": {
             "type": "string",
             "nullable": true
           },
@@ -2632,6 +2594,10 @@
             "nullable": true
           },
           "placa": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
             "type": "string",
             "nullable": true
           }

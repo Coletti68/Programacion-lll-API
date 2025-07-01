@@ -4,7 +4,6 @@ namespace RentCars.Api.DTOs.Usuario
     {
         public int UsuarioId { get; set; }
         public string NombreCompleto { get; set; }
-        public string? TipoDocumento { get; set; }
         public string? DNI { get; set; }
         public DateTime? FechaNacimiento { get; set; }
         public string? Telefono { get; set; }
@@ -12,5 +11,6 @@ namespace RentCars.Api.DTOs.Usuario
         public string? Pais { get; set; }
         public string? Direccion { get; set; }
         public DateTime FechaRegistro { get; set; }
+        public bool Activo { get; set; }
     }
 }

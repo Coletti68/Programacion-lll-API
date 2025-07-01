@@ -13,6 +13,8 @@ namespace RentCars.Api.Models
         public string Estado { get; set; }
         public string Tipo { get; set; }
 
+        public DateTime? FechaVencimiento {  get; set; }
+
     }
 }
 

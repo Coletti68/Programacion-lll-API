@@ -30,7 +30,8 @@ namespace RentCars.Api.Controllers
                 VehiculoId = v.VehiculoId,
                 Marca = v.Marca,
                 Modelo = v.Modelo,
-                Placa = v.Placa
+                Placa = v.Placa,
+                Estado = v.Estado
             });
 
             return Ok(result);
@@ -143,6 +144,14 @@ namespace RentCars.Api.Controllers
             if (!eliminado) return NotFound();
 
             return NoContent();
+        }
+
+        // PATCH: api/vehiculo/{id}/estado
+        [HttpPatch("{id}/estado")]
+        public async Task<IActionResult> CambiarEstado(int id, [FromBody] string nuevoEstado)
+        {
+            var result = await _vehiculoService.CambiarEstadoAsync(id, nuevoEstado);
+            return result ? NoContent() : BadRequest("No se pudo actualizar el estado del vehículo.");
         }
     }
 }

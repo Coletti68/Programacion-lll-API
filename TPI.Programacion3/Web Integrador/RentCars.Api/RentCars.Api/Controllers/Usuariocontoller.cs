@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RentCars.Api.DTOs.Usuario;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
@@ -26,14 +27,14 @@ namespace RentCars.Api.Controllers
             {
                 UsuarioId = u.UsuarioId,
                 NombreCompleto = u.Nombre_Completo,
-                TipoDocumento = u.TipoDocumento,
                 DNI = u.DNI,
                 FechaNacimiento = u.FechaNacimiento,
                 Telefono = u.Telefono,
                 Email = u.Email,
                 Pais = u.Pais,
                 Direccion = u.Direccion,
-                FechaRegistro = u.FechaRegistro
+                FechaRegistro = u.FechaRegistro,
+                Activo = u.Activo
             });
 
             return Ok(response);
@@ -50,7 +51,6 @@ namespace RentCars.Api.Controllers
             {
                 UsuarioId = usuario.UsuarioId,
                 NombreCompleto = usuario.Nombre_Completo,
-                TipoDocumento = usuario.TipoDocumento,
                 DNI = usuario.DNI,
                 FechaNacimiento = usuario.FechaNacimiento,
                 Telefono = usuario.Telefono,
@@ -71,7 +71,6 @@ namespace RentCars.Api.Controllers
             {
                 Nombre_Completo = dto.NombreCompleto,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
-                TipoDocumento = dto.TipoDocumento,
                 DNI = dto.DNI,
                 FechaNacimiento = !string.IsNullOrWhiteSpace(dto.FechaNacimiento)
                     ? DateTime.Parse(dto.FechaNacimiento).Date
@@ -88,7 +87,6 @@ namespace RentCars.Api.Controllers
             {
                 UsuarioId = creado.UsuarioId,
                 NombreCompleto = creado.Nombre_Completo,
-                TipoDocumento = creado.TipoDocumento,
                 DNI = creado.DNI,
                 FechaNacimiento = creado.FechaNacimiento,
                 Telefono = creado.Telefono,
@@ -109,9 +107,6 @@ namespace RentCars.Api.Controllers
 
             if (!string.IsNullOrEmpty(dto.NombreCompleto))
                 existente.Nombre_Completo = dto.NombreCompleto;
-
-            if (!string.IsNullOrEmpty(dto.TipoDocumento))
-                existente.TipoDocumento = dto.TipoDocumento;
 
             if (!string.IsNullOrEmpty(dto.DNI))
                 existente.DNI = dto.DNI;
@@ -138,12 +133,20 @@ namespace RentCars.Api.Controllers
             return actualizado != null ? NoContent() : StatusCode(500, "No se pudo actualizar el usuario.");
         }
 
-        // DELETE: api/usuario/{id}
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DesactivarUsuario(int id)
         {
-            var eliminado = await _usuarioService.DeleteAsync(id);
-            return eliminado ? NoContent() : NotFound();
+            var result = await _usuarioService.DesactivarAsync(id);
+            return result ? NoContent() : NotFound();
+        }
+
+        // GET: api/usuario/{id}/historial
+        [HttpGet("{id}/historial")]
+        public async Task<IActionResult> ObtenerHistorial(int id)
+        {
+            var historial = await _usuarioService.GetHistorialPorUsuarioAsync(id);
+            return historial.Any() ? Ok(historial) : NotFound($"El usuario {id} no tiene alquileres registrados.");
         }
     }
 }
+

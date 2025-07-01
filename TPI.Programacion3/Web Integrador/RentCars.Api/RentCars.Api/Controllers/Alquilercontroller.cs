@@ -77,10 +77,10 @@ namespace RentCars.Api.Controllers
         }
 
         // GET: api/Alquiler/cliente/{clienteId}
-        [HttpGet("usuario/{UsuarioId}")]
-        public async Task<IActionResult> GetByClienteId(int clienteId)
+        [HttpGet("usuario/{id}")]
+        public async Task<IActionResult> GetByClienteId(int id)
         {
-            var result = await _alquilerService.GetByClienteIdAsync(clienteId);
+            var result = await _alquilerService.GetByUsuarioIdAsync(id);
             return Ok(result);
         }
 
@@ -88,6 +88,10 @@ namespace RentCars.Api.Controllers
         [HttpGet("estado/{estado}")]
         public async Task<IActionResult> GetByEstado(string estado)
         {
+            var estadosValidos = new[] { "Activo", "Cancelado", "Finalizado" };
+            if (!estadosValidos.Contains(estado))
+                return BadRequest("Estado inválido. Los valores permitidos son: Activo, Cancelado, Finalizado.");
+
             var result = await _alquilerService.GetByEstadoAsync(estado);
             return Ok(result);
         }
@@ -96,16 +100,20 @@ namespace RentCars.Api.Controllers
         [HttpGet("rango")]
         public async Task<IActionResult> GetByRangoFechas(DateTime desde, DateTime hasta)
         {
+
+            if (hasta < desde)
+                return BadRequest("La fecha 'hasta' debe ser mayor o igual a la fecha 'desde'.");
+
             var result = await _alquilerService.GetByRangoFechasAsync(desde, hasta);
             return Ok(result);
         }
 
         // GET: api/Alquiler/activos
         [HttpGet("activos")]
-        public async Task<IActionResult> GetActivos()
+        public async Task<IActionResult> GetActivos([FromQuery] int? id)
         {
-            var result = await _alquilerService.GetAlquileresActivosAsync();
-            return Ok(result);
+            var alquileres = await _alquilerService.GetAlquileresActivosAsync(id);
+            return Ok(alquileres);
         }
 
         // GET: api/Alquiler/vencidos
@@ -120,6 +128,9 @@ namespace RentCars.Api.Controllers
         [HttpPut("finalizar/{id}")]
         public async Task<IActionResult> Finalizar(int id, [FromQuery] DateTime fechaDevolucion)
         {
+            if (fechaDevolucion == default)
+                return BadRequest("Se requiere una fecha de devolución válida.");
+
             var result = await _alquilerService.FinalizarAlquilerAsync(id, fechaDevolucion);
             return result ? Ok() : NotFound();
         }
@@ -127,31 +138,21 @@ namespace RentCars.Api.Controllers
         // PUT: api/Alquiler/cancelar/{id}
         [HttpPut("cancelar/{id}")]
         public async Task<IActionResult> Cancelar(int id)
-        {
+        { 
             var result = await _alquilerService.CancelarAlquilerAsync(id);
-            return result ? Ok() : NotFound();
-        }
+            if (!result)
+                return BadRequest("No se puede cancelar el alquiler. Puede que ya esté finalizado o cancelado.");
 
-        // POST: api/Alquiler/{id}/multa
-        [HttpPost("{id}/multa")]
-        public async Task<IActionResult> RegistrarMulta(int id, [FromBody] Multa multa)
-        {
-            var result = await _alquilerService.RegistrarMultaAsync(id, multa);
-            return result ? Ok() : NotFound();
-        }
-
-        // POST: api/Alquiler/{id}/pago
-        [HttpPost("{id}/pago")]
-        public async Task<IActionResult> AgregarPago(int id, [FromBody] Pago pago)
-        {
-            var result = await _alquilerService.AgregarPagoAsync(id, pago);
-            return result ? Ok() : NotFound();
+            return Ok();
         }
 
         // GET: api/Alquiler/disponible?vehiculoId=1&desde=2025-07-01&hasta=2025-07-05
         [HttpGet("disponible")]
         public async Task<IActionResult> VerificarDisponibilidad(int vehiculoId, DateTime desde, DateTime hasta)
         {
+            if (desde > hasta)
+                return BadRequest("La fecha 'desde' debe ser anterior o igual a la fecha 'hasta'.");
+
             var disponible = await _alquilerService.VerificarDisponibilidadVehiculoAsync(vehiculoId, desde, hasta);
             return Ok(disponible);
         }
@@ -161,14 +162,17 @@ namespace RentCars.Api.Controllers
         public async Task<IActionResult> GetPorVehiculo(int vehiculoId)
         {
             var result = await _alquilerService.GetAlquileresPorVehiculoAsync(vehiculoId);
+
+            if (result == null || !result.Any())
+                return NotFound($"No se encontraron alquileres para el vehículo con ID {vehiculoId}.");
             return Ok(result);
         }
 
         // GET: api/Alquiler/cliente/5/total
-        [HttpGet("cliente/{clienteId}/total")]
-        public async Task<IActionResult> ContarPorCliente(int clienteId)
+        [HttpGet("usuario/{id}/total")]
+        public async Task<IActionResult> ContarPorUsuario(int id)
         {
-            var count = await _alquilerService.ContarAlquileresPorClienteAsync(clienteId);
+            var count = await _alquilerService.ContarAlquileresPorUsuarioAsync(id);
             return Ok(count);
         }
 
@@ -176,6 +180,8 @@ namespace RentCars.Api.Controllers
         [HttpGet("facturado")]
         public async Task<IActionResult> CalcularTotal(DateTime desde, DateTime hasta)
         {
+            if (hasta < desde)
+                return BadRequest("La fecha 'hasta' debe ser mayor o igual a la fecha 'desde'.");
             var total = await _alquilerService.CalcularTotalFacturadoAsync(desde, hasta);
             return Ok(total);
         }

@@ -11,5 +11,6 @@ namespace RentCars.Api.Services.Interfaces
         Task<Vehiculo> CreateAsync(Vehiculo vehiculo);
         Task<Vehiculo?> UpdateAsync(int id, Vehiculo vehiculo);
         Task<bool> DeleteAsync(int id);
+        Task<bool> CambiarEstadoAsync(int id, string nuevoEstado);
     }
 }

@@ -9,6 +9,5 @@ namespace RentCars.Api.DTOs.Alquiler
     public DateTime FechaFin { get; set; }
     public decimal Total { get; set; }
     public string Estado { get; set; } = string.Empty;
-    public bool AceptoTerminos { get; set; } = false;
     }
 }

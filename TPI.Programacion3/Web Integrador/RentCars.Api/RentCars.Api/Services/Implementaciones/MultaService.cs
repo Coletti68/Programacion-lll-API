@@ -65,19 +65,19 @@ namespace RentCars.Api.Services.Implementaciones
             return await GetByIdAsync(multa.MultaId) ?? throw new Exception("No se pudo crear la multa");
         }
 
-        public async Task<MultaResponse?> UpdateAsync(int id, MultaUpdateRequest request)
+        public async Task<bool> CambiarEstadoAsync(int multaId, string nuevoEstado)
         {
-            var multa = await _context.Multas.FindAsync(id);
-            if (multa == null) return null;
+            var estadosValidos = new[] { "Pendiente", "Pago", "Atrasado" };
+            if (!estadosValidos.Contains(nuevoEstado))
+                return false;
 
-            multa.Descripcion = request.Descripcion;
-            multa.Monto = request.Monto;
-            multa.FechaMulta = request.FechaMulta;
-            multa.Estado = request.Estado;
-            multa.Tipo = request.Tipo;
+            var multa = await _context.Multas.FindAsync(multaId);
+            if (multa == null)
+                return false;
 
+            multa.Estado = nuevoEstado;
             await _context.SaveChangesAsync();
-            return await GetByIdAsync(id);
+            return true;
         }
 
         public async Task<bool> DeleteAsync(int id)
@@ -89,5 +89,22 @@ namespace RentCars.Api.Services.Implementaciones
             await _context.SaveChangesAsync();
             return true;
         }
+        public async Task<IEnumerable<MultaResumenResponse>> ObtenerMultasImpagasAsync()
+        {
+            return await _context.Multas
+                .Where(m => m.Estado == "Pendiente" || m.Estado == "Atrasado")
+                .Include(m => m.Alquiler).ThenInclude(a => a.Usuario)
+                .Select(m => new MultaResumenResponse
+                {
+                    MultaId = m.MultaId,
+                    Descripcion = m.Descripcion,
+                    Monto = m.Monto,
+                    Estado = m.Estado,
+                    Fecha = m.FechaMulta,
+                    UsuarioNombre = m.Alquiler.Usuario.Nombre_Completo + " "
+                })
+                .ToListAsync();
+        }
+
     }
 }

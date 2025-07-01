@@ -11,8 +11,6 @@ public class Usuario
     [Required]
     public string PasswordHash { get; set; }
 
-    public string? TipoDocumento { get; set; }
-
     public string? DNI { get; set; }
 
     public DateTime? FechaNacimiento { get; set; }
@@ -34,6 +32,8 @@ public class Usuario
     public string? ResetToken { get; set; }
 
     public DateTime? ResetTokenExpira { get; set; }
+
+    public bool Activo { get; set; } = true;
 
     // Relaciones
     public ICollection<Alquiler>? Alquileres { get; set; }

@@ -41,8 +41,29 @@ namespace RentCars.Api.Services.Implementaciones
 
         public async Task<Alquiler> CreateAsync(Alquiler alquiler)
         {
+            // Buscar el vehículo
+            var vehiculo = await _context.Vehiculos.FindAsync(alquiler.VehiculoId);
+
+            if (vehiculo == null)
+                throw new Exception("El vehículo especificado no existe.");
+
+            // Validar que el vehículo esté en estado 'Disponible'
+            var estadosInvalidos = new[] { "Alquilado", "Reservado", "Mantenimiento" };
+
+            if (estadosInvalidos.Contains(vehiculo.Estado))
+                throw new Exception($"El vehículo no puede ser alquilado porque se encuentra en estado '{vehiculo.Estado}'.");
+
+            // Marcar el vehículo según la fecha de inicio
+            var hoy = DateTime.Today;
+
+            vehiculo.Estado = (alquiler.FechaInicio > hoy) ? "Reservado" : "Alquilado";
+
+            // Agregar el alquiler
             _context.Alquileres.Add(alquiler);
+
+            // Guardar todo en conjunto
             await _context.SaveChangesAsync();
+
             return alquiler;
         }
 
@@ -100,10 +121,11 @@ namespace RentCars.Api.Services.Implementaciones
             return true;
         }
 
-        public async Task<IEnumerable<Alquiler>> GetByClienteIdAsync(int clienteId)
+        //
+        public async Task<IEnumerable<Alquiler>> GetByUsuarioIdAsync(int id)
         {
             return await _context.Alquileres
-                .Where(a => a.UsuarioId == clienteId)
+                .Where(a => a.UsuarioId == id)
                 .ToListAsync();
         }
 
@@ -121,27 +143,34 @@ namespace RentCars.Api.Services.Implementaciones
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Alquiler>> GetAlquileresActivosAsync()
+        public async Task<IEnumerable<Alquiler>> GetAlquileresActivosAsync(int? id = null)
         {
-            return await _context.Alquileres
-                .Where(a => a.Estado == "Activo")
-                .ToListAsync();
+            var query = _context.Alquileres
+                .Where(a => a.Estado == "Activo");
+
+            if (id.HasValue)
+                query = query.Where(a => a.UsuarioId == id.Value);
+
+            return await query.ToListAsync();
         }
 
         public async Task<IEnumerable<Alquiler>> GetAlquileresVencidosAsync()
         {
+            var hoy = DateTime.Today;
             return await _context.Alquileres
-                .Where(a => a.FechaFin < DateTime.Now && a.FechaDevolucion == null)
+                .Where(a => a.Estado == "Activo" && a.FechaFin < hoy)
                 .ToListAsync();
         }
-
+   
         public async Task<bool> FinalizarAlquilerAsync(int alquilerId, DateTime fechaDevolucion)
         {
             var alquiler = await _context.Alquileres.FindAsync(alquilerId);
-            if (alquiler == null) return false;
+            if (alquiler == null || alquiler.Estado != "Activo")
+                return false;
 
-            alquiler.FechaDevolucion = fechaDevolucion;
             alquiler.Estado = "Finalizado";
+            alquiler.FechaFin = fechaDevolucion;
+
             await _context.SaveChangesAsync();
             return true;
         }
@@ -149,47 +178,25 @@ namespace RentCars.Api.Services.Implementaciones
         public async Task<bool> CancelarAlquilerAsync(int alquilerId)
         {
             var alquiler = await _context.Alquileres.FindAsync(alquilerId);
-            if (alquiler == null) return false;
+            if (alquiler == null || alquiler.Estado != "Activo")
+                return false;
 
             alquiler.Estado = "Cancelado";
             await _context.SaveChangesAsync();
             return true;
         }
 
-        public async Task<bool> RegistrarMultaAsync(int alquilerId, Multa multa)
-        {
-            var alquiler = await _context.Alquileres
-                .Include(a => a.Multas)
-                .FirstOrDefaultAsync(a => a.AlquilerId == alquilerId);
+        //
 
-            if (alquiler == null) return false;
 
-            alquiler.Multas.Add(multa);
-            await _context.SaveChangesAsync();
-            return true;
-        }
-
-        public async Task<bool> AgregarPagoAsync(int alquilerId, Pago pago)
-        {
-            var alquiler = await _context.Alquileres
-                .Include(a => a.Pagos)
-                .FirstOrDefaultAsync(a => a.AlquilerId == alquilerId);
-
-            if (alquiler == null) return false;
-
-            alquiler.Pagos.Add(pago);
-            await _context.SaveChangesAsync();
-            return true;
-        }
 
         public async Task<bool> VerificarDisponibilidadVehiculoAsync(int vehiculoId, DateTime desde, DateTime hasta)
         {
-            return !await _context.Alquileres.AnyAsync(a =>
-                a.VehiculoId == vehiculoId &&
-                a.Estado == "Activo" &&
-                ((desde >= a.FechaInicio && desde <= a.FechaFin) ||
-                 (hasta >= a.FechaInicio && hasta <= a.FechaFin) ||
-                 (desde <= a.FechaInicio && hasta >= a.FechaFin)));
+            return !await _context.Alquileres
+                .AnyAsync(a =>
+                    a.VehiculoId == vehiculoId &&
+                    a.Estado == "Activo" &&
+                    (desde <= a.FechaFin && hasta >= a.FechaInicio));
         }
 
         public async Task<IEnumerable<Alquiler>> GetAlquileresPorVehiculoAsync(int vehiculoId)
@@ -199,17 +206,22 @@ namespace RentCars.Api.Services.Implementaciones
                 .ToListAsync();
         }
 
-        public async Task<int> ContarAlquileresPorClienteAsync(int clienteId)
+        public async Task<int> ContarAlquileresPorUsuarioAsync(int clienteId)
         {
             return await _context.Alquileres
                 .CountAsync(a => a.UsuarioId == clienteId);
         }
 
-        public async Task<decimal> CalcularTotalFacturadoAsync(DateTime desde, DateTime hasta)
+        public Task<decimal> CalcularTotalFacturadoAsync(DateTime desde, DateTime hasta)
+        {
+            throw new NotImplementedException();
+        }
+
+        /*public async Task<decimal> CalcularTotalFacturadoAsync(DateTime desde, DateTime hasta)
         {
             return await _context.Alquileres
-                .Where(a => a.FechaInicio >= desde && a.FechaFin <= hasta)
+                .Where(a => a.FechaInicio >= desde && a.FechaFin <= hasta && a.Estado == "Finalizado")
                 .SumAsync(a => a.Total);
-        }
+        */
     }
-}
+    }

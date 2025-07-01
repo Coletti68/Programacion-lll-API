@@ -6,5 +6,6 @@ namespace RentCars.Api.DTOs.Vehiculo
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public string Placa { get; set; }
+        public string Estado { get; set; }
     }
 }
