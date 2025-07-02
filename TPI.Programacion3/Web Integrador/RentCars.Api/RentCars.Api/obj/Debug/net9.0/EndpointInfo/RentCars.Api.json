@@ -407,37 +407,6 @@
         }
       }
     },
-    "/api/Auth/registro": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegisterRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Auth/login": {
       "post": {
         "tags": [
@@ -1259,17 +1228,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UsuarioRegisterDTO"
+                "$ref": "#/components/schemas/UsuarioRegisterRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UsuarioRegisterDTO"
+                "$ref": "#/components/schemas/UsuarioRegisterRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UsuarioRegisterDTO"
+                "$ref": "#/components/schemas/UsuarioRegisterRequest"
               }
             }
           }
@@ -2241,34 +2210,6 @@
         },
         "additionalProperties": false
       },
-      "RegisterRequest": {
-        "required": [
-          "email",
-          "nombreCompleto",
-          "password"
-        ],
-        "type": "object",
-        "properties": {
-          "nombreCompleto": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "email": {
-            "minLength": 1,
-            "type": "string",
-            "format": "email"
-          },
-          "password": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "dni": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "ResetPasswordRequest": {
         "required": [
           "email",
@@ -2376,7 +2317,7 @@
         },
         "additionalProperties": false
       },
-      "UsuarioRegisterDTO": {
+      "UsuarioRegisterRequest": {
         "required": [
           "email",
           "nombreCompleto",
@@ -2416,6 +2357,9 @@
           "direccion": {
             "type": "string",
             "nullable": true
+          },
+          "activo": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

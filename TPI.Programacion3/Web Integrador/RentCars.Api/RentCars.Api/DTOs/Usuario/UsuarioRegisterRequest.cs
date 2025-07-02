@@ -2,7 +2,7 @@
 
 namespace RentCars.Api.DTOs.Usuario
 {
-    public class UsuarioRegisterDTO
+    public class UsuarioRegisterRequest
     {
         [Required]
         public string NombreCompleto { get; set; }
@@ -13,7 +13,7 @@ namespace RentCars.Api.DTOs.Usuario
 
         public string DNI { get; set; }
 
-        public string? FechaNacimiento { get; set; }  // Considerar DateTime?
+        public string? FechaNacimiento { get; set; }
 
         public string? Telefono { get; set; }
 
@@ -24,5 +24,9 @@ namespace RentCars.Api.DTOs.Usuario
         public string Pais { get; set; }
 
         public string? Direccion { get; set; }
+
+        public bool Activo { get; set; } = true;
+
+
     }
 }

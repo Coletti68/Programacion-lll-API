@@ -65,7 +65,8 @@ namespace RentCars.Api.Controllers
 
         // POST: api/usuario
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] UsuarioRegisterDTO dto)
+        public async Task<IActionResult> Create([FromBody] UsuarioRegisterRequest dto)
+
         {
             var nuevo = new Usuario
             {

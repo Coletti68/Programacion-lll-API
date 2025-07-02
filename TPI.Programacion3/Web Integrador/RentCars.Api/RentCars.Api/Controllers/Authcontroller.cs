@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RentCars.Api.Data;
 using RentCars.Api.DTOs.Auth;
+using RentCars.Api.DTOs.Usuario;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
 using System;
@@ -22,28 +23,6 @@ namespace RentCars.Api.Controllers
         {
             _context = context;
             _tokenService = tokenService;
-        }
-
-        [HttpPost("registro")]
-        public async Task<IActionResult> Registrar(RegisterRequest dto)
-        {
-            if (await _context.Usuarios.AnyAsync(u => u.Email == dto.Email))
-                return BadRequest("El correo ya está registrado.");
-
-            var usuario = new Usuario
-            {
-                Nombre_Completo = dto.NombreCompleto,
-                Email = dto.Email,
-                DNI = dto.DNI,
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
-                Rol = "Usuario",
-                FechaRegistro = DateTime.Now
-            };
-
-            _context.Usuarios.Add(usuario);
-            await _context.SaveChangesAsync();
-
-            return Ok("Registro exitoso.");
         }
 
         [HttpPost("login")]

@@ -327,22 +327,6 @@
   },
   {
     "ContainingType": "RentCars.Api.Controllers.AuthController",
-    "Method": "Registrar",
-    "RelativePath": "api/Auth/registro",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "RentCars.Api.DTOs.Auth.RegisterRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RentCars.Api.Controllers.AuthController",
     "Method": "Resetear",
     "RelativePath": "api/Auth/resetear-password",
     "HttpMethod": "POST",
@@ -787,7 +771,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "RentCars.Api.DTOs.Usuario.UsuarioRegisterDTO",
+        "Type": "RentCars.Api.DTOs.Usuario.UsuarioRegisterRequest",
         "IsRequired": true
       }
     ],
