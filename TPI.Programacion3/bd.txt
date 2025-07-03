@@ -1,50 +1,39 @@
 
--- Eliminar la base de datos si ya existe
-IF DB_ID('AlquilerBDD') IS NOT NULL
-BEGIN
-    ALTER DATABASE AlquilerBDD SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-    DROP DATABASE AlquilerBDD;
-END
-GO
-
--- Crear la base de datos
 CREATE DATABASE AlquilerBDD;
 GO
+
 USE AlquilerBDD;
 GO
 
--- Crear la tabla Usuario
 CREATE TABLE Usuario (
     UsuarioId INT PRIMARY KEY IDENTITY,
-    Nombre_Completo NVARCHAR(100),
+    Nombre_Completo NVARCHAR(100) NOT NULL,
     PasswordHash NVARCHAR(255) NOT NULL,
-    TipoDocumento NVARCHAR(50),
-    DNI NVARCHAR(12),
+    DNI NVARCHAR(12) UNIQUE,
     FechaNacimiento DATE,
     Telefono NVARCHAR(30),
-    Email NVARCHAR(100) UNIQUE,
+    Email NVARCHAR(100) UNIQUE NOT NULL,
     Pais NVARCHAR(100),
     Direccion NVARCHAR(200),
     FechaRegistro DATETIME DEFAULT GETDATE(),
     Rol NVARCHAR(50) DEFAULT 'Usuario',
     ResetToken NVARCHAR(255),
-    ResetTokenExpira DATETIME
+    ResetTokenExpira DATETIME,
+    Activo BIT DEFAULT 1
 );
 
--- Crear la tabla Empleado
 CREATE TABLE Empleado (
     EmpleadoId INT PRIMARY KEY IDENTITY,
     Nombre_Completo NVARCHAR(100),
     Cargo NVARCHAR(50),
-    DNI NVARCHAR(8),
+    DNI NVARCHAR(8) UNIQUE NOT NULL,
     Telefono NVARCHAR(20),
-    Email NVARCHAR(100),
+    Email NVARCHAR(100) UNIQUE NOT NULL,
     Sucursal NVARCHAR(50),
     FechaAlta DATE DEFAULT CAST(GETDATE() AS DATE),
     Activo BIT DEFAULT 1
 );
 
--- Crear la tabla Vehiculo
 CREATE TABLE Vehiculo (
     VehiculoId INT PRIMARY KEY IDENTITY,
     Marca NVARCHAR(50),
@@ -57,7 +46,6 @@ CREATE TABLE Vehiculo (
     Estado NVARCHAR(20) CHECK (Estado IN ('Disponible', 'Alquilado', 'Mantenimiento', 'Reservado'))
 );
 
--- Crear la tabla Alquiler
 CREATE TABLE Alquiler (
     AlquilerId INT PRIMARY KEY IDENTITY,
     UsuarioId INT FOREIGN KEY REFERENCES Usuario(UsuarioId),
@@ -67,10 +55,10 @@ CREATE TABLE Alquiler (
     FechaFin DATE,
     FechaDevolucion DATE NULL,
     Total DECIMAL(10,2),
-    Estado NVARCHAR(20) CHECK (Estado IN ('Activo', 'Finalizado', 'Cancelado'))
+    Estado NVARCHAR(20) CHECK (Estado IN ('Activo', 'Finalizado', 'Cancelado')),
+    AceptoTerminos BIT DEFAULT 1
 );
 
--- Crear la tabla Pago
 CREATE TABLE Pago (
     PagoId INT PRIMARY KEY IDENTITY,
     AlquilerId INT FOREIGN KEY REFERENCES Alquiler(AlquilerId),
@@ -82,7 +70,6 @@ CREATE TABLE Pago (
     Observaciones NVARCHAR(255)
 );
 
--- Crear la tabla Multa
 CREATE TABLE Multa (
     MultaId INT PRIMARY KEY IDENTITY,
     AlquilerId INT FOREIGN KEY REFERENCES Alquiler(AlquilerId),
@@ -93,7 +80,6 @@ CREATE TABLE Multa (
     Tipo NVARCHAR(50) CHECK (Tipo IN ('Velocidad', 'Daños', 'Entrega tardía', 'Otro'))
 );
 
--- Crear la tabla Contacto
 CREATE TABLE Contacto (
     ContactoId INT PRIMARY KEY IDENTITY,
     UsuarioId INT FOREIGN KEY REFERENCES Usuario(UsuarioId),
