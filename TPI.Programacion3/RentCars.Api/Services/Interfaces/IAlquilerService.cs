@@ -28,6 +28,7 @@ namespace RentCars.Api.Services.Interfaces
         Task<IEnumerable<Alquiler>> GetAlquileresPorVehiculoAsync(int vehiculoId);
         Task<int> ContarAlquileresPorUsuarioAsync(int id);
         Task<decimal> CalcularTotalFacturadoAsync(DateTime desde, DateTime hasta);
+        Task<int> FinalizarAlquileresVencidosAsync();
 
         //Task<FacturaAlquilerDTO?> GenerarFacturaDTOAsync(int alquilerId);
 

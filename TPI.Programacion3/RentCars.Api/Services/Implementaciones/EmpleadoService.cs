@@ -16,15 +16,16 @@ namespace RentCars.Api.Services.Implementaciones
             _context = context;
         }
 
-        public async Task<IEnumerable<Empleado>> GetAllAsync()
-        {
-            return await _context.Empleados.ToListAsync();
-        }
 
         public async Task<Empleado?> GetByIdAsync(int id)
         {
             return await _context.Empleados.FindAsync(id);
         }
+        public async Task<IEnumerable<Empleado>> GetAllAsync()
+        {
+            return await _context.Empleados.ToListAsync();
+        }
+        
 
         public async Task<Empleado> CreateAsync(Empleado empleado)
         {

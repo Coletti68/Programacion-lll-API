@@ -10,7 +10,7 @@ namespace RentCars.Api.Services.Interfaces
         Task<Usuario> CreateAsync(Usuario usuario); // Recibe un obj Usuario y lo inserta en la bdd
         Task<Usuario> UpdateAsync(int id, Usuario usuario); //Espera un obj usuario ya editado, sino devuelve false
         Task<bool> DesactivarAsync(int id); //Elimina un usuario por us ID, devuelve true si lo encontro y borro, sino false
-        Task<IEnumerable<AlquilerResumenDTO>> GetHistorialPorUsuarioAsync(int id);
+        Task<IEnumerable<AlquilerResponse>> GetHistorialPorUsuarioAsync(int id);
 
     }
 }

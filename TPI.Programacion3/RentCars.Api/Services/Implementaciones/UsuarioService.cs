@@ -79,13 +79,13 @@ namespace RentCars.Api.Services.Implementaciones
             return true;
         }
 
-        public async Task<IEnumerable<AlquilerResumenDTO>> GetHistorialPorUsuarioAsync(int id)
+        public async Task<IEnumerable<AlquilerResponse>> GetHistorialPorUsuarioAsync(int id)
         {
             return await _context.Alquileres
                 .Where(a => a.UsuarioId == id)
                 .Include(a => a.Vehiculo)
                 .OrderByDescending(a => a.FechaInicio)
-                .Select(a => new AlquilerResumenDTO
+                .Select(a => new AlquilerResponse
                 {
                     AlquilerId = a.AlquilerId,
                     Vehiculo = a.Vehiculo.Marca + " " + a.Vehiculo.Modelo,

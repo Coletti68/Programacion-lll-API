@@ -1,15 +1,11 @@
-﻿namespace RentCars.Api.DTOs.Alquiler
+﻿public class AlquilerRegistroDTO
 {
-    public class AlquilerRegistroDTO
-    {
-        public int UsuarioId { get; set; }
-        public int VehiculoId { get; set; }
-        public int EmpleadoId { get; set; }
-        public DateTime FechaInicio { get; set; }
-        public DateTime FechaFin { get; set; }
-        public DateTime? FechaDevolucion { get; set; }
-        public decimal Total { get; set; }
-        public string Estado { get; set; }
-        public bool AceptoTerminos { get; set; } = false;
-    }
+    public int UsuarioId { get; set; }
+    public int VehiculoId { get; set; }
+    public int EmpleadoId { get; set; }
+    public DateTime FechaInicio { get; set; }
+    public DateTime FechaFin { get; set; }
+    public string Estado { get; set; } = "Reservado"; // puede quedar default
+    public bool AceptoTerminos { get; set; } = false;
+    // ❌ Total eliminado — lo calcula el backend
 }

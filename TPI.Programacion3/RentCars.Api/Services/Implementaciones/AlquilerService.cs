@@ -32,7 +32,6 @@ namespace RentCars.Api.Services.Implementaciones
                 EmpleadoId = a.EmpleadoId,
                 FechaInicio = a.FechaInicio,
                 FechaFin = a.FechaFin,
-                FechaDevolucion = a.FechaDevolucion,
                 Total = a.Total,
                 Estado = a.Estado,
                 AceptoTerminos = a.AceptoTerminos
@@ -43,25 +42,32 @@ namespace RentCars.Api.Services.Implementaciones
         {
             // Buscar el vehículo
             var vehiculo = await _context.Vehiculos.FindAsync(alquiler.VehiculoId);
-
             if (vehiculo == null)
                 throw new Exception("El vehículo especificado no existe.");
 
-            // Validar que el vehículo esté en estado 'Disponible'
+            // Validar que el vehículo esté disponible
             var estadosInvalidos = new[] { "Alquilado", "Reservado", "Mantenimiento" };
-
             if (estadosInvalidos.Contains(vehiculo.Estado))
                 throw new Exception($"El vehículo no puede ser alquilado porque se encuentra en estado '{vehiculo.Estado}'.");
 
-            // Marcar el vehículo según la fecha de inicio
-            var hoy = DateTime.Today;
+            // Validar fechas
+            var dias = (alquiler.FechaFin.Date - alquiler.FechaInicio.Date).Days;
+            if (dias <= 0)
+                throw new Exception("Las fechas seleccionadas no son válidas. Debe haber al menos un día de alquiler.");
 
-            vehiculo.Estado = (alquiler.FechaInicio > hoy) ? "Reservado" : "Alquilado";
+            // Calcular el total según el precio del vehículo
+            var total = dias * vehiculo.PrecioPorDia;
+            alquiler.Total = total;
+
+            // Determinar el estado del alquiler y del vehículo
+            var hoy = DateTime.Today;
+            alquiler.Estado = (alquiler.FechaInicio.Date > hoy) ? "Reservado" : "Activo";
+            vehiculo.Estado = (alquiler.Estado == "Reservado") ? "Reservado" : "Alquilado";
 
             // Agregar el alquiler
             _context.Alquileres.Add(alquiler);
 
-            // Guardar todo en conjunto
+            // Guardar los cambios
             await _context.SaveChangesAsync();
 
             return alquiler;
@@ -85,7 +91,6 @@ namespace RentCars.Api.Services.Implementaciones
                 EmpleadoId = a.EmpleadoId,
                 FechaInicio = a.FechaInicio,
                 FechaFin = a.FechaFin,
-                FechaDevolucion = a.FechaDevolucion,
                 Total = a.Total,
                 Estado = a.Estado,
                 AceptoTerminos = a.AceptoTerminos
@@ -99,7 +104,6 @@ namespace RentCars.Api.Services.Implementaciones
 
             alquiler.FechaInicio = dto.FechaInicio;
             alquiler.FechaFin = dto.FechaFin;
-            alquiler.FechaDevolucion = dto.FechaDevolucion;
             alquiler.Total = dto.Total;
             alquiler.Estado = dto.Estado;
             alquiler.AceptoTerminos = dto.AceptoTerminos;
@@ -109,6 +113,28 @@ namespace RentCars.Api.Services.Implementaciones
 
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<int> FinalizarAlquileresVencidosAsync()
+        {
+            var hoy = DateTime.Today;
+
+            var vencidos = await _context.Alquileres
+                .Where(a => a.Estado == "Activo" && a.FechaFin < hoy)
+                .ToListAsync();
+
+            foreach (var alquiler in vencidos)
+            {
+                alquiler.Estado = "Finalizado";
+                alquiler.FechaDevolucion = hoy;
+
+                var vehiculo = await _context.Vehiculos.FindAsync(alquiler.VehiculoId);
+                if (vehiculo != null)
+                    vehiculo.Estado = "Disponible";
+            }
+
+            await _context.SaveChangesAsync();
+            return vencidos.Count;
         }
 
         public async Task<bool> DeleteAsync(int id)
@@ -125,6 +151,8 @@ namespace RentCars.Api.Services.Implementaciones
         public async Task<IEnumerable<Alquiler>> GetByUsuarioIdAsync(int id)
         {
             return await _context.Alquileres
+                .Include(a => a.Vehiculo)  // ✅ Trae los datos del vehículo
+                .Include(a => a.Usuario)   // ✅ Opcional: si querés nombre del usuario más adelante
                 .Where(a => a.UsuarioId == id)
                 .ToListAsync();
         }
@@ -187,8 +215,6 @@ namespace RentCars.Api.Services.Implementaciones
         }
 
         //
-
-
 
         public async Task<bool> VerificarDisponibilidadVehiculoAsync(int vehiculoId, DateTime desde, DateTime hasta)
         {

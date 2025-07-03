@@ -9,7 +9,7 @@ CREATE TABLE Usuario (
     UsuarioId INT PRIMARY KEY IDENTITY,
     Nombre_Completo NVARCHAR(100) NOT NULL,
     PasswordHash NVARCHAR(255) NOT NULL,
-    DNI NVARCHAR(12) UNIQUE,
+    DNI NVARCHAR(12) UNIQUE NOT NULL,
     FechaNacimiento DATE,
     Telefono NVARCHAR(30),
     Email NVARCHAR(100) UNIQUE NOT NULL,
@@ -53,9 +53,8 @@ CREATE TABLE Alquiler (
     EmpleadoId INT FOREIGN KEY REFERENCES Empleado(EmpleadoId),
     FechaInicio DATE,
     FechaFin DATE,
-    FechaDevolucion DATE NULL,
     Total DECIMAL(10,2),
-    Estado NVARCHAR(20) CHECK (Estado IN ('Activo', 'Finalizado', 'Cancelado')),
+    Estado NVARCHAR(20) CHECK (Estado IN ('Reservado','Activo', 'Finalizado', 'Cancelado')),
     AceptoTerminos BIT DEFAULT 1
 );
 

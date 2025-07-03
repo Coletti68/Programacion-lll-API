@@ -49,8 +49,6 @@ namespace RentCars.Api.Controllers
                 EmpleadoId = dto.EmpleadoId,
                 FechaInicio = dto.FechaInicio,
                 FechaFin = dto.FechaFin,
-                FechaDevolucion = dto.FechaDevolucion,
-                Total = dto.Total,
                 Estado = dto.Estado,
                 Pagos = new List<Pago>(),
                 Multas = new List<Multa>(),
@@ -68,12 +66,40 @@ namespace RentCars.Api.Controllers
             return actualizado ? NoContent() : NotFound();
         }
 
+        [HttpPut("finalizar/vencidos")]
+        public async Task<IActionResult> FinalizarAutomáticos()
+        {
+            var finalizados = await _alquilerService.FinalizarAlquileresVencidosAsync();
+            return Ok($"{finalizados} alquileres fueron finalizados automáticamente.");
+        }
+
         // DELETE: api/Alquiler/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _alquilerService.DeleteAsync(id);
             return result ? NoContent() : NotFound();
+        }
+
+        // GET: api/Alquiler/usuario/{id}/resumen
+        [HttpGet("usuario/{id}/resumen")]
+        public async Task<IActionResult> GetResumenPorCliente(int id)
+        {
+            var alquileres = await _alquilerService.GetByUsuarioIdAsync(id);
+
+            var resumen = alquileres.Select(a => new AlquilerResponse
+            {
+                AlquilerId = a.AlquilerId,
+                Vehiculo = $"{a.Vehiculo.Marca} {a.Vehiculo.Modelo} ({a.Vehiculo.Placa})",
+                FechaInicio = a.FechaInicio,
+                FechaFin = a.FechaFin,
+                Total = a.Total,
+                Estado = a.Estado,
+                AceptoTerminos = a.AceptoTerminos
+                // No incluís UsuarioId, VehiculoId, EmpleadoId, ni AceptoTerminos
+            }).ToList();
+
+            return Ok(resumen);
         }
 
         // GET: api/Alquiler/cliente/{clienteId}

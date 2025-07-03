@@ -14,7 +14,6 @@ namespace RentCars.Api.DTOs.Alquiler
         public List<PagoDTO> Pagos { get; set; } = new();
         public string Estado { get; set; } = string.Empty;
     }
-
     public class MultaDTO
     {
         public string Descripcion { get; set; } = string.Empty;
