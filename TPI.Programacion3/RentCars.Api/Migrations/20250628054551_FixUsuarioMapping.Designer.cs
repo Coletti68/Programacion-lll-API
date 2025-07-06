@@ -82,9 +82,6 @@ namespace RentCars.Api.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("FechaDevolucion")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("FechaFin")
                         .HasColumnType("datetime2");
 

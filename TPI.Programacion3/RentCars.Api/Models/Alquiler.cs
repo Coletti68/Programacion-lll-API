@@ -15,7 +15,6 @@ namespace RentCars.Api.Models
         public Empleado Empleado { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
-        public DateTime? FechaDevolucion { get; set; }
         public decimal Total { get; set; }
         public string Estado { get; set; }
 

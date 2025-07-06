@@ -152,12 +152,12 @@ namespace RentCars.Api.Controllers
 
         // PUT: api/Alquiler/finalizar/{id}
         [HttpPut("finalizar/{id}")]
-        public async Task<IActionResult> Finalizar(int id, [FromQuery] DateTime fechaDevolucion)
+        public async Task<IActionResult> Finalizar(int id, [FromQuery] DateTime FechaFin)
         {
-            if (fechaDevolucion == default)
+            if (FechaFin == default)
                 return BadRequest("Se requiere una fecha de devolución válida.");
 
-            var result = await _alquilerService.FinalizarAlquilerAsync(id, fechaDevolucion);
+            var result = await _alquilerService.FinalizarAlquilerAsync(id, FechaFin);
             return result ? Ok() : NotFound();
         }
 

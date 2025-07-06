@@ -8,7 +8,6 @@ namespace RentCars.Api.DTOs.Alquiler
         public string Patente { get; set; } = string.Empty;
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
-        public DateTime? FechaDevolucion { get; set; }
         public decimal TotalAlquiler { get; set; }
         public List<MultaDTO> Multas { get; set; } = new();
         public List<PagoDTO> Pagos { get; set; } = new();

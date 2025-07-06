@@ -20,7 +20,7 @@ namespace RentCars.Api.Services.Interfaces
         Task<IEnumerable<Alquiler>> GetAlquileresVencidosAsync();
 
         // Operaciones de negocio
-        Task<bool> FinalizarAlquilerAsync(int alquilerId, DateTime fechaDevolucion);
+        Task<bool> FinalizarAlquilerAsync(int alquilerId, DateTime FechaFin);
         Task<bool> CancelarAlquilerAsync(int alquilerId);
 
         // Validaciones y estadísticas

@@ -108,7 +108,6 @@ namespace RentCars.Api.Migrations
                     EmpleadoId = table.Column<int>(type: "int", nullable: false),
                     FechaInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaFin = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FechaDevolucion = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Total = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Estado = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },

@@ -40,37 +40,48 @@ namespace RentCars.Api.Services.Implementaciones
 
         public async Task<Alquiler> CreateAsync(Alquiler alquiler)
         {
-            // Buscar el vehículo
-            var vehiculo = await _context.Vehiculos.FindAsync(alquiler.VehiculoId);
-            if (vehiculo == null)
-                throw new Exception("El vehículo especificado no existe.");
+            try
+            {
+                // Buscar el vehículo
+                var vehiculo = await _context.Vehiculos.FindAsync(alquiler.VehiculoId);
+                if (vehiculo == null)
+                    throw new Exception("El vehículo especificado no existe.");
 
-            // Validar que el vehículo esté disponible
-            var estadosInvalidos = new[] { "Alquilado", "Reservado", "Mantenimiento" };
-            if (estadosInvalidos.Contains(vehiculo.Estado))
-                throw new Exception($"El vehículo no puede ser alquilado porque se encuentra en estado '{vehiculo.Estado}'.");
+                // Validar que el vehículo esté disponible
+                var estadosInvalidos = new[] { "Alquilado", "Reservado", "Mantenimiento" };
+                if (estadosInvalidos.Contains(vehiculo.Estado))
+                    throw new Exception($"El vehículo no puede ser alquilado porque se encuentra en estado '{vehiculo.Estado}'.");
 
-            // Validar fechas
-            var dias = (alquiler.FechaFin.Date - alquiler.FechaInicio.Date).Days;
-            if (dias <= 0)
-                throw new Exception("Las fechas seleccionadas no son válidas. Debe haber al menos un día de alquiler.");
+                // Validar fechas
+                var dias = (alquiler.FechaFin.Date - alquiler.FechaInicio.Date).Days;
+                if (dias <= 0)
+                    throw new Exception("Las fechas seleccionadas no son válidas. Debe haber al menos un día de alquiler.");
 
-            // Calcular el total según el precio del vehículo
-            var total = dias * vehiculo.PrecioPorDia;
-            alquiler.Total = total;
+                // Calcular el total según el precio del vehículo
+                alquiler.Total = dias * vehiculo.PrecioPorDia;
 
-            // Determinar el estado del alquiler y del vehículo
-            var hoy = DateTime.Today;
-            alquiler.Estado = (alquiler.FechaInicio.Date > hoy) ? "Reservado" : "Activo";
-            vehiculo.Estado = (alquiler.Estado == "Reservado") ? "Reservado" : "Alquilado";
+                // Determinar el estado del alquiler y del vehículo
+                var hoy = DateTime.Today;
+                alquiler.Estado = (alquiler.FechaInicio.Date > hoy) ? "Reservado" : "Activo";
+                vehiculo.Estado = (alquiler.Estado == "Reservado") ? "Reservado" : "Alquilado";
 
-            // Agregar el alquiler
-            _context.Alquileres.Add(alquiler);
+                // Agregar el alquiler
+                _context.Alquileres.Add(alquiler);
 
-            // Guardar los cambios
-            await _context.SaveChangesAsync();
+                // Guardar los cambios
+                await _context.SaveChangesAsync();
 
-            return alquiler;
+                return alquiler;
+            }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine($"❌ Error al guardar alquiler: {ex.Message}");
+
+                if (ex.InnerException != null)
+                    Console.WriteLine($"🔍 Inner exception: {ex.InnerException.Message}");
+
+                throw new Exception($"Error al crear el alquiler: {ex.InnerException?.Message ?? ex.Message}");
+            }
         }
 
         public async Task<AlquilerResponse?> GetByIdAsync(int id)
@@ -126,7 +137,7 @@ namespace RentCars.Api.Services.Implementaciones
             foreach (var alquiler in vencidos)
             {
                 alquiler.Estado = "Finalizado";
-                alquiler.FechaDevolucion = hoy;
+                alquiler.FechaFin = hoy;
 
                 var vehiculo = await _context.Vehiculos.FindAsync(alquiler.VehiculoId);
                 if (vehiculo != null)
@@ -190,14 +201,14 @@ namespace RentCars.Api.Services.Implementaciones
                 .ToListAsync();
         }
    
-        public async Task<bool> FinalizarAlquilerAsync(int alquilerId, DateTime fechaDevolucion)
+        public async Task<bool> FinalizarAlquilerAsync(int alquilerId, DateTime FechaFin)
         {
             var alquiler = await _context.Alquileres.FindAsync(alquilerId);
             if (alquiler == null || alquiler.Estado != "Activo")
                 return false;
 
             alquiler.Estado = "Finalizado";
-            alquiler.FechaFin = fechaDevolucion;
+            alquiler.FechaFin = FechaFin;
 
             await _context.SaveChangesAsync();
             return true;

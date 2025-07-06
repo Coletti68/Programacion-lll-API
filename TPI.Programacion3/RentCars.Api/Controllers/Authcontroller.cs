@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RentCars.Api.Data;
@@ -38,7 +38,8 @@ namespace RentCars.Api.Controllers
             return Ok(new LoginResponse
             {
                 Token = token,
-                Expira = DateTime.Now.AddHours(2)
+                Expira = DateTime.Now.AddHours(2),
+                UsuarioId = usuario.UsuarioId // 🆕 esta línea es la clave
             });
         }
 
@@ -68,14 +69,14 @@ namespace RentCars.Api.Controllers
                 u.ResetTokenExpira > DateTime.UtcNow);
 
             if (usuario == null)
-                return BadRequest("Token inv�lido o expirado.");
+                return BadRequest("Token inválido o expirado.");
 
             usuario.PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.NuevaPassword);
             usuario.ResetToken = null;
             usuario.ResetTokenExpira = null;
             await _context.SaveChangesAsync();
 
-            return Ok("Contrase�a actualizada exitosamente.");
+            return Ok("Contraseña actualizada exitosamente.");
         }
 
 
