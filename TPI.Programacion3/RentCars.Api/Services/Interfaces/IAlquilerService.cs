@@ -6,6 +6,9 @@ namespace RentCars.Api.Services.Interfaces
     public interface IAlquilerService
     {
         // CRUD básico
+
+        Task<List<Alquiler>> GetAllDetalladoAsync();
+
         Task<IEnumerable<AlquilerResponse>> GetAllAsync();
         Task<AlquilerResponse?> GetByIdAsync(int id);
         Task<Alquiler> CreateAsync(Alquiler alquiler);

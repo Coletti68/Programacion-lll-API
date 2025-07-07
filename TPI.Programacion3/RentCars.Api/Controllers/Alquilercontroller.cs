@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using RentCars.Api.DTOs;
 using RentCars.Api.DTOs.Alquiler;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
@@ -210,6 +211,28 @@ namespace RentCars.Api.Controllers
                 return BadRequest("La fecha 'hasta' debe ser mayor o igual a la fecha 'desde'.");
             var total = await _alquilerService.CalcularTotalFacturadoAsync(desde, hasta);
             return Ok(total);
+        }
+
+        // GET: api/Alquiler/detallado
+        [HttpGet("detallado")]
+        public async Task<IActionResult> GetAlquileresDetallados()
+        {
+            var alquileres = await _alquilerService.GetAllDetalladoAsync();
+
+            var result = alquileres.Select(a => new AlquilerDTO
+            {
+                AlquilerId = a.AlquilerId,
+                NombreUsuario = a.Usuario?.Nombre_Completo ?? "Sin datos",
+                NombreVehiculo = a.Vehiculo != null ? $"{a.Vehiculo.Marca} {a.Vehiculo.Modelo}" : "Sin vehículo",
+                NombreEmpleado = a.Empleado?.Nombre_Completo ?? "Sin asignar",
+                FechaInicio = a.FechaInicio,
+                FechaFin = a.FechaFin,
+                FechaDevolucion = a.FechaFin,
+                Total = a.Total,
+                Estado = a.Estado
+            }).ToList();
+
+            return Ok(result);
         }
     }
 }

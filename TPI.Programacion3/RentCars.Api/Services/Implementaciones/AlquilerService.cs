@@ -38,6 +38,15 @@ namespace RentCars.Api.Services.Implementaciones
             }).ToList();
         }
 
+        public async Task<List<Alquiler>> GetAllDetalladoAsync()
+        {
+            return await _context.Alquileres
+                .Include(a => a.Usuario)
+                .Include(a => a.Vehiculo)
+                .Include(a => a.Empleado)
+                .ToListAsync();
+        }
+
         public async Task<Alquiler> CreateAsync(Alquiler alquiler)
         {
             try
@@ -46,6 +55,7 @@ namespace RentCars.Api.Services.Implementaciones
                 var vehiculo = await _context.Vehiculos.FindAsync(alquiler.VehiculoId);
                 if (vehiculo == null)
                     throw new Exception("El vehículo especificado no existe.");
+
 
                 // Validar que el vehículo esté disponible
                 var estadosInvalidos = new[] { "Alquilado", "Reservado", "Mantenimiento" };
