@@ -37,6 +37,26 @@ namespace RentCars.Api.Controllers
             return Ok(result);
         }
 
+        [HttpGet("listado")]
+        public async Task<IActionResult> GetListadoDetallado()
+        {
+            var vehiculos = await _vehiculoService.GetAllAsync(); // o similar si usás EF directamente
+
+            var dtoList = vehiculos.Select(v => new VehiculoListadoDTO
+            {
+                VehiculoId = v.VehiculoId,
+                Marca = v.Marca,
+                Modelo = v.Modelo,
+                Placa = v.Placa,
+                Tipo = v.Tipo,
+                Color = v.Color,
+                PrecioPorDia = v.PrecioPorDia,
+                Estado = v.Estado
+            });
+
+            return Ok(dtoList);
+        }
+
         // GET: api/vehiculos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<VehiculoResponse>> GetById(int id)

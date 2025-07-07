@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RentCars.Api.Data;
+using RentCars.Api.DTOs.Vehiculo;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
 using System.Collections.Generic;
@@ -40,6 +41,22 @@ namespace RentCars.Api.Services.Implementaciones
             return vehiculo;
         }
 
+        public async Task<IEnumerable<VehiculoListadoDTO>> GetListadoDetalladoAsync()
+        {
+            var vehiculos = await GetAllAsync();
+
+            return vehiculos.Select(v => new VehiculoListadoDTO
+            {
+                VehiculoId = v.VehiculoId,
+                Marca = v.Marca,
+                Modelo = v.Modelo,
+                Placa = v.Placa,
+                Tipo = v.Tipo,
+                Color = v.Color,
+                PrecioPorDia = v.PrecioPorDia,
+                Estado = v.Estado
+            });
+        }
 
         public async Task<Vehiculo?> UpdateAsync(int id, Vehiculo vehiculo)
         {
