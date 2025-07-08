@@ -110,7 +110,7 @@ namespace RentCars.Api.Controllers
             return Ok(resumen);
         }
 
-        // GET: api/Alquiler/cliente/{clienteId}
+        // GET: api/Alquiler/usuario/{usuarioId}
         [HttpGet("usuario/{id}")]
         public async Task<IActionResult> GetByClienteId(int id)
         {

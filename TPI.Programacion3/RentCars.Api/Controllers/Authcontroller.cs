@@ -48,7 +48,9 @@ namespace RentCars.Api.Controllers
                 {
                     Token = token,
                     Expira = DateTime.Now.AddHours(2),
-                    UsuarioId = usuario.UsuarioId
+                    UsuarioId = usuario.UsuarioId,
+                    NombreCompleto = usuario.Nombre_Completo,
+                    Email = usuario.Email
                 });
             }
             catch (Exception ex)
