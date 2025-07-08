@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+Ôªøusing Microsoft.AspNetCore.Mvc;
 using RentCars.Api.DTOs;
 using RentCars.Api.DTOs.Alquiler;
 using RentCars.Api.Models;
@@ -34,13 +34,12 @@ namespace RentCars.Api.Controllers
         }
 
 
-        // POST: api/Alquiler
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AlquilerRegistroDTO dto)
         {
             if (!dto.AceptoTerminos)
             {
-                return BadRequest("Debe aceptar los tÈrminos y condiciones para realizar un alquiler.");
+                return BadRequest(new { error = "Debe aceptar los t√©rminos y condiciones para realizar un alquiler." });
             }
 
             var alquiler = new Alquiler
@@ -56,8 +55,16 @@ namespace RentCars.Api.Controllers
                 AceptoTerminos = dto.AceptoTerminos
             };
 
-            var creado = await _alquilerService.CreateAsync(alquiler);
-            return CreatedAtAction(nameof(GetById), new { id = creado.AlquilerId }, creado);
+            try
+            {
+                var creado = await _alquilerService.CreateAsync(alquiler);
+                return CreatedAtAction(nameof(GetById), new { id = creado.AlquilerId }, creado);
+            }
+            catch (Exception ex)
+            {
+                // üëá Esto es clave para que el frontend lo reciba y lo muestre en el modal de error
+                return BadRequest(new { error = ex.Message });
+            }
         }
 
         [HttpPut("{id}")]
@@ -68,10 +75,10 @@ namespace RentCars.Api.Controllers
         }
 
         [HttpPut("finalizar/vencidos")]
-        public async Task<IActionResult> FinalizarAutom·ticos()
+        public async Task<IActionResult> FinalizarAutom√°ticos()
         {
             var finalizados = await _alquilerService.FinalizarAlquileresVencidosAsync();
-            return Ok($"{finalizados} alquileres fueron finalizados autom·ticamente.");
+            return Ok($"{finalizados} alquileres fueron finalizados autom√°ticamente.");
         }
 
         // DELETE: api/Alquiler/{id}
@@ -97,7 +104,7 @@ namespace RentCars.Api.Controllers
                 Total = a.Total,
                 Estado = a.Estado,
                 AceptoTerminos = a.AceptoTerminos
-                // No incluÌs UsuarioId, VehiculoId, EmpleadoId, ni AceptoTerminos
+                // No inclu√≠s UsuarioId, VehiculoId, EmpleadoId, ni AceptoTerminos
             }).ToList();
 
             return Ok(resumen);
@@ -117,7 +124,7 @@ namespace RentCars.Api.Controllers
         {
             var estadosValidos = new[] { "Activo", "Cancelado", "Finalizado" };
             if (!estadosValidos.Contains(estado))
-                return BadRequest("Estado inv·lido. Los valores permitidos son: Activo, Cancelado, Finalizado.");
+                return BadRequest("Estado inv√°lido. Los valores permitidos son: Activo, Cancelado, Finalizado.");
 
             var result = await _alquilerService.GetByEstadoAsync(estado);
             return Ok(result);
@@ -156,7 +163,7 @@ namespace RentCars.Api.Controllers
         public async Task<IActionResult> Finalizar(int id, [FromQuery] DateTime FechaFin)
         {
             if (FechaFin == default)
-                return BadRequest("Se requiere una fecha de devoluciÛn v·lida.");
+                return BadRequest("Se requiere una fecha de devoluci√≥n v√°lida.");
 
             var result = await _alquilerService.FinalizarAlquilerAsync(id, FechaFin);
             return result ? Ok() : NotFound();
@@ -168,7 +175,7 @@ namespace RentCars.Api.Controllers
         { 
             var result = await _alquilerService.CancelarAlquilerAsync(id);
             if (!result)
-                return BadRequest("No se puede cancelar el alquiler. Puede que ya estÈ finalizado o cancelado.");
+                return BadRequest("No se puede cancelar el alquiler. Puede que ya est√© finalizado o cancelado.");
 
             return Ok();
         }
@@ -191,7 +198,7 @@ namespace RentCars.Api.Controllers
             var result = await _alquilerService.GetAlquileresPorVehiculoAsync(vehiculoId);
 
             if (result == null || !result.Any())
-                return NotFound($"No se encontraron alquileres para el vehÌculo con ID {vehiculoId}.");
+                return NotFound($"No se encontraron alquileres para el veh√≠culo con ID {vehiculoId}.");
             return Ok(result);
         }
 
@@ -223,7 +230,7 @@ namespace RentCars.Api.Controllers
             {
                 AlquilerId = a.AlquilerId,
                 NombreUsuario = a.Usuario?.Nombre_Completo ?? "Sin datos",
-                NombreVehiculo = a.Vehiculo != null ? $"{a.Vehiculo.Marca} {a.Vehiculo.Modelo}" : "Sin vehÌculo",
+                NombreVehiculo = a.Vehiculo != null ? $"{a.Vehiculo.Marca} {a.Vehiculo.Modelo}" : "Sin veh√≠culo",
                 NombreEmpleado = a.Empleado?.Nombre_Completo ?? "Sin asignar",
                 FechaInicio = a.FechaInicio,
                 FechaFin = a.FechaFin,

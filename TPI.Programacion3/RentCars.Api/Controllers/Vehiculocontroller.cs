@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
 using RentCars.Api.DTOs.Vehiculo;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
@@ -31,7 +32,9 @@ namespace RentCars.Api.Controllers
                 Marca = v.Marca,
                 Modelo = v.Modelo,
                 Placa = v.Placa,
-                Estado = v.Estado
+                Estado = v.Estado,
+                Color = v.Color,
+                PrecioPorDia = v.PrecioPorDia
             });
 
             return Ok(result);

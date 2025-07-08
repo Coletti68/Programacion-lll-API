@@ -49,49 +49,46 @@ namespace RentCars.Api.Services.Implementaciones
 
         public async Task<Alquiler> CreateAsync(Alquiler alquiler)
         {
-            try
-            {
-                // Buscar el vehículo
-                var vehiculo = await _context.Vehiculos.FindAsync(alquiler.VehiculoId);
-                if (vehiculo == null)
-                    throw new Exception("El vehículo especificado no existe.");
+            // 🔒 Validar que la fecha de inicio no sea en el pasado
+            if (alquiler.FechaInicio.Date < DateTime.Today)
+                throw new Exception("La fecha de inicio no puede ser anterior a hoy.");
 
+            // 🔒 Validar que el usuario no tenga un alquiler activo o reservado
+            bool tieneAlquilerActivo = await _context.Alquileres
+                .AnyAsync(a => a.UsuarioId == alquiler.UsuarioId &&
+                              (a.Estado == "Activo" || a.Estado == "Reservado"));
 
-                // Validar que el vehículo esté disponible
-                var estadosInvalidos = new[] { "Alquilado", "Reservado", "Mantenimiento" };
-                if (estadosInvalidos.Contains(vehiculo.Estado))
-                    throw new Exception($"El vehículo no puede ser alquilado porque se encuentra en estado '{vehiculo.Estado}'.");
+            if (tieneAlquilerActivo)
+                throw new Exception("Ya tenés un alquiler en curso o reservado. Cancelalo o esperá a que finalice para crear uno nuevo.");
 
-                // Validar fechas
-                var dias = (alquiler.FechaFin.Date - alquiler.FechaInicio.Date).Days;
-                if (dias <= 0)
-                    throw new Exception("Las fechas seleccionadas no son válidas. Debe haber al menos un día de alquiler.");
+            // Buscar el vehículo
+            var vehiculo = await _context.Vehiculos.FindAsync(alquiler.VehiculoId);
+            if (vehiculo == null)
+                throw new Exception("El vehículo especificado no existe.");
 
-                // Calcular el total según el precio del vehículo
-                alquiler.Total = dias * vehiculo.PrecioPorDia;
+            // Validar que el vehículo esté disponible
+            var estadosInvalidos = new[] { "Alquilado", "Reservado", "Mantenimiento" };
+            if (estadosInvalidos.Contains(vehiculo.Estado))
+                throw new Exception($"El vehículo no puede ser alquilado porque se encuentra en estado '{vehiculo.Estado}'.");
 
-                // Determinar el estado del alquiler y del vehículo
-                var hoy = DateTime.Today;
-                alquiler.Estado = (alquiler.FechaInicio.Date > hoy) ? "Reservado" : "Activo";
-                vehiculo.Estado = (alquiler.Estado == "Reservado") ? "Reservado" : "Alquilado";
+            // Validar fechas
+            var dias = (alquiler.FechaFin.Date - alquiler.FechaInicio.Date).Days;
+            if (dias <= 0)
+                throw new Exception("Las fechas seleccionadas no son válidas. Debe haber al menos un día de alquiler.");
 
-                // Agregar el alquiler
-                _context.Alquileres.Add(alquiler);
+            // Calcular total
+            alquiler.Total = dias * vehiculo.PrecioPorDia;
 
-                // Guardar los cambios
-                await _context.SaveChangesAsync();
+            // Determinar estado del alquiler y del vehículo
+            var hoy = DateTime.Today;
+            alquiler.Estado = (alquiler.FechaInicio.Date > hoy) ? "Reservado" : "Activo";
+            vehiculo.Estado = (alquiler.Estado == "Reservado") ? "Reservado" : "Alquilado";
 
-                return alquiler;
-            }
-            catch (DbUpdateException ex)
-            {
-                Console.WriteLine($"❌ Error al guardar alquiler: {ex.Message}");
+            // Guardar
+            _context.Alquileres.Add(alquiler);
+            await _context.SaveChangesAsync();
 
-                if (ex.InnerException != null)
-                    Console.WriteLine($"🔍 Inner exception: {ex.InnerException.Message}");
-
-                throw new Exception($"Error al crear el alquiler: {ex.InnerException?.Message ?? ex.Message}");
-            }
+            return alquiler;
         }
 
         public async Task<AlquilerResponse?> GetByIdAsync(int id)
