@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\TPI.Programacion3",
+    "\\TPI.Programacion3\\RentCars.Api"
   ],
-  "SelectedNode": "\\RentCars.Api.sln",
+  "SelectedNode": "\\TPI.Programacion3\\bd.txt",
   "PreviewInSolutionExplorer": true
 }

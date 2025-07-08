@@ -28,23 +28,41 @@ namespace RentCars.Api.Services.Implementaciones
         public async Task<Usuario> CreateAsync(Usuario usuario)
         {
             var reglasDni = new Dictionary<string, int>
-    {
-        { "Argentina", 8 },
-        { "Brasil", 11 },
-        { "Paraguay", 6 },
-        { "Chile", 9 }
-    };
+          {
+            { "Argentina", 8 },
+            { "Brasil", 11 },
+            { "Paraguay", 6 },
+            { "Chile", 9 }
+          };
 
+            // ✅ Validar longitud del DNI según país
             if (reglasDni.TryGetValue(usuario.Pais, out var longitudEsperada))
             {
-                if (usuario.DNI == null || usuario.DNI.Length != longitudEsperada)
+                if (string.IsNullOrWhiteSpace(usuario.DNI) || usuario.DNI.Length != longitudEsperada)
+                {
                     throw new Exception($"El DNI debe tener {longitudEsperada} dígitos para {usuario.Pais}.");
+                }
             }
 
             // 🔍 Validar que el DNI no exista
-            var dniExistente = await _context.Usuarios.AnyAsync(u => u.DNI == usuario.DNI);
+            bool dniExistente = await _context.Usuarios.AnyAsync(u => u.DNI == usuario.DNI);
             if (dniExistente)
+            {
                 throw new Exception("Ya existe un usuario con ese DNI.");
+            }
+
+            // 🔞 Validar edad mínima
+            if (!usuario.FechaNacimiento.HasValue)
+                throw new Exception("La fecha de nacimiento es obligatoria.");
+
+            DateTime nacimiento = usuario.FechaNacimiento.Value.Date;
+            int edad = DateTime.Today.Year - nacimiento.Year;
+            if (nacimiento > DateTime.Today.AddYears(-edad)) edad--;
+
+            if (edad < 18)
+            {
+                throw new Exception("Debés tener al menos 18 años para registrarte.");
+            }
 
             _context.Usuarios.Add(usuario);
             await _context.SaveChangesAsync();

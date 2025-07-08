@@ -28,21 +28,34 @@ namespace RentCars.Api.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<LoginResponse>> Login(LoginRequest dto)
         {
-            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == dto.Email);
-
-            if (usuario == null || !BCrypt.Net.BCrypt.Verify(dto.Password, usuario.PasswordHash))
-                return Unauthorized("Credenciales Incorrectas.");
-
-            var token = _tokenService.GenerarToken(usuario);
-
-            return Ok(new LoginResponse
+            try
             {
-                Token = token,
-                Expira = DateTime.Now.AddHours(2),
-                UsuarioId = usuario.UsuarioId // 🆕 esta línea es la clave
-            });
-        }
+                var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == dto.Email);
 
+                if (usuario == null || !BCrypt.Net.BCrypt.Verify(dto.Password, usuario.PasswordHash))
+                {
+                    return Unauthorized(new { mensaje = "Credenciales incorrectas. Verificá tu email y contraseña." });
+                }
+
+                if (!usuario.Activo)
+                {
+                    return StatusCode(403, new { mensaje = "Tu cuenta está inactiva. Contactá con soporte para más información." });
+                }
+
+                var token = _tokenService.GenerarToken(usuario);
+
+                return Ok(new LoginResponse
+                {
+                    Token = token,
+                    Expira = DateTime.Now.AddHours(2),
+                    UsuarioId = usuario.UsuarioId
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { mensaje = "Ocurrió un error inesperado. Contactá con soporte si el problema persiste." });
+            }
+        }
 
         [HttpPost("recuperar-password")]
         public async Task<IActionResult> SolicitarReset(ForgotPasswordRequest dto)
@@ -78,8 +91,6 @@ namespace RentCars.Api.Controllers
 
             return Ok("Contraseña actualizada exitosamente.");
         }
-
-
 
         [HttpGet("actual")]
         [Authorize]
