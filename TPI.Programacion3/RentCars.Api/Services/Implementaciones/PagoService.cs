@@ -4,7 +4,6 @@ using RentCars.Api.Services.Interfaces;
 using RentCars.Api.Data;
 using Microsoft.EntityFrameworkCore;
 
-
 public class PagoService : IPagoService
 {
     private readonly ApplicationDbContext _context;

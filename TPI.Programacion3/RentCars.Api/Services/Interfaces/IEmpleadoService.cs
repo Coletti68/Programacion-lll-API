@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RentCars.Api.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using RentCars.Api.Models;
 
 namespace RentCars.Api.Services.Interfaces
 {

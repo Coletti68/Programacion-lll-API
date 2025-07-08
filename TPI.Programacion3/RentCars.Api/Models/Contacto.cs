@@ -1,5 +1,3 @@
-using System;
-
 namespace RentCars.Api.Models
 {
     public class Contacto

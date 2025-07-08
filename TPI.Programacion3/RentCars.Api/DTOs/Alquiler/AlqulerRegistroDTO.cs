@@ -5,7 +5,6 @@
     public int EmpleadoId { get; set; }
     public DateTime FechaInicio { get; set; }
     public DateTime FechaFin { get; set; }
-    public string Estado { get; set; } = "Reservado"; // puede quedar default
+    public string Estado { get; set; } = "Reservado"; 
     public bool AceptoTerminos { get; set; } = false;
-    // ❌ Total eliminado — lo calcula el backend
 }

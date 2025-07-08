@@ -1,6 +1,4 @@
 using RentCars.Api.DTOs.Multa;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace RentCars.Api.Services.Interfaces
 {

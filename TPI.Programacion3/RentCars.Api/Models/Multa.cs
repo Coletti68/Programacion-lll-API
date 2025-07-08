@@ -1,5 +1,3 @@
-using System;
-
 namespace RentCars.Api.Models
 {
     public class Multa
@@ -15,5 +13,3 @@ namespace RentCars.Api.Models
 
     }
 }
-
-//datetime.today devuelve la fecha actual, pero con la hora en cero (es decir, a las 00:00:00).

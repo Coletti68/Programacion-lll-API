@@ -1,5 +1,3 @@
-using System;
-
 namespace RentCars.Api.DTOs.Empleado
 {
     public class EmpleadoResponse

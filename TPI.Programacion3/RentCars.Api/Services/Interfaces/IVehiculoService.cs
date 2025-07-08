@@ -1,7 +1,5 @@
 using RentCars.Api.DTOs.Vehiculo;
 using RentCars.Api.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace RentCars.Api.Services.Interfaces
 {

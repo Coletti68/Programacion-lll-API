@@ -1,5 +1,3 @@
-using System;
-
 namespace RentCars.Api.Models
 {
     public class Pago
@@ -15,5 +13,3 @@ namespace RentCars.Api.Models
         public string? Observaciones { get; set; }
     }
 }
-
-//Datetime.now es la fecha de ya digamos.

@@ -9,7 +9,6 @@
         public DateTime FechaMulta { get; set; }
         public string Estado { get; set; }
         public string Tipo { get; set; }
-        public DateTime? FechaVencimiento { get; set; } // 🔽 nueva propiedad
 
     }
 }

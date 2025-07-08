@@ -2,9 +2,6 @@
 using RentCars.Api.DTOs.Empleado;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RentCars.Api.Controllers
 {

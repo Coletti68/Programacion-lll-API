@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using RentCars.Api.DTOs.Usuario;
-using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
 
 namespace RentCars.Api.Controllers
@@ -17,7 +15,6 @@ namespace RentCars.Api.Controllers
             _usuarioService = usuarioService;
         }
 
-        // GET: api/usuario
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UsuarioResponseDTO>>> GetAll()
         {
@@ -40,7 +37,6 @@ namespace RentCars.Api.Controllers
             return Ok(response);
         }
 
-        // GET: api/usuario/{id}
         [HttpGet("{id}")]
         public async Task<ActionResult<UsuarioResponseDTO>> GetById(int id)
         {
@@ -63,7 +59,6 @@ namespace RentCars.Api.Controllers
             return Ok(response);
         }
 
-        // POST: api/usuario
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] UsuarioRegisterRequest dto)
 
@@ -105,7 +100,6 @@ namespace RentCars.Api.Controllers
             return CreatedAtAction(nameof(GetById), new { id = creado.UsuarioId }, response);
         }
 
-        // PUT: api/usuario/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] UsuarioUpdateRequestDTO dto)
         {

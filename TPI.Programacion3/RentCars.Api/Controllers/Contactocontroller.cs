@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
-using System;
 
 namespace RentCars.Api.Controllers
 {

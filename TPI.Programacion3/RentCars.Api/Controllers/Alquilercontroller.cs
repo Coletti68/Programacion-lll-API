@@ -17,7 +17,6 @@ namespace RentCars.Api.Controllers
             _alquilerService = alquilerService;
         }
 
-        // GET: api/Alquiler
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -25,7 +24,6 @@ namespace RentCars.Api.Controllers
             return Ok(alquileres);
         }
 
-        // GET: api/Alquiler/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -62,7 +60,6 @@ namespace RentCars.Api.Controllers
             }
             catch (Exception ex)
             {
-                // 👇 Esto es clave para que el frontend lo reciba y lo muestre en el modal de error
                 return BadRequest(new { error = ex.Message });
             }
         }
@@ -81,7 +78,6 @@ namespace RentCars.Api.Controllers
             return Ok($"{finalizados} alquileres fueron finalizados automáticamente.");
         }
 
-        // DELETE: api/Alquiler/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -89,7 +85,6 @@ namespace RentCars.Api.Controllers
             return result ? NoContent() : NotFound();
         }
 
-        // GET: api/Alquiler/usuario/{id}/resumen
         [HttpGet("usuario/{id}/resumen")]
         public async Task<IActionResult> GetResumenPorCliente(int id)
         {
@@ -104,7 +99,6 @@ namespace RentCars.Api.Controllers
                 Total = a.Total,
                 Estado = a.Estado,
                 AceptoTerminos = a.AceptoTerminos
-                // No incluís UsuarioId, VehiculoId, EmpleadoId, ni AceptoTerminos
             }).ToList();
 
             return Ok(resumen);

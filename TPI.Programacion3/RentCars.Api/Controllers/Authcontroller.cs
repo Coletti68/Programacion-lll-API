@@ -3,12 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RentCars.Api.Data;
 using RentCars.Api.DTOs.Auth;
-using RentCars.Api.DTOs.Usuario;
-using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
-using System;
 using System.Security.Claims;
-using System.Threading.Tasks;
+
 
 namespace RentCars.Api.Controllers
 {
@@ -70,7 +67,8 @@ namespace RentCars.Api.Controllers
             usuario.ResetTokenExpira = DateTime.UtcNow.AddHours(1);
             await _context.SaveChangesAsync();
 
-            var link = $"{Request.Scheme}://{Request.Host}/reset-password?email={usuario.Email}&token={Uri.EscapeDataString(token)}";
+            var link = $"http://localhost:5173/reset-password?email={usuario.Email}&token={Uri.EscapeDataString(token)}";
+            Console.WriteLine($"🧭 LINK: {link}");
 
             return Ok(new { mensaje = "Token generado", link });
         }

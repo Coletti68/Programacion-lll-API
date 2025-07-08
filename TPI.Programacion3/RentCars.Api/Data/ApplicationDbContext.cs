@@ -29,8 +29,6 @@ namespace RentCars.Api.Data
             modelBuilder.Entity<Multa>().ToTable("Multa");
             modelBuilder.Entity<Contacto>().ToTable("Contacto");
              
-
-            //linea desde 33 a 150
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.UsuarioId);
@@ -152,17 +150,3 @@ namespace RentCars.Api.Data
         }
     }
 }
-
-/*
- ApplicationDbContext es el nombre de tu clase (podría llamarse como vos quieras).
-: DbContext - ignifica que estás heredando de la clase base DbContext, que viene con toda la lógica que Entity Framework 
-              necesita para manejar conexiones, ejecutar queries, guardar cambios, etc.
-
-lo que le sigue abajo es el constructor que permite inyectar la configuración de conexión desde el program.cs
-
-el DbSet<T> -> Esta clase representa una tabla en tu bdd.
-
-Y por convención:
-- Si tu clase se llama Usuario, el DbSet lo llamás Usuarios.
-- Si tu clase se llama Vehiculo, lo llamás Vehiculos.
- */

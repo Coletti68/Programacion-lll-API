@@ -1,5 +1,4 @@
-﻿using System;
-using RentCars.Api.Data;
+﻿using RentCars.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
@@ -49,11 +48,10 @@ namespace RentCars.Api.Services.Implementaciones
 
         public async Task<Alquiler> CreateAsync(Alquiler alquiler)
         {
-            // 🔒 Validar que la fecha de inicio no sea en el pasado
+           
             if (alquiler.FechaInicio.Date < DateTime.Today)
                 throw new Exception("La fecha de inicio no puede ser anterior a hoy.");
 
-            // 🔒 Validar que el usuario no tenga un alquiler activo o reservado
             bool tieneAlquilerActivo = await _context.Alquileres
                 .AnyAsync(a => a.UsuarioId == alquiler.UsuarioId &&
                               (a.Estado == "Activo" || a.Estado == "Reservado"));
@@ -61,30 +59,24 @@ namespace RentCars.Api.Services.Implementaciones
             if (tieneAlquilerActivo)
                 throw new Exception("Ya tenés un alquiler en curso o reservado. Cancelalo o esperá a que finalice para crear uno nuevo.");
 
-            // Buscar el vehículo
             var vehiculo = await _context.Vehiculos.FindAsync(alquiler.VehiculoId);
             if (vehiculo == null)
                 throw new Exception("El vehículo especificado no existe.");
 
-            // Validar que el vehículo esté disponible
             var estadosInvalidos = new[] { "Alquilado", "Reservado", "Mantenimiento" };
             if (estadosInvalidos.Contains(vehiculo.Estado))
                 throw new Exception($"El vehículo no puede ser alquilado porque se encuentra en estado '{vehiculo.Estado}'.");
 
-            // Validar fechas
             var dias = (alquiler.FechaFin.Date - alquiler.FechaInicio.Date).Days;
             if (dias <= 0)
                 throw new Exception("Las fechas seleccionadas no son válidas. Debe haber al menos un día de alquiler.");
 
-            // Calcular total
             alquiler.Total = dias * vehiculo.PrecioPorDia;
 
-            // Determinar estado del alquiler y del vehículo
             var hoy = DateTime.Today;
             alquiler.Estado = (alquiler.FechaInicio.Date > hoy) ? "Reservado" : "Activo";
             vehiculo.Estado = (alquiler.Estado == "Reservado") ? "Reservado" : "Alquilado";
 
-            // Guardar
             _context.Alquileres.Add(alquiler);
             await _context.SaveChangesAsync();
 
@@ -169,8 +161,8 @@ namespace RentCars.Api.Services.Implementaciones
         public async Task<IEnumerable<Alquiler>> GetByUsuarioIdAsync(int id)
         {
             return await _context.Alquileres
-                .Include(a => a.Vehiculo)  // ✅ Trae los datos del vehículo
-                .Include(a => a.Usuario)   // ✅ Opcional: si querés nombre del usuario más adelante
+                .Include(a => a.Vehiculo) 
+                .Include(a => a.Usuario)   
                 .Where(a => a.UsuarioId == id)
                 .ToListAsync();
         }

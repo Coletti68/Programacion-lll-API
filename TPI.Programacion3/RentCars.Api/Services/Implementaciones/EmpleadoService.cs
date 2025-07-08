@@ -2,8 +2,6 @@
 using RentCars.Api.Data;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace RentCars.Api.Services.Implementaciones
 {
@@ -16,7 +14,6 @@ namespace RentCars.Api.Services.Implementaciones
             _context = context;
         }
 
-
         public async Task<Empleado?> GetByIdAsync(int id)
         {
             return await _context.Empleados.FindAsync(id);
@@ -25,7 +22,6 @@ namespace RentCars.Api.Services.Implementaciones
         {
             return await _context.Empleados.ToListAsync();
         }
-        
 
         public async Task<Empleado> CreateAsync(Empleado empleado)
         {
@@ -63,7 +59,7 @@ namespace RentCars.Api.Services.Implementaciones
             var empleado = await _context.Empleados.FindAsync(id);
             if (empleado == null) return false;
 
-            empleado.Activo = false; // 👈 Marcás como inactivo
+            empleado.Activo = false; 
             await _context.SaveChangesAsync();
 
             return true;

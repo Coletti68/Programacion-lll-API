@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;    
-
 namespace RentCars.Api.Models
 {
     public class Vehiculo
@@ -13,8 +11,6 @@ namespace RentCars.Api.Models
         public string Tipo { get; set; } = String.Empty;
         public decimal PrecioPorDia { get; set; }
         public string Estado { get; set; } = String.Empty;
-
-        //Relacion inversa
         public ICollection<Alquiler> Alquileres { get; set; }
     }
 }

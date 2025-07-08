@@ -1,11 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Diagnostics;
 using RentCars.Api.DTOs.Vehiculo;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RentCars.Api.Controllers
 {
@@ -20,7 +16,6 @@ namespace RentCars.Api.Controllers
             _vehiculoService = vehiculoService;
         }
 
-        // GET: api/vehiculos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<VehiculoListItem>>> GetAll()
         {
@@ -61,7 +56,6 @@ namespace RentCars.Api.Controllers
             return Ok(dtoList);
         }
 
-        // GET: api/vehiculos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<VehiculoResponse>> GetById(int id)
         {
@@ -84,7 +78,6 @@ namespace RentCars.Api.Controllers
             return Ok(result);
         }
 
-        // POST: api/vehiculos
         [HttpPost]
         public async Task<ActionResult<VehiculoResponse>> Create([FromBody] VehiculoCreateRequest dto)
         {
@@ -125,7 +118,6 @@ namespace RentCars.Api.Controllers
             }
         }
 
-        // PUT: api/vehiculos/5
         [HttpPut("{id}")]
         public async Task<ActionResult<VehiculoResponse>> Update(int id, [FromBody] VehiculoUpdateRequest dto)
         {
@@ -160,7 +152,6 @@ namespace RentCars.Api.Controllers
             return Ok(result);
         }
 
-        // DELETE: api/vehiculos/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

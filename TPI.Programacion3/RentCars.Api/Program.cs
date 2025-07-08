@@ -6,21 +6,17 @@ using RentCars.Api.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 🔌 DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// 🧠 Controladores
 builder.Services.AddControllers().AddJsonOptions(x =>
 {
     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
 
-// 📘 Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// 🔐 Servicios (DI)
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IVehiculoService, VehiculoService>();
 builder.Services.AddScoped<IEmpleadoService, EmpleadoService>();
@@ -43,17 +39,14 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// 🌐 Swagger (solo en desarrollo)
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// 🛡️ Activar CORS antes de MapControllers
 app.UseCors("PermitirFrontend");
 
-// ⚙️ Middleware base
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

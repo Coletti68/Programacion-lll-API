@@ -1,5 +1,4 @@
 using RentCars.Api.DTOs.Pago;
-using RentCars.Api.Models;
 
 namespace RentCars.Api.Services.Interfaces
 { 

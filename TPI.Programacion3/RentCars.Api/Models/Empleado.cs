@@ -1,6 +1,4 @@
-using System;
-
-    namespace RentCars.Api.Models
+namespace RentCars.Api.Models
 { 
     public class Empleado
     {

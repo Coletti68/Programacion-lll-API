@@ -3,8 +3,6 @@ using RentCars.Api.Data;
 using RentCars.Api.DTOs.Vehiculo;
 using RentCars.Api.Models;
 using RentCars.Api.Services.Interfaces;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace RentCars.Api.Services.Implementaciones
 {
@@ -29,7 +27,6 @@ namespace RentCars.Api.Services.Implementaciones
 
         public async Task<Vehiculo> CreateAsync(Vehiculo vehiculo)
         {
-            // Validar que no exista otra placa igual (case-insensitive si querés evitar duplicados del tipo "ABC123" vs "abc123")
             bool placaExiste = await _context.Vehiculos
                 .AnyAsync(v => v.Placa.ToLower() == vehiculo.Placa.ToLower());
 
