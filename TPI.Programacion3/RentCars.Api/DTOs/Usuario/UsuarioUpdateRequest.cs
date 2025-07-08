@@ -4,11 +4,12 @@ namespace RentCars.Api.DTOs.Usuario
     {
         public string? NombreCompleto { get; set; }
         public string? DNI { get; set; }
-        public string? FechaNacimiento { get; set; } // podría ser DateTime? si validás antes
+        public string? FechaNacimiento { get; set; } 
         public string? Telefono { get; set; }
         public string? Email { get; set; }
         public string? Pais { get; set; }
         public string? Direccion { get; set; }
-        public string? Password { get; set; } // capitalizado por convención
+        public string? Password { get; set; }
+        public bool? Activo { get; set; }
     }
 }

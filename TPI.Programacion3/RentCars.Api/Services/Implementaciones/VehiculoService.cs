@@ -50,6 +50,7 @@ namespace RentCars.Api.Services.Implementaciones
                 VehiculoId = v.VehiculoId,
                 Marca = v.Marca,
                 Modelo = v.Modelo,
+                Anio = v.Anio,
                 Placa = v.Placa,
                 Tipo = v.Tipo,
                 Color = v.Color,

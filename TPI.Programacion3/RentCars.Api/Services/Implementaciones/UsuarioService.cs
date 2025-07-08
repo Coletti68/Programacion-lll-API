@@ -15,6 +15,14 @@ namespace RentCars.Api.Services.Implementaciones
             _context = context;
         }
 
+        public async Task<Usuario?> GetUsuarioConAlquileresYMultasAsync(int id)
+        {
+            return await _context.Usuarios
+                .Include(u => u.Alquileres!)
+                    .ThenInclude(a => a.Multas)
+                .FirstOrDefaultAsync(u => u.UsuarioId == id);
+        }
+
         public async Task<IEnumerable<Usuario>> GetAllAsync()
         {
             return await _context.Usuarios.ToListAsync();

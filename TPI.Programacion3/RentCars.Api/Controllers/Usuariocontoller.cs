@@ -136,6 +136,9 @@ namespace RentCars.Api.Controllers
             if (!string.IsNullOrEmpty(dto.Password))
                 existente.PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
 
+            if (dto.Activo != null)
+                existente.Activo = dto.Activo.Value;
+
             var actualizado = await _usuarioService.UpdateAsync(id, existente);
             return actualizado != null ? NoContent() : StatusCode(500, "No se pudo actualizar el usuario.");
         }
@@ -153,6 +156,17 @@ namespace RentCars.Api.Controllers
         {
             var historial = await _usuarioService.GetHistorialPorUsuarioAsync(id);
             return historial.Any() ? Ok(historial) : NotFound($"El usuario {id} no tiene alquileres registrados.");
+        }
+
+        [HttpGet("detalles/{id}")]
+        public async Task<IActionResult> GetUsuarioConAlquileresYMultas(int id)
+        {
+            var usuario = await _usuarioService.GetUsuarioConAlquileresYMultasAsync(id);
+
+            if (usuario == null)
+                return NotFound();
+
+            return Ok(usuario);
         }
     }
 }
