@@ -52,6 +52,7 @@ namespace RentCars.Api.Controllers
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"❌ Error en login: {ex.Message}");
                 return StatusCode(500, new { mensaje = "Ocurrió un error inesperado. Contactá con soporte si el problema persiste." });
             }
         }
